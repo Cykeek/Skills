@@ -60,6 +60,17 @@ Here's how.
 
 **Rule:** Active by default. Passive only when the actor is unknown, irrelevant, or you deliberately want to soften blame.
 
+### 🔹 Dash restraint
+
+Em dashes are useful when a sentence needs a turn, interruption, or compact contrast. They start sounding synthetic when they become the default glue between simple clauses.
+
+| Overdone | Better |
+|---|---|
+| "The product is fast — easy to set up — simple to share — built for teams." | "The product is fast, easy to set up, and simple to share. It's built for teams." |
+| "You get one dashboard — one workflow — one place to manage everything." | "You get one dashboard and one workflow in a single place to manage everything." |
+
+**Rule:** If you can replace a dash with a period, comma, or colon without losing meaning, do it. Most paragraphs should use zero or one dash unless the voice deliberately calls for more.
+
 ---
 
 ## 3. Rhetorical Devices That Add Warmth
@@ -205,7 +216,9 @@ If you see these in a draft, fix them:
 - [ ] "It is important to note that" (just note it)
 - [ ] "At the end of the day" / "in today's fast-paced world" / other cliché openers
 - [ ] Passive voice where the actor is known
+- [ ] Dashes are doing the work of full stops or commas across the paragraph
 - [ ] Bullet points where prose would flow better
+- [ ] A short explanatory block has been broken into bullets for no reader benefit
 - [ ] Prose where bullet points would scan better
 - [ ] Hedging density > 2 per paragraph ("might," "possibly," "perhaps")
 - [ ] Zero hedging where uncertainty exists (sounds like a manual)
@@ -283,3 +296,17 @@ When a paragraph feels generic, add one of these:
 - a quote in a real person's language
 - a before/after contrast
 - a constraint, trade-off, or edge case
+
+### Prefer paragraphs over reflex bullets
+Many AI drafts turn every idea into a list. Human writers usually don't. If the reader is taking in one idea or one supporting explanation, write a short paragraph. Use bullets only when the reader genuinely needs to scan, compare, follow sequence, or reference a set of distinct items later.
+
+Good uses for bullets: steps, checklists, specs, side-by-side comparisons, option sets, or grouped facts. Poor uses: intro copy, single supporting ideas, short feature-card bodies, and small grid items that should read as heading plus body text.
+
+For repeated surfaces like a 3x3 feature grid, the default pattern is:
+
+```
+[Heading]
+[1-2 sentence body copy]
+```
+
+If each card only carries one idea, keep it in prose. Don't fracture that idea into three bullet fragments unless the card is truly acting as a checklist or spec module.

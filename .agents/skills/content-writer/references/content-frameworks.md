@@ -363,9 +363,58 @@ If the headline is:
 - Put the main objection just below the hero or immediately after benefits.
 - Use features as evidence for outcomes, not as the lead story.
 - Let page length reflect purchase complexity.
+- In feature grids, default to a heading plus short paragraph. Use bullets inside a card only when the card represents steps, specs, or a real checklist.
 
 ### Long-form explanatory / narrative pieces
 - Start with a pressure point or a person, not a lecture.
 - State the thesis early enough that the reader knows why they're here.
 - Alternate zoom levels: individual case ↔ system / concept.
 - Use the ending shape deliberately: roadmap, warning, callback, or open question.
+
+---
+
+## 12. Cards, Grids, and Compact UI Copy
+
+Repeated content surfaces need a different writing pattern than long-form sections. For 2x2, 3x3, or larger grids, each card should usually read like a small, complete thought.
+
+### Default pattern
+
+```
+[Short heading]
+[1-2 sentence supporting text]
+```
+
+This reads more naturally than a heading followed by three micro-bullets, and it keeps the grid visually calm.
+
+### Use bullets inside a card only when the card is doing one of these jobs
+- showing a checklist
+- showing product specs
+- listing distinct steps
+- comparing discrete attributes
+
+If the card is simply explaining one benefit, one feature, or one idea, prose is usually better.
+
+### Microcopy rules for grids and cards
+1. Let the **heading carry the label**.
+2. Let the **body paragraph carry the meaning**.
+3. Keep each card to **one main claim**.
+4. Keep neighboring cards at **roughly parallel length**.
+5. Avoid nested structure in small surfaces. A card should not feel like a mini document.
+
+### Before / after
+
+**Too list-heavy inside a small card**
+
+```
+Fast setup
+- Launch in minutes
+- No-code workflows
+- Easy onboarding
+```
+
+**More human and better suited to a grid**
+
+```
+Fast setup
+Launch in minutes with a workflow your team can understand on day one. No long onboarding trail.
+```

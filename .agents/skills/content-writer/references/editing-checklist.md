@@ -27,6 +27,8 @@ Edit in this order. Fixing structure before sentences, sentences before words, w
 - [ ] **Is the lede buried?** Real insight should be near the top, not in paragraph 4.
 - [ ] **Does each section deliver on what its heading promises?** No bait-and-switch.
 - [ ] **Is the structure scannable?** Subheadings, short paragraphs, lists where appropriate.
+- [ ] **Are lists doing real work?** If a section expresses one idea, it probably wants prose, not bullets.
+- [ ] **In cards, grids, or compact UI copy, would heading + short paragraph feel more natural than mini-bullets?**
 - [ ] **Do sections flow logically?** Each section should set up the next. No jarring jumps.
 - [ ] **Is there a clear takeaway?** Reader should leave knowing the one thing the piece wanted to say.
 - [ ] **Does the closing land?** Last sentence lingers — does it leave the reader with something?
@@ -65,6 +67,7 @@ Edit in this order. Fixing structure before sentences, sentences before words, w
 - [ ] **Active voice by default.** Convert passive where the actor is known.
 - [ ] **Strong verbs over adverbs.** "He ran quickly" → "He sprinted."
 - [ ] **No "utilize" for "use."** No "leverage" as a verb (unless physics). No "incentivize" if "encourage" works.
+- [ ] **Are dashes used deliberately rather than repeatedly?** If a short paragraph has multiple dashes, replace some with periods, commas, or a colon.
 - [ ] **Subject-verb agreement.** Especially in long sentences where the verb drifts.
 - [ ] **Pronouns have clear antecedents.** "It" and "they" should point to one obvious noun.
 - [ ] **Parallel structure in lists.** All bullets should match in form (all imperative, or all noun phrases — not mixed).
@@ -123,6 +126,10 @@ Almost every draft gets better when you cut 10–20% of the words.
 ### "It sounds like a corporate blog"
 - Likely cause: robotic tells — no contractions, formal phrasing, hedge-overload.
 - Fix: Apply `style-guide.md` Section 8 (Robotic Tells checklist). Rewrite as if explaining to a smart friend.
+
+### "It feels AI-written"
+- Likely cause: too many bullets, too many dash-connected clauses, and structure that reads like notes rather than finished prose.
+- Fix: Merge weak lists into paragraphs, keep bullets only where scan value is real, and replace some dash-heavy sentences with simpler punctuation.
 
 ### "It's too long"
 - Likely cause: padding to hit word count, OR trying to cover too much.
@@ -184,6 +191,8 @@ When the user asks you to "review" or "critique" their content, don't dump the f
 - [ ] Last sentence leaves the reader with something.
 - [ ] The piece has at least one concrete example, number, or quote per major section.
 - [ ] Every paragraph earns its place.
+- [ ] Lists are used only where scanning, comparison, or sequence actually helps.
+- [ ] Dash punctuation is restrained.
 - [ ] The piece passed the "read aloud" test.
 - [ ] The takeaway is clear — could a reader summarize it in one sentence?
 - [ ] It's 10–20% shorter than the first draft.
