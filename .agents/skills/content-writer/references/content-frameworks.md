@@ -67,15 +67,15 @@ What is the user's goal for this content?
 
 ## 3. Length Guidance
 
-Length is a function of the reader's job-to-be-done — never a quota.
+Length is a function of the reader's job-to-be-done: never a quota.
 
-### Word count benchmarks (defaults — adjust per request)
+### Word count benchmarks (defaults: adjust per request)
 | Format | Short | Medium | Long |
 |---|---|---|---|
 | Blog post | 600 | 1,200 | 2,000+ |
 | Landing page | 150 | 350 | 600 |
 | Email | 50 | 150 | 400 |
-| Social (Twitter/X) | — | 1–2 sentences | a thread |
+| Social (Twitter/X) |: | 1–2 sentences | a thread |
 | Social (LinkedIn) | 150 | 300 | 600 (rare) |
 | Press release | 400 | 600 | 800 |
 | Case study | 800 | 1,200 | 1,800 |
@@ -97,7 +97,7 @@ Length is a function of the reader's job-to-be-done — never a quota.
 
 ## 4. Angle Selection
 
-The angle is the *specific take* — not the topic. "Remote work" is a topic. "Why remote work exposes bad management" is an angle.
+The angle is the *specific take*: not the topic. "Remote work" is a topic. "Why remote work exposes bad management" is an angle.
 
 ### The 7 angle archetypes
 
@@ -111,7 +111,7 @@ The angle is the *specific take* — not the topic. "Remote work" is a topic. "W
 | **Beginner's guide** | Audience is new; no resource exists | "The non-engineer's guide to webhooks" |
 | **Myth-buster** | Common myths need correcting | "5 'best practices' that hurt your SEO" |
 
-### Choosing an angle — quick test
+### Choosing an angle: quick test
 1. **What's the one sentence the reader should remember?** That's your angle.
 2. **Would anyone else write this?** If the answer is yes, your angle is too generic.
 3. **Could a reader repeat this angle at dinner?** If they can't summarize it, it's not sharp enough.
@@ -123,18 +123,18 @@ The angle is the *specific take* — not the topic. "Remote work" is a topic. "W
 Headlines are 80% of the work. Write 10, pick the best 2, ask the user to choose.
 
 ### Proven formulas
-- **[Number] [adjective] [things] for [audience]** — "11 underrated tools for solo founders"
-- **How to [do thing] without [common pain]** — "How to ship a redesign without losing SEO traffic"
-- **Why [counterintuitive claim]** — "Why your best customers are the ones who complain"
-- **The [adjective] guide to [topic] (year)** — "The no-bullshit guide to webhooks (2025)"
-- **[Familiar thing] is [unexpected comparison]** — "Pricing pages are salespeople in disguise"
-- **[Authority/brand] [secret verb] [outcome]** — "How Linear shipped 100 features without burning out the team"
-- **[Topic]: [specific promise]** — "Internal docs: how to make people actually read them"
+- **[Number] [adjective] [things] for [audience]**: "11 underrated tools for solo founders"
+- **How to [do thing] without [common pain]**: "How to ship a redesign without losing SEO traffic"
+- **Why [counterintuitive claim]**: "Why your best customers are the ones who complain"
+- **The [adjective] guide to [topic] (year)**: "The no-bullshit guide to webhooks (2025)"
+- **[Familiar thing] is [unexpected comparison]**: "Pricing pages are salespeople in disguise"
+- **[Authority/brand] [secret verb] [outcome]**: "How Linear shipped 100 features without burning out the team"
+- **[Topic]: [specific promise]**: "Internal docs: how to make people actually read them"
 
 ### Headline quality test
 - Would this stop a scroll in a feed?
 - Does it promise something specific?
-- Does it undersell? (Don't overpromise — the piece has to deliver.)
+- Does it undersell? (Don't overpromise: the piece has to deliver.)
 - Is there a curiosity gap without being clickbait?
 - Are there strong, concrete nouns and verbs?
 
@@ -144,54 +144,54 @@ Headlines are 80% of the work. Write 10, pick the best 2, ask the user to choose
 
 ### Blog post (the workhorse)
 ```
-[Hook — 1–3 sentences that earn the next paragraph]
+[Hook: 1–3 sentences that earn the next paragraph]
 ↓
-[Stakes — why this matters to the reader]
+[Stakes: why this matters to the reader]
 ↓
-[Body — 3–7 sections with H2s, each with a concrete example]
+[Body: 3–7 sections with H2s, each with a concrete example]
 ↓
-[Synthesis — the takeaway]
+[Synthesis: the takeaway]
 ↓
-[CTA — what to do next / what to read next]
+[CTA: what to do next / what to read next]
 ```
 
 ### Listicle
 ```
 [Intro promises the value of the list]
 ↓
-[Items — each with a 1–3 sentence "why" — not just a name]
+[Items: each with a 1–3 sentence "why": not just a name]
 ↓
-[Closing — the one item that matters most, or how to pick]
+[Closing: the one item that matters most, or how to pick]
 ```
 
 ### Case study
 ```
-[Customer + stakes — who and what was on the line]
+[Customer + stakes: who and what was on the line]
 ↓
-[The problem — in the customer's terms, not yours]
+[The problem: in the customer's terms, not yours]
 ↓
-[The solution — what you did, why this approach]
+[The solution: what you did, why this approach]
 ↓
-[Results — concrete numbers, before/after]
+[Results: concrete numbers, before/after]
 ↓
-[Quote — in the customer's voice]
+[Quote: in the customer's voice]
 ↓
 [Takeaway / CTA]
 ```
 
 ### Landing page
 ```
-[Headline — value prop in 5–8 words]
+[Headline: value prop in 5–8 words]
 ↓
-[Subhead — what it is, for whom, why it's different]
+[Subhead: what it is, for whom, why it's different]
 ↓
-[Social proof — logos or a number]
+[Social proof: logos or a number]
 ↓
-[3 benefits — each one sentence + a concrete detail]
+[3 benefits: each one sentence + a concrete detail]
 ↓
-[Objection handling — the question they're afraid to ask]
+[Objection handling: the question they're afraid to ask]
 ↓
-[CTA — verb, not "Submit"]
+[CTA: verb, not "Submit"]
 ```
 
 ### Comparison page
@@ -209,15 +209,15 @@ Headlines are 80% of the work. Write 10, pick the best 2, ask the user to choose
 
 ### Press release (inverted pyramid)
 ```
-[Headline — news in 8–12 words]
+[Headline: news in 8–12 words]
 ↓
-[Dateline + lede — the whole story in 1–2 sentences]
+[Dateline + lede: the whole story in 1–2 sentences]
 ↓
-[Why it matters — the impact in 1 paragraph]
+[Why it matters: the impact in 1 paragraph]
 ↓
 [Quote from exec/customer]
 ↓
-[Supporting details — what, when, where, how]
+[Supporting details: what, when, where, how]
 ↓
 [About the company (boilerplate)]
 ↓
@@ -246,7 +246,7 @@ When you have multiple valid formats, use this to break the tie:
 
 ## 8. Common Pitfalls by Format
 
-- **Listicles:** Items without "why" — a name isn't a recommendation.
+- **Listicles:** Items without "why": a name isn't a recommendation.
 - **How-tos:** Missing the prerequisite step. State what they need before step 1.
 - **Thought leadership:** No original insight. If it could be summarized from 3 existing posts, it's not thought leadership.
 - **Case studies:** No metrics. "Improved efficiency" means nothing. "Cut reporting time from 6 hours to 30 minutes a week" means everything.

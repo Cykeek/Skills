@@ -22,9 +22,9 @@ When applying these lessons, don't imitate the surface. Borrow the decision logi
 
 ---
 
-## 2. Annotated Examples — SaaS / Marketing Blogs
+## 2. Annotated Examples: SaaS / Marketing Blogs
 
-### Example A — Buffer: Social Media Calendar Template
+### Example A: Buffer: Social Media Calendar Template
 **Source:** https://buffer.com/resources/social-media-calendar-template/
 
 #### What the writer is trying to do
@@ -55,7 +55,7 @@ Educate a reader with practical value while also earning trust for a broader pro
   - Why: The reader is more likely to act after they feel helped.
   - Principle: Earn the CTA with usefulness first.
 
-### Example B — Buffer: Buffer vs. Sprout Social
+### Example B: Buffer: Buffer vs. Sprout Social
 **Source:** https://buffer.com/resources/buffer-vs-sprout-social/
 
 #### What the writer is trying to do
@@ -86,7 +86,7 @@ Help a high-intent reader compare tools while preserving trust despite the brand
   - Why: The writer knows the reader needs evidence before committing.
   - Principle: The harder the ask, the more proof it needs before it appears.
 
-### Example C — Linear: Code Review Should Be Fast
+### Example C: Linear: Code Review Should Be Fast
 **Source:** https://linear.app/now/code-review-should-be-fast
 
 #### What the writer is trying to do
@@ -115,9 +115,9 @@ Introduce a product viewpoint while framing it as a response to an existing indu
 
 ---
 
-## 3. Annotated Examples — Landing Pages & Product Copy
+## 3. Annotated Examples: Landing Pages & Product Copy
 
-### Example D — Notion Homepage
+### Example D: Notion Homepage
 **Source:** https://www.notion.com/
 
 #### What the writer is trying to do
@@ -144,7 +144,7 @@ Make an abstract AI/productivity promise feel concrete, useful, and low-friction
   - Why: Readers buy relief and progress, not architecture.
   - Principle: Lead with the changed life or changed workflow; bring features in as proof.
 
-### Example E — Stripe Payments
+### Example E: Stripe Payments
 **Source:** https://stripe.com/payments
 
 #### What the writer is trying to do
@@ -167,7 +167,7 @@ Help a high-consideration buyer evaluate a complex infrastructure product.
   - Why: Different stakeholders trust different forms of evidence.
   - Principle: Match proof format to buyer psychology, not just brand habit.
 
-### Example F — Apple MacBook Air
+### Example F: Apple MacBook Air
 **Source:** https://www.apple.com/macbook-air/
 
 #### What the writer is trying to do
@@ -188,9 +188,9 @@ Convert broad product desire into purchase confidence across a long, visual, pro
 
 ---
 
-## 4. Annotated Examples — Long-Form Narrative / Explanatory Writing
+## 4. Annotated Examples: Long-Form Narrative / Explanatory Writing
 
-### Example G — Basecamp: Shape Up, Chapter 1
+### Example G: Basecamp: Shape Up, Chapter 1
 **Source:** https://basecamp.com/shapeup/0.3-chapter-01
 
 #### What the writer is trying to do
@@ -209,7 +209,7 @@ Teach a framework to practitioners who want practical guidance, not literary sho
   - Why: Clarity matters more than elegance when readers may be skimming for application.
   - Principle: Use visible structure when the goal is transfer of method.
 
-### Example H — ProPublica: How the IRS Was Gutted
+### Example H: ProPublica: How the IRS Was Gutted
 **Source:** https://www.propublica.org/article/how-the-irs-was-gutted
 
 #### What the writer is trying to do
@@ -232,7 +232,7 @@ Make a large institutional problem legible and emotionally real.
   - Why: The subject itself remains unresolved.
   - Principle: The ending shape should match the truth of the material, not a generic preference for tidy closure.
 
-### Example I — Wait But Why: The AI Revolution
+### Example I: Wait But Why: The AI Revolution
 **Source:** https://waitbutwhy.com/2015/01/artificial-intelligence-revolution-1.html
 
 #### What the writer is trying to do
@@ -300,7 +300,7 @@ These are the repeatable decisions that appeared across strong human-written wor
    Readers act more readily after they've received value, proof, or clarity.
 
 15. **Choose an ending shape deliberately.**
-   Synthesis, roadmap, CTA, callback, warning, open question, emotional image — pick the one that fits the material.
+   Synthesis, roadmap, CTA, callback, warning, open question, emotional image: pick the one that fits the material.
 
 16. **Use specificity as the main engine of credibility.**
    Specificity beats grand tone. Named examples, exact trade-offs, and precise constraints feel lived-in.

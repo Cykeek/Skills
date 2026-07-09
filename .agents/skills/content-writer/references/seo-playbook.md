@@ -6,7 +6,7 @@ This is the deep reference for search optimization. Read this when the user asks
 
 ---
 
-## 1. Search Intent — Start Here
+## 1. Search Intent: Start Here
 
 Before writing or optimizing, identify the reader's *actual* search intent. Intent determines format, length, and structure.
 
@@ -17,7 +17,7 @@ Before writing or optimizing, identify the reader's *actual* search intent. Inte
 | **Informational** | To learn / understand | Tutorial, guide, explainer, FAQ | "what is a webhook" |
 | **Commercial** | To evaluate options before buying | Comparison, listicle, review | "best CRM for startups" |
 | **Transactional** | To buy / sign up now | Landing page, pricing page, product page | "buy iphone 15 pro" |
-| **Navigational** | To find a specific site/page | Usually a brand search — minimal content needed | "stripe login" |
+| **Navigational** | To find a specific site/page | Usually a brand search: minimal content needed | "stripe login" |
 
 ### Intent-matching test
 Before finalizing, ask: **If someone Googles this phrase and lands here, will they leave satisfied?**
@@ -33,20 +33,20 @@ Before finalizing, ask: **If someone Googles this phrase and lands here, will th
 
 ## 2. Keyword Workflow
 
-### Step 1 — Find the primary keyword
+### Step 1: Find the primary keyword
 - Use the user's existing data if available (Search Console, Ahrefs, SEMrush, etc.).
 - If no tools, use: Google Autocomplete, "People Also Ask," related searches at the bottom of the SERP, and competitor titles.
 - Pick **one primary keyword** per page. Trying to rank one page for 5 different keywords usually fails.
 
-### Step 2 — Validate the keyword
+### Step 2: Validate the keyword
 - Is there search volume? (Ask the user or check tools.)
 - What's ranking now? Google it. The top 3 results tell you what Google thinks the intent is.
-- Can you realistically compete? A brand-new site won't rank for "how to lose weight" — go long-tail first.
+- Can you realistically compete? A brand-new site won't rank for "how to lose weight": go long-tail first.
 
-### Step 3 — Map related keywords
-- **Synonyms and variations** — use these naturally, don't repeat the primary keyword 30 times.
-- **LSI / semantic terms** — words that *should* appear on a page about this topic (e.g., a page about "running shoes" should mention "cushioning," "stride," "pronation").
-- **Question keywords** — turn these into H2s. They often map to "People Also Ask" boxes.
+### Step 3: Map related keywords
+- **Synonyms and variations**: use these naturally, don't repeat the primary keyword 30 times.
+- **LSI / semantic terms**: words that *should* appear on a page about this topic (e.g., a page about "running shoes" should mention "cushioning," "stride," "pronation").
+- **Question keywords**: turn these into H2s. They often map to "People Also Ask" boxes.
 
 ---
 
@@ -64,7 +64,7 @@ Before finalizing, ask: **If someone Googles this phrase and lands here, will th
 
 ### Meta description (155 characters max)
 - Doesn't directly affect ranking, but affects click-through rate.
-- Treat it like ad copy — include the keyword, a benefit, and a reason to click.
+- Treat it like ad copy: include the keyword, a benefit, and a reason to click.
 - Example: "Learn how webhooks work, when to use them vs polling, and how to build your first one in 10 minutes. Code examples included."
 
 ### URL slug
@@ -72,13 +72,13 @@ Before finalizing, ask: **If someone Googles this phrase and lands here, will th
 - ✅ `/webhooks-guide` ❌ `/2024/03/14/category/marketing-stuff/article123`
 
 ### H1 (one per page)
-- Should align with the title tag (not identical — the H1 can be slightly longer).
+- Should align with the title tag (not identical: the H1 can be slightly longer).
 - Must contain the primary keyword naturally.
 
 ### H2 / H3 structure
 - Use H2s for major sections, H3s for subsections. Don't skip levels (no H2 → H4).
 - Each H2 should answer a sub-question the reader might have.
-- Keywords in subheadings help — but only when natural.
+- Keywords in subheadings help: but only when natural.
 
 ### First paragraph
 - The primary keyword should appear in the first 100 words. Naturally.
@@ -94,7 +94,7 @@ Before finalizing, ask: **If someone Googles this phrase and lands here, will th
 ## 4. Content Depth & Structure
 
 ### The "10x content" principle
-Don't just match what's ranking — be meaningfully better. Ask:
+Don't just match what's ranking: be meaningfully better. Ask:
 - Is it more thorough?
 - Is it better structured (scannable, clear sections)?
 - Does it have something original (data, examples, perspective)?
@@ -102,14 +102,14 @@ Don't just match what's ranking — be meaningfully better. Ask:
 - Does it load and read better on mobile?
 
 ### Structural best practices
-- **Short paragraphs** — 2–4 sentences max. Walls of text hurt mobile.
-- **Front-load each paragraph** — the key idea in the first sentence.
-- **Scannability aids** — bullet points, bold for key terms, callout boxes, tables for comparisons.
-- **Use examples and visuals** — break up text with code blocks, diagrams, screenshots, real numbers.
-- **Answer the question early** — don't make the reader wait 800 words for the answer. Provide it, then elaborate.
+- **Short paragraphs**: 2–4 sentences max. Walls of text hurt mobile.
+- **Front-load each paragraph**: the key idea in the first sentence.
+- **Scannability aids**: bullet points, bold for key terms, callout boxes, tables for comparisons.
+- **Use examples and visuals**: break up text with code blocks, diagrams, screenshots, real numbers.
+- **Answer the question early**: don't make the reader wait 800 words for the answer. Provide it, then elaborate.
 
 ### Content depth benchmark
-Look at the top 3 results for the target keyword. If they average 2,000 words, yours should be in that range — *but only if depth adds value*. Don't pad.
+Look at the top 3 results for the target keyword. If they average 2,000 words, yours should be in that range: *but only if depth adds value*. Don't pad.
 
 ---
 
@@ -127,7 +127,7 @@ Google's quality guidelines emphasize E-E-A-T. Bake these into content:
 ### Practical moves
 - Add an author bio with real credentials.
 - Cite primary sources (link to the study, not the article about the study).
-- Acknowledge trade-offs and counterpoints — it builds trust.
+- Acknowledge trade-offs and counterpoints: it builds trust.
 - Update content with dates when revised ("Updated July 2025").
 - Display review/testimonial evidence, not just claims.
 
@@ -142,9 +142,9 @@ Google's quality guidelines emphasize E-E-A-T. Bake these into content:
 
 ### Best practices
 - Link to **relevant** pages, not just any page. The linked page should genuinely help the reader.
-- Use **descriptive anchor text** — not "click here" or "learn more."
+- Use **descriptive anchor text**: not "click here" or "learn more."
   - ✅ "our deep dive on webhooks" ❌ "click here to learn more"
-- Link **from** new content **to** older authoritative content — and **from** older content **to** new content when relevant.
+- Link **from** new content **to** older authoritative content: and **from** older content **to** new content when relevant.
 - Aim for 3–8 internal links per long-form post. Don't force.
 - Don't link to the same page twice in one piece.
 
@@ -154,7 +154,7 @@ Google's quality guidelines emphasize E-E-A-T. Bake these into content:
 
 - Link out to authoritative sources (original research, official docs, primary sources).
 - This signals to Google that you've done research and your content is part of a credible ecosystem.
-- Open external links in a new tab (UX best practice — note this for the user if relevant).
+- Open external links in a new tab (UX best practice: note this for the user if relevant).
 - Don't link to direct competitors for commercial-intent queries.
 
 ---
@@ -223,12 +223,12 @@ Return audit findings as a prioritized list (top 5 impactful fixes first), not a
 
 ## 11. SEO Pitfalls to Avoid
 
-- ❌ **Keyword stuffing** — anywhere. Search engines penalize; readers bounce.
-- ❌ **Writing for a different intent than the query** — Google won't rank it.
-- ❌ **Thin content** — 200 words on a topic that deserves 1,500.
+- ❌ **Keyword stuffing**: anywhere. Search engines penalize; readers bounce.
+- ❌ **Writing for a different intent than the query**: Google won't rank it.
+- ❌ **Thin content**: 200 words on a topic that deserves 1,500.
 - ❌ **Duplicate or near-duplicate content** across pages.
-- ❌ **Ignoring the title tag and meta description** — they're your SERP ad copy.
-- ❌ **Treating SEO as separate from quality** — the best SEO *is* great content. Done right, they don't compete.
-- ❌ **Chasing volume over intent** — 1,000 visits from the wrong intent ≠ 100 from the right intent.
-- ❌ **Forgetting mobile** — most readers are on phones. Test the reading experience.
+- ❌ **Ignoring the title tag and meta description**: they're your SERP ad copy.
+- ❌ **Treating SEO as separate from quality**: the best SEO *is* great content. Done right, they don't compete.
+- ❌ **Chasing volume over intent**: 1,000 visits from the wrong intent ≠ 100 from the right intent.
+- ❌ **Forgetting mobile**: most readers are on phones. Test the reading experience.
 - ❌ **Clickbait titles** that the content doesn't deliver. High bounce rate kills rankings.

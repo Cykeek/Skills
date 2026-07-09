@@ -1,6 +1,6 @@
 # Research Methodology
 
-This is the deep reference for content research — gathering, verifying, and synthesizing information. Read this when the user asks you to research a topic, find statistics, gather data, or fact-check claims.
+This is the deep reference for content research: gathering, verifying, and synthesizing information. Read this when the user asks you to research a topic, find statistics, gather data, or fact-check claims.
 
 **The principle:** Research serves the reader's trust. Cite sources the reader can verify. Be honest about what's known, what's estimated, and what's unknown. The most valuable research rarely comes from the first page of Google.
 
@@ -10,38 +10,38 @@ This is the deep reference for content research — gathering, verifying, and sy
 
 Use this hierarchy. Higher tier = more authoritative.
 
-### Tier 1 — Primary sources (gold standard)
+### Tier 1: Primary sources (gold standard)
 - Original research (peer-reviewed studies, government statistics, official datasets).
 - Direct quotes from named experts with verifiable credentials.
 - Original documents (filings, legal judgments, terms of service).
 - First-party data (the user's own analytics, customer interviews).
 
-### Tier 2 — Quality secondary sources
+### Tier 2: Quality secondary sources
 - Reputable journalism (NYT, WSJ, Reuters, AP, FT, specialist trade press).
 - Established analyst firms (Gartner, Forrester, McKinsey, IDC).
 - Industry reports from recognized bodies.
 - Books from established authors via reputable publishers.
 
-### Tier 3 — Useful but verify
-- Wikipedia (use as a *starting point* — never as a citation; chase the underlying source).
+### Tier 3: Useful but verify
+- Wikipedia (use as a *starting point*: never as a citation; chase the underlying source).
 - Industry blogs from known brands (Stripe blog, GitHub engineering, etc.).
 - Conference talks and podcasts (great for ideas; verify specifics).
 
-### Tier 4 — Use with caution
+### Tier 4: Use with caution
 - Vendor-sponsored research (often methodology is biased toward the vendor's product).
-- Press releases (the company's framing — find a second source).
+- Press releases (the company's framing: find a second source).
 - Social media posts, even from experts (verify specifics elsewhere).
 
-### Tier 5 — Don't cite, but can spark leads
-- AI-generated summaries (use only to find primary sources — never as a citation).
+### Tier 5: Don't cite, but can spark leads
+- AI-generated summaries (use only to find primary sources: never as a citation).
 - SEO content farms.
-- Forum threads (Reddit, HN — fine for surfacing perspectives, not as evidence).
+- Forum threads (Reddit, HN: fine for surfacing perspectives, not as evidence).
 
 ---
 
 ## 2. The Research Workflow
 
-### Step 1 — Define what you actually need
+### Step 1: Define what you actually need
 Before researching, ask:
 - What specific question does the user need answered?
 - What level of evidence does the piece require? (A blog post needs less rigor than a whitepaper.)
@@ -49,25 +49,25 @@ Before researching, ask:
 
 Vague research requests waste time. "Find stats on remote work" → unclear. "Remote work productivity studies from the last 5 years with sample sizes >1,000" → actionable.
 
-### Step 2 — Go to primary sources first
+### Step 2: Go to primary sources first
 - For statistics: government datasets (BLS, Census, Eurostat), international bodies (OECD, World Bank, WHO), academic databases (Google Scholar, PubMed for medical).
 - For industry data: trade associations, regulator reports, public SaaS company filings (10-Ks, earnings calls).
 - For technical claims: official documentation, RFCs, standards bodies.
 
-### Step 3 — Verify each claim with at least 2 sources
-- Find the original. If a stat is widely cited, find where it originated — secondary citations often mangle the original.
+### Step 3: Verify each claim with at least 2 sources
+- Find the original. If a stat is widely cited, find where it originated: secondary citations often mangle the original.
 - A claim x2 sources ≠ 2x as reliable. Look for *independent* corroboration (not 2 articles citing the same study).
 
-### Step 4 — Note the limitations
+### Step 4: Note the limitations
 - Sample size (n=30 ≠ n=3,000).
 - Methodology (self-reported survey vs. observed behavior).
 - Population studied (US college students ≠ global workforce).
 - Date (a 2018 stat about remote work has limited relevance in 2025).
 - Funding source (industry-funded studies skew toward industry conclusions).
 
-### Step 5 — Synthesize, don't stack
+### Step 5: Synthesize, don't stack
 - ❌ "Study A says X. Study B says X. Study C says X." (Stack)
-- ✅ "Three independent studies converge on X — though they differ on magnitude. Study A found 20% improvement; Study B, 15%; Study C, 35%. The variation likely reflects methodology: A used self-report, while B and C observed behavior." (Synthesis)
+- ✅ "Three independent studies converge on X: though they differ on magnitude. Study A found 20% improvement; Study B, 15%; Study C, 35%. The variation likely reflects methodology: A used self-report, while B and C observed behavior." (Synthesis)
 
 ---
 
@@ -104,7 +104,7 @@ Bottom line:
 
 ---
 
-## 4. Statistics — Special Care Required
+## 4. Statistics: Special Care Required
 
 Statistics are the most-mangled content type. Watch for these:
 
@@ -135,7 +135,7 @@ Statistics are the most-mangled content type. Watch for these:
 - **Paraphrase with attribution.** "As [Source] found, [paraphrased claim]." Don't copy sentence structure or unique phrasing.
 - **Quote sparingly.** Direct quotes only when the original phrasing is itself the point. Quote <5% of any piece.
 - **Cite as you go**, not as a stack at the end. Inline links or footnotes.
-- **Synthesis is additive.** Add your interpretation, comparison, or framework — don't just aggregate others' takes.
+- **Synthesis is additive.** Add your interpretation, comparison, or framework: don't just aggregate others' takes.
 
 ---
 
@@ -168,15 +168,15 @@ Statistics are the most-mangled content type. Watch for these:
 ### Topic summary
 ```
 **The question:** [What we set out to answer]
-**TL;DR:** [1–3 sentences — the answer]
+**TL;DR:** [1–3 sentences: the answer]
 
 **Key findings:**
-1. [Finding] — [Source, tier, year]
-2. [Finding] — [Source, tier, year]
-3. [Finding] — [Source, tier, year]
+1. [Finding]: [Source, tier, year]
+2. [Finding]: [Source, tier, year]
+3. [Finding]: [Source, tier, year]
 
 **Where sources disagree:**
-- [Disagreement] — [Why it likely varies]
+- [Disagreement]: [Why it likely varies]
 
 **What's uncertain / unknown:**
 - [Gaps in the research]
@@ -195,7 +195,7 @@ Statistics are the most-mangled content type. Watch for these:
 - Year: [Year]
 - Tier: [1/2/3]
 - Methodology: [Survey/observation/etc. + sample size]
-- Notes: [Caveats — date, region, population studied]
+- Notes: [Caveats: date, region, population studied]
 - URL: [Direct link]
 
 [Repeat per stat]
@@ -216,9 +216,9 @@ Statistics are the most-mangled content type. Watch for these:
 - ❌ **Treating all sources as equal.** A peer-reviewed study ≠ a vendor blog.
 - ❌ **Cherry-picking.** Surface the evidence that contradicts your thesis, not just the evidence that supports it.
 - ❌ **Confirmation bias in search.** Don't only search terms that will confirm what you want to find. Search the counter-arguments too.
-- ❌ **Outdated statistics.** Average age of a cited stat matters — for fast-moving fields, prefer last 2–3 years.
+- ❌ **Outdated statistics.** Average age of a cited stat matters: for fast-moving fields, prefer last 2–3 years.
 - ❌ **Misrepresenting methodology.** A self-reported preference ≠ an observed behavior. State which.
-- ❌ **Uncited paraphrasing.** Even if you reworded it, credit the original — and add your own synthesis.
+- ❌ **Uncited paraphrasing.** Even if you reworded it, credit the original: and add your own synthesis.
 - ❌ **Inflating certainty.** If the evidence is mixed or limited, say so. "% overstate confidence" is a common error.
 
 ---

@@ -4,7 +4,7 @@ This is the deep reference for tone, voice, and style. Read this whenever you're
 
 ---
 
-## 1. The Humane Voice — Core Principles
+## 1. The Humane Voice: Core Principles
 
 Write like a smart, warm human talking to another smart human. Not a manual. Not a press release. Not a textbook.
 
@@ -14,7 +14,7 @@ Write like a smart, warm human talking to another smart human. Not a manual. Not
 |---|---|---|
 | **Conversational** | Reads like speech, not like regulation | Contractions, discourse markers, sentence fragments where natural |
 | **Specific** | Concrete beats abstract every time | Real numbers, named examples, sensory details |
-| **Empathetic** | Acknowledges the reader's reality | "We know deadlines are tight — here's the 5-minute version" |
+| **Empathetic** | Acknowledges the reader's reality | "We know deadlines are tight: here's the 5-minute version" |
 | **Confident but undogmatic** | Takes a position without preaching | "I'd recommend…" not "You must…" / "One might consider…" |
 
 ---
@@ -44,7 +44,7 @@ Tokens expire after 24 hours. You can refresh them using the endpoint.
 
 ✅ Humane:
 The system requires authentication via a valid token. Tokens expire
-after 24 hours — but don't worry, you can refresh them using the endpoint.
+after 24 hours: but don't worry, you can refresh them using the endpoint.
 Here's how.
 ```
 
@@ -66,10 +66,12 @@ Em dashes are useful when a sentence needs a turn, interruption, or compact cont
 
 | Overdone | Better |
 |---|---|
-| "The product is fast — easy to set up — simple to share — built for teams." | "The product is fast, easy to set up, and simple to share. It's built for teams." |
-| "You get one dashboard — one workflow — one place to manage everything." | "You get one dashboard and one workflow in a single place to manage everything." |
+| "The product is fast: easy to set up: simple to share: built for teams." | "The product is fast, easy to set up, and simple to share. It's built for teams." |
+| "You get one dashboard: one workflow: one place to manage everything." | "You get one dashboard and one workflow in a single place to manage everything." |
+| "Fermy Lab, an innovative fermented food brand, bridges traditional Indian culinary wisdom with modern design." | "Fermy Lab brings traditional Indian culinary wisdom into a modern design system." |
+| "The platform is flexible: and it scales with your team." | "The platform is flexible, and it scales with your team." |
 
-**Rule:** If you can replace a dash with a period, comma, or colon without losing meaning, do it. Most paragraphs should use zero or one dash unless the voice deliberately calls for more.
+**Rule:** In normal body prose, default to zero em dashes. If a dash can be replaced with a period, comma, or colon without losing force, replace it.
 
 ---
 
@@ -93,7 +95,7 @@ Start with the reader's frame of mind, not the system's capabilities.
 
 | Robotic | Empathetic |
 |---|---|
-| "To reset your password, follow these steps." | "Forgetting passwords is frustrating — let's get you back in quickly." |
+| "To reset your password, follow these steps." | "Forgetting passwords is frustrating: let's get you back in quickly." |
 | "The error indicates a missing dependency." | "Looks like something's missing from your setup. Let's track it down." |
 | "Here are the available options." | "You've got a few good paths forward here. Let's look at them." |
 
@@ -112,7 +114,7 @@ Tone isn't one-size-fits-all. Adjust these dials per audience.
 - **Tone:** Precise, technical, peer-to-peer, no fluff
 - **Do:** Show code, name the actual function/API, acknowledge trade-offs, say "you'll hate this but…" when relevant
 - **Avoid:** Marketing language, hand-waving, dumbed-down analogies that get the details wrong
-- **Example:** "The `fetchUser()` call returns a Promise, so you'll want to `await` it — otherwise you get a pending state and the rest of your handler runs before the data lands."
+- **Example:** "The `fetchUser()` call returns a Promise, so you'll want to `await` it: otherwise you get a pending state and the rest of your handler runs before the data lands."
 
 ### 💼 Executives
 - **Tone:** Crisp, results-first, scannable, confident
@@ -124,7 +126,7 @@ Tone isn't one-size-fits-all. Adjust these dials per audience.
 - **Tone:** Relatable, story-driven, warm, benefits-first
 - **Do:** Use "you," tell micro-stories, frame features as benefits, acknowledge their lives are busy
 - **Avoid:** Spec sheets, internal jargon, condescending simplification, corporate voice
-- **Example:** "No one sets out to spend their Saturday on hold with cable. That's why we built a setup that takes 5 minutes — and a real person to call if it doesn't."
+- **Example:** "No one sets out to spend their Saturday on hold with cable. That's why we built a setup that takes 5 minutes: and a real person to call if it doesn't."
 
 ### 🆕 First-time visitors
 - **Tone:** Orient, reassure, don't assume jargon knowledge
@@ -133,7 +135,7 @@ Tone isn't one-size-fits-all. Adjust these dials per audience.
 - **Example:** "Welcome! You're probably here because someone sent you a link. Here's what we do in one sentence, and here's where to start."
 
 ### 🎓 Technical-but-not-developer (PMs, analysts, designers)
-- **Tone:** Bridge — technical enough to be useful, plain enough to be clear
+- **Tone:** Bridge: technical enough to be useful, plain enough to be clear
 - **Do:** Explain *why* a technical choice matters in terms of user/business impact
 - **Avoid:** Either dumbing it down to "magic" or going full stack trace
 
@@ -162,7 +164,7 @@ When the user has a brand voice (or needs to build one), use this framework.
 Ask the user (or infer from their existing content):
 1. **Pick 3 adjectives** that describe the brand (e.g., "warm, confident, no-nonsense")
 2. **Pick 3 adjectives it is NOT** (e.g., "corporate, fluffy, edgy")
-3. **Three sample sentences** in that voice — write them and check they feel right
+3. **Three sample sentences** in that voice: write them and check they feel right
 
 ### Voice examples (for reference)
 - **Stripe:** Developer peer. Precise, confident, no marketing fluff.
@@ -174,33 +176,33 @@ Ask the user (or infer from their existing content):
 
 ## 7. Before/After Rewrite Library
 
-### Example 1 — Robotic tech doc → humane
+### Example 1: Robotic tech doc → humane
 ❌ "The system utilizes machine learning algorithms to generate predictions."
-✅ "The system uses machine learning to make predictions — and it gets better the more data you feed it."
+✅ "The system uses machine learning to make predictions: and it gets better the more data you feed it."
 
-### Example 2 — Stiff landing page → conversational
+### Example 2: Stiff landing page → conversational
 ❌ "Authentication is required before accessing the dashboard."
 ✅ "You'll need to log in before you can see the dashboard."
 
-### Example 3 — Vague marketing → specific
+### Example 3: Vague marketing → specific
 ❌ "Our platform empowers businesses to achieve operational excellence."
 ✅ "Our platform cuts the average team's reporting time from 6 hours a week to under 30 minutes."
 
-### Example 4 — Hedging overload → confident
+### Example 4: Hedging overload → confident
 ❌ "It might possibly be the case that this could potentially improve performance."
 ✅ "This should improve performance. If it doesn't, here's likely why."
 
-### Example 5 — Bury-the-lede → lead with it
+### Example 5: Bury-the-lede → lead with it
 ❌ "In today's fast-paced digital landscape, businesses face many challenges. One such challenge is customer retention. Our solution…"
 ✅ "You're losing customers you don't have to. Here's the fix."
 
-### Example 6 — Consumer marketing, robotic → warm
+### Example 6: Consumer marketing, robotic → warm
 ❌ "Our coffee subscription service delivers premium beans to your doorstep on a monthly basis."
 ✅ "Fresh beans, every month, straight to your door. No more grocery-store coffee that's been sitting on a shelf since March."
 
-### Example 7 — Supportive email, canned → real
+### Example 7: Supportive email, canned → real
 ❌ "We apologize for any inconvenience this may have caused."
-✅ "That shouldn't have happened — sorry. Here's what went wrong, and what we're doing to make sure it doesn't happen again."
+✅ "That shouldn't have happened: sorry. Here's what went wrong, and what we're doing to make sure it doesn't happen again."
 
 ---
 
@@ -223,7 +225,7 @@ If you see these in a draft, fix them:
 - [ ] Hedging density > 2 per paragraph ("might," "possibly," "perhaps")
 - [ ] Zero hedging where uncertainty exists (sounds like a manual)
 - [ ] Generic praise ("great question!") instead of specific response
-- [ ] "Leverage" as a verb (use "use" — unless you mean the physics definition)
+- [ ] "Leverage" as a verb (use "use": unless you mean the physics definition)
 
 ---
 
