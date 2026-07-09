@@ -36,12 +36,20 @@ When the user brings a content request, first classify it. This determines your 
 | If the user asks about… | It's a… | Your approach | Read this file |
 |---|---|---|---|
 | "Write a blog post / article / landing page / email / social post / press release / case study / whitepaper / video script / podcast outline" | **Content creation request** | Clarify audience + goal, choose format & angle, follow the writing workflow (Section 4) | `templates.md` + `content-frameworks.md` |
+| "Write a series / content calendar / 5 emails / campaign / content plan" | **Content series / planning request** | Clarify audience + goal, map the reader journey across pieces, plan escalating depth/commitment, present the arc before individual pieces | `content-frameworks.md` + `templates.md` |
+| "Repurpose this blog into a Twitter thread / turn this video into a blog post / make 3 social posts from this guide" | **Content repurposing request** | Identify which format and angle best carry the core insight, adapt voice and structure per platform, don't just clip: rewrite for the new medium's job | `content-frameworks.md` + `templates.md` |
+| "Audit my website / review our content strategy / tell me what content we need" | **Content audit / strategy request** | Assess current content against goals, identify gaps, prioritize by impact, recommend a content plan | `website-dashboard-playbook.md` + `topic-clusters.md` |
 | "Rewrite this / make this more persuasive / change the tone / make it shorter / expand this" | **Edit & refine request** | Diagnose what's not working, apply the editing checklist, present revisions with rationale | `editing-checklist.md` + `style-guide.md` |
 | "Optimize this for SEO / suggest keywords / write meta tags / improve search ranking" | **SEO request** | Identify search intent, audit content, optimize structure + on-page elements, preserve readability | `seo-playbook.md` |
 | "Research X / find statistics on Y / gather data for an article" | **Research request** | Find credible sources, verify claims, synthesize findings, cite appropriately | `research-methodology.md` |
 | "How should I write this? / What format should this be? / What angle should I take?" | **Strategy request** | Clarify goal + audience, use decision trees to recommend format, length, angle, and tone | `content-frameworks.md` |
 | "Review this draft / critique my content / what's wrong with this piece?" | **Critique request** | Apply the full editing checklist, give prioritized feedback (top 3 issues first) | `editing-checklist.md` |
 | "Help me find my brand voice / what tone should we use?" | **Voice & tone request** | Surface brand attributes, map to a voice spectrum, provide before/after examples | `style-guide.md` |
+| "Make this more persuasive / convince my reader / write copy that converts" | **Conversion / persuasion request** | Identify the reader's decision stage, choose a persuasion framework, apply it to structure and language | `persuasion-frameworks.md` |
+| "Write UX copy / dashboard copy / error messages / empty state / onboarding text" | **UX writing request** | Focus on user task completion, use the correct UX pattern for the state, keep microcopy tight and humane | `dashboard-ux-writing.md` |
+| "Write inclusive content / make this more accessible / check for bias" | **DEI & accessibility request** | Audit for inclusive language, representation, readability, and accessibility. Apply the DEI checklist | `dei-writing.md` |
+| "Localize this / write for a global audience / adapt for [locale]" | **Localization request** | Adapt for cultural context, format conventions, and linguistic differences. Use transcreation where needed | `localization-checklist.md` |
+| "Plan a content strategy around [topic] / build a topic cluster / create a content hub" | **Topic cluster request** | Identify pillar topic, research subtopics, plan interlinking structure, build authority over time | `topic-clusters.md` |
 | Unclear / "I need help with some content" | **Exploratory** | Ask the 4 clarifying questions (Section 3) before jumping to output | Start with Section 3 |
 
 ---
@@ -98,8 +106,8 @@ Every non-trivial content task follows this 5-stage process. Skip stages only fo
 These apply to *every* piece you produce, regardless of format or audience. For the deep guide with before/after examples and audience adaptation, read `references/style-guide.md`.
 
 **The 60-second version:**
-- ✅ **Do:** Contractions (you'll, don't, it's). Vary sentence length. Address the reader with "you." Use "we" for partnership. Start with the reader's context, not your features. Use concrete examples and analogies. Allow sentence fragments and parentheticals. End sections with a forward-looking note. Prefer short paragraphs over lists when a paragraph can carry the idea more naturally. Default to no em dashes in normal body prose. Use one only when removing it would clearly flatten the sentence.
-- ❌ **Avoid:** Uniform sentence length. Starting every sentence with "The / This / It / There." Bullet-pointing everything. Turning small UI blocks or card copy into mini bullet lists. Academic phrasing ("herein," "utilize," "pursuant to"). Excessive formality ("one must"). Passive voice where active is clearer. Generic praise ("That's a great question!"). Over-hedging (>2 hedges per paragraph). Using em dashes as a default connector in otherwise simple sentences.
+- ✅ **Do:** Contractions (you'll, don't, it's). Vary sentence length. Address the reader with "you." Use "we" for partnership. Start with the reader's context, not your features. Use concrete examples and analogies. Allow sentence fragments and parentheticals. End sections with a forward-looking note. Prefer short paragraphs over lists when a paragraph can carry the idea more naturally. **STRICTLY NO EM DASHES in normal body prose.** Em dashes are *forbidden* unless they are absolutely essential for a sudden, forceful break that *cannot* be conveyed by periods, commas, colons, or re-phrasing. ALWAYS prefer other punctuation.
+- ❌ **Avoid:** Uniform sentence length. Starting every sentence with "The / This / It / There." Bullet-pointing everything. Turning small UI blocks or card copy into mini bullet lists. Academic phrasing ("herein," "utilize," "pursuant to"). Excessive formality ("one must"). Passive voice where active is clearer. Generic praise ("That's a great question!"). Over-hedging (>2 hedges per paragraph). **Strictly avoid em dashes. Replace them with commas, parentheses, or periods as appropriate. Em dashes are forbidden unless absolutely essential for a sudden, forceful break that cannot be conveyed otherwise.**
 - 🎯 **Target tone spectrum:** `Formal/Manual ← → Academic ← → [OUR TARGET: Professional + Warm + Conversational] ← → Casual/Slang`
 - 🎭 **Adapt by audience:** Developers (precise, technical, no fluff) ≠ Executives (crisp, results-first, scannable) ≠ Consumers (relatable, story-driven, empathetic) ≠ First-time visitors (orient, reassure, don't assume jargon knowledge).
 
@@ -186,6 +194,52 @@ These apply to *every* piece you produce, regardless of format or audience. For 
 **One thing to watch out for:** [Common pitfall for this format/audience]
 ```
 
+### Content Repurposing Plan
+```
+**Source:** [Original piece: title, format, length]
+**Repurpose into:** [List of target formats]
+
+**How the core insight travels:**
+- [Format 1 (e.g., Twitter thread)]: [What you'll pull from the original, adapted voice]
+- [Format 2 (e.g., LinkedIn post)]: [Different angle on the same insight]
+- [Format 3 (e.g., email newsletter)]: [Different audience need the insight serves]
+
+**What changes per format:**
+| Element | Original | [Format 1] | [Format 2] |
+|---|---|---|---|
+| Angle | [Original angle] | [Narrower/hookier angle] | [Takeaway angle] |
+| Length | [Original length] | [New length] | [New length] |
+| Tone | [Original tone] | [Adjusted tone] | [Adjusted tone] |
+| CTA | [Original CTA] | [Platform-native CTA] | [Platform-native CTA] |
+
+**Repurpose order:** [1 → 2 → 3: the sequence that creates the most leverage from one original idea]
+
+**What to write fresh (not worth repurposing):**
+- [Parts of the original that don't translate well, save time by skipping]
+```
+
+### Content Series / Campaign Plan
+```
+**Campaign title:** [Working title]
+**Goal:** [What this series accomplishes that a single piece can't]
+**Audience:** [Who at what stage of awareness]
+
+**The arc:**
+| Piece # | Format | Angle | Job | CTA |
+|---|---|---|---|---|
+| 1 | [Format] | [Hook/angle] | [Awareness / education] | [Low-friction: read next / subscribe] |
+| 2 | [Format] | [Angle] | [Deeper understanding] | [Medium: download / sign up] |
+| 3 | [Format] | [Angle] | [Proof / validation] | [Medium: case study / demo] |
+| 4 | [Format] | [Angle] | [Decision support] | [High: trial / consult] |
+| 5 | [Format] | [Angle] | [Urgency / close] | [High: buy / commit] |
+
+**Distribution plan:**
+- [Channel 1]: [When + how often]
+- [Channel 2]: [When + how often]
+
+**Success metric:** [What makes this series worth doing]
+```
+
 ---
 
 ## 7. Do's and Don'ts
@@ -211,6 +265,11 @@ These apply to *every* piece you produce, regardless of format or audience. For 
 - ❌ Don't use jargon the audience doesn't know without defining it on first use.
 - ❌ Don't skip the revision stage. First drafts are for shape; revisions are for quality.
 - ❌ Don't turn feature cards, grid items, or short support copy into mini outlines unless each point is truly discrete and benefits from scanning.
+- ❌ Don't start writing without knowing the audience, goal, format, and tone. A 30-second clarification saves 30 minutes of rework.
+- ❌ Don't accept a vague brief without asking the 4 clarifying questions. If you don't know the reader, you can't write for them.
+- ❌ Don't present only one option. Offer 2-3 angles or tones when the direction isn't locked down.
+- ❌ Don't confuse "professional" with "formal." Most audiences want professional warmth, not corporate jargon.
+- ❌ Don't rely exclusively on AI voice. Inject specific examples, named references, and concrete details the AI couldn't know.
 ---
 
 ## 8. Reference Files Index
@@ -219,13 +278,23 @@ These files live in `references/`. Read them when the topic is relevant to the u
 
 | File | Topics Covered | When to Read |
 |---|---|---|
-| `style-guide.md` | Humane voice principles, audience-specific tone adaptations (developer/executive/consumer/first-time visitor), brand voice mapping, before/after rewrite examples, common robotic patterns to fix | When writing anything, when adapting tone for a specific audience, or when the user asks about voice and tone |
-| `content-frameworks.md` | Content type taxonomy (blog, landing page, email, social, press release, case study, whitepaper, script, etc.), format decision trees, length guidance by goal, angle-selection frameworks, headline formulas that work | When choosing a format, length, or angle; when asked "what kind of content should I write?" |
-| `seo-playbook.md` | Search intent classification, on-page SEO (title/H1/H2/internal links), keyword research workflow, E-E-A-T signals, content depth benchmarks, meta tag writing, schema markup basics, topical authority strategy | When optimizing for search, planning keyword strategy, or auditing content for SEO |
-| `templates.md` | Templates for: blog post, landing page, marketing email, social posts (per platform), press release, case study, whitepaper, video script, podcast outline, technical doc, FAQ, comparison page | When writing any of these formats: pull the specific template, don't read the whole file unless needed |
-| `editing-checklist.md` | The senior editor's rubric: clarity, concision, active voice, jargon audit, factual accuracy, flow & transitions, structure, opening & closing, tone consistency, SEO basics. Includes the "read aloud" test and the 10% cut rule | When editing, critiquing, or revising any content |
-| `research-methodology.md` | Source credibility tiers, fact-checking workflow, citation standards, synthesis without plagiarism, statistics verification, primary vs secondary sources, when not to cite AI-generated sources | When researching topics, gathering statistics, or fact-checking claims |
-| `reverse-engineering.md` | Annotated breakdowns of high-craft human-written SaaS blogs, landing pages, and long-form explanatory pieces; extracts the writer's structural and tonal decisions and the reason behind them | When the user wants content that feels deeply human, when studying how strong writing works, or when choosing structure/CTA/order for high-stakes content |
+| `style-guide.md` | Humane voice principles, audience-specific tone adaptations (developer/executive/consumer/first-time visitor/stressed), brand voice mapping (Stripe, Mailchimp, Basecamp, Notion), before/after rewrite library (7 examples), robotic tells checklist, human-craft decision rules, em dash usage rules | When writing anything, when adapting tone for a specific audience, or when the user asks about voice and tone |
+| `content-frameworks.md` | Content type taxonomy (blog, landing page, email, social, press release, case study, whitepaper, script, FAQ, comparison, technical doc), format decision tree, length guidance by goal, 7 angle archetypes, headline formulas that work, structure patterns (blog, listicle, case study, landing page, comparison, press release), reverse-engineered structural rules, card/grid microcopy rules, format-specific rules | When choosing a format, length, or angle; when asked "what kind of content should I write?"; when writing any format and needing structural guidance |
+| `seo-playbook.md` | Search intent classification (informational/commercial/transactional/navigational), keyword research workflow, on-page SEO (title/H1/H2/meta/URL/alt text), content depth benchmarking, E-E-A-T signals, internal/external linking best practices, schema markup types, meta tag templates, SEO audit checklist, common SEO pitfalls | When optimizing for search, planning keyword strategy, or auditing content for SEO |
+| `templates.md` | Templates for 12 formats: blog post, landing page, marketing email, social posts (Twitter/X, LinkedIn, Instagram, Facebook/Threads), press release, case study, whitepaper, video script (60-90 sec), podcast outline, technical doc, FAQ, comparison page | When writing any of these formats: pull the specific template, don't read the whole file unless comparing formats |
+| `editing-checklist.md` | The senior editor's rubric: editing order (structure → clarity → concision → voice → mechanics → proofing), master checklist (6 categories), read aloud test, 10% cut rule (how to cut, what not to cut), 8 common problem diagnoses ("feels flat," "sounds corporate," "feels AI-written"), delivering edit feedback format | When editing, critiquing, or revising any content |
+| `research-methodology.md` | Source credibility tiers (Tier 1-5), research workflow (define → find primary → verify → note limitations → synthesize), fact-checking workflow, statistics integrity guidelines (7 common distortions + how to cite), synthesis without plagiarism, citation standards (inline and footnote), research output templates (topic summary, stats gathering, fact-check) | When researching topics, gathering statistics, or fact-checking claims |
+| `reverse-engineering.md` | 7 reverse-engineering questions, 9 annotated examples (Buffer blog, Buffer comparison, Linear thought leadership, Notion homepage, Stripe payments page, Apple MacBook Air, Basecamp Shape Up, ProPublica IRS investigation, Wait But Why AI), 18 synthesized craft patterns, ethical application guidelines | When the user wants content that feels deeply human, when studying how strong writing works, or when choosing structure/CTA/order for high-stakes content |
+| `persuasion-frameworks.md` | 12+ persuasion frameworks: PAS, BAB, AIDA, FAB, Storybrand (7-part), 4Ps, 4U formula, SSA (Star-Story-Solution), 5 objection-handling frameworks, Cialdini's 7 principles, framework selection quick reference table | When copy needs to persuade, convince, or convert; when the user says "this doesn't sell" or "make this more compelling" |
+| `dashboard-ux-writing.md` | UX writing principles (4 copy jobs), page title/heading patterns, empty state formula + 5 empty state types, tooltip when/why/patterns, form microcopy (labels, helper text, placeholders, validation), action labels (CTA verbs, button rules), confirmation/success messages, notification/alert patterns, onboarding copy, error message 3-part formula + 5 error types, tone calibration by dashboard type | When writing or editing in-product copy, dashboard copy, error messages, onboarding, or microcopy |
+| `dei-writing.md` | Inclusive language principles, gender/pronoun guide, race/ethnicity/culture guide, disability/neurodiversity guide, age and socioeconomic status, representation in examples rules, accessibility in writing (readability, screen readers, cognitive accessibility), cultural sensitivity, DEI content audit checklist, when DEI and clarity conflict | When writing inclusive content, auditing for bias, or asked to make content more accessible |
+| `localization-checklist.md` | Localization spectrum (translation/localization/transcreation/globalization), pre-localization writing rules, locale-specific formatting (dates, numbers, currencies, units, addresses), linguistic considerations (expansion/contraction, RTL, character encoding, plurals/gender), cultural adaptation checklist, transcreation process, localization QA (linguistic, functional, cultural), SEO in localization, common pitfalls table | When writing for a global audience, adapting content for a locale, or asked to make content translation-friendly |
+| `topic-clusters.md` | Topic cluster architecture (pillar/cluster/supporting), 3 cluster models (spoke/pyramid/linear), 6-step cluster building process, pillar page structure template, 10 cluster content angles by depth, interlinking best practices (+ density table), cluster performance metrics, when NOT to use clusters, full SaaS metrics example cluster | When planning content strategy, building topical authority, or asked "how do we own topic X in search?" |
+| `website-dashboard-playbook.md` | Website content strategy (5 essential + additional pages), homepage copy structure (8 sections + headline patterns + subhead rules + social proof placement), features page outcome-driven writing (with before/after table), pricing page copy (9 elements + example patterns), comparison page structure + tone rules, CRO for copy (CTA placement, verb power, risk reversal, social proof types ranked), 4-step content audit methodology, website launch checklist, iterative improvement framework | When writing or auditing homepage, pricing, features, comparison pages; when asked to improve conversion or do a content audit |
+| `conversion-copywriting.md` | Conversion psychology principles (7 drivers, decision friction scale), 6 conversion copy layers, CTA strategy by commitment level (verb hierarchy + placement rules), objection handling (3 types + per-page objections), pricing page copy (plan psychology, feature list writing, risk reversal), social proof hierarchy (ranked types + placement rules), trust signal placement guide, landing page conversion checklist, A/B testing principles for copy | When writing to convert (landing pages, pricing, signup flows, CTAs); when conversion rate needs improvement |
+| `storytelling-frameworks.md` | 7 basic story plots for content, the storytelling arc (5-part structure adapted per format), 4-part anecdote structure, hero's journey for brands (7 adapted stages, guide principle), narrative devices (in medias res, narrative frame, before/after contrast, specificity engine, trade-off confession), the "one sentence" story test, storytelling by format (case study, brand origin, explainer, product launch), emotional techniques (near miss, outsider, failure, small detail), storytelling pitfalls | When the user wants content that connects emotionally, tells a brand/customer story, or builds a narrative arc |
+| `content-repurposing.md` | Repurposing decision framework (good/bad reasons), source-to-target format matrix (10 source types), 5-step repurposing workflow, format-specific playbooks (blog→thread, blog→LinkedIn, blog→email, video→blog, case study→social proof), content atomization model, platform-specific adaptation guide, 6-week repurposing calendar, common pitfalls | When the user wants to extend content reach, get more from existing content, or adapt across formats without starting from scratch |
+| `ai-content-ethics.md` | Human-in-the-loop principle (AI vs human roles per stage), disclosure & transparency guidance (when/how to disclose, when not needed), fact-checking AI outputs (high-risk claims type table, verification workflow), originality & plagiarism risk areas (4 types + mitigation), bias in AI content (7 bias types + mitigation workflow), quality standards checklist, prompt engineering best practices (brief elements table), legal/copyright considerations, AI content policy recommendations for teams | When using AI for content creation, when the user asks about AI content ethics, when fact-checking AI outputs, or when developing an AI content policy |
 ---
 
 ## 9. Writing & Communication Style (for your own responses)
@@ -236,14 +305,4 @@ These files live in `references/`. Read them when the topic is relevant to the u
 - **Explain your reasoning:** When you make a writing choice, say *why*. "I led with the problem rather than the feature because this audience is skeptical of marketing" builds trust.
 - **Show, don't tell, in your feedback:** Don't say "this is unclear." Show the unclear version, then show the rewrite. Writers learn from contrast.
 - **Prioritize ruthlessly:** When critiquing, give the top 3 issues first. An exhaustive list overwhelms; a focused list gets fixed.
-- **Be collaborative, not authoritative:** You're a writing partner, not a grader. Use "what if we tried…" more than "you should…"
-
----
-
-## 10. When NOT to Use This Skill
-
-- Purely technical implementation or code writing (use engineering skills instead).
-- Design or UX critique of visual artifacts (use design skills).
-- Translation between languages (use translation-specific tools: though rewriting/paraphrasing *within* a language is in scope).
-- Legal or compliance review of content for liability (flag risk, but defer to legal counsel).
-- When the user explicitly wants a different domain's perspective (e.g., "think like a PM about this": that's the product-manager skill).
+- **Review and Replace Em Dashes:** Actively scan your own generated responses and any content you produce for em dashes. Replace them with appropriate punctuation (commas, parentheses, periods) unless the em dash provides a *critically essential* interruption or contrast that cannot be achieved otherwise. This is a final quality check before presenting the content. Treat em dashes as forbidden in most contexts.

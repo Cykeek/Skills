@@ -60,18 +60,30 @@ Here's how.
 
 **Rule:** Active by default. Passive only when the actor is unknown, irrelevant, or you deliberately want to soften blame.
 
-### 🔹 Dash restraint
+### 🔹 Dash & Hyphen Usage (Restraint is Key)
 
-Em dashes are useful when a sentence needs a turn, interruption, or compact contrast. They start sounding synthetic when they become the default glue between simple clauses.
+Em dashes (—), en dashes (–), and hyphens (-) each have distinct roles. Misuse, especially of the em dash, can make prose feel artificial.
 
-| Overdone | Better |
-|---|---|
-| "The product is fast: easy to set up: simple to share: built for teams." | "The product is fast, easy to set up, and simple to share. It's built for teams." |
-| "You get one dashboard: one workflow: one place to manage everything." | "You get one dashboard and one workflow in a single place to manage everything." |
-| "Fermy Lab, an innovative fermented food brand, bridges traditional Indian culinary wisdom with modern design." | "Fermy Lab brings traditional Indian culinary wisdom into a modern design system." |
-| "The platform is flexible: and it scales with your team." | "The platform is flexible, and it scales with your team." |
+| Punctuation | Recommended Use | Alternatives to Overused Forms / Common Errors |
+|---|---|---|
+| **Em dash (—)** | Use **only** for a strong, abrupt interruption, contrast, or to set off a parenthetical that needs extra emphasis, where a comma or parenthesis feels too weak. Typically, use a maximum of one per paragraph in body copy. | • Replace with a **period** (two separate sentences) if the break is a full stop.<br>• Replace with a **comma** for a lighter pause or non-essential clause.<br>• Replace with a **colon** when introducing an explanation or list.<br>• Re-phrase the sentence to avoid needing a dash altogether. Avoid using as a default connector between simple clauses. |
+| **En dash (–)** | Use for numeric or date ranges (e.g., pp. 23–25, 2020–2021). Also for indicating a connection or conflict between two things of equal weight (e.g., New York–London flight). | Do not substitute for a hyphen in compound adjectives (e.g., user-friendly, not user–friendly). |
+| **Hyphen (-)** | Use for compound modifiers before a noun (e.g., a *user-friendly* interface) and for word breaks at the end of a line. Also used in some compound words (e.g., *co-worker*). | Do **not** substitute for en or em dashes. If a compound word is commonly used and understood, consider if the hyphen can be removed (e.g., *frontend* vs. *front-end*). |
 
-**Rule:** In normal body prose, default to zero em dashes. If a dash can be replaced with a period, comma, or colon without losing force, replace it.
+**Strict Rule:** Default to ZERO em dashes per paragraph in normal body copy. If you identify a need for an em dash, rigorously question if a period, comma, colon, or simple re-phrasing would achieve the same clarity or emphasis without the "robotic" feel. Em dashes are *only* permissible for truly strong, deliberate interruptions or contrasts that cannot be achieved otherwise, and even then, use them sparingly and judiciously.
+
+### 🔹 Em Dash Anti-Patterns & Human-Preferred Alternatives
+
+AI often overuses em dashes in ways human writers avoid. Here's a guide to common misuses and how to fix them:
+
+| AI Anti-Pattern (Overuse) | Human-Preferred Alternative | Example (AI Anti-Pattern) | Example (Human-Preferred) |
+|---------------------------|-----------------------------|---------------------------|---------------------------|
+| **For Appositives/Parentheticals:** Using em dashes where commas or parentheses suffice for non-essential information. | Use **commas** for lighter pauses, or **parentheses** for clarifying asides that don't need strong emphasis. | "ReModelUN—a high-profile AI podcast—needed a new brand." | "ReModelUN, a high-profile AI podcast, needed a new brand." OR "ReModelUN (a high-profile AI podcast) needed a new brand." |
+| **To Introduce Explanations/Lists:** Replacing colons or periods for introducing an explanation, elaboration, or list. | Use a **colon** to introduce a list or explanation directly related to the preceding clause. Use a **period** if the explanation is a new sentence. | "The brand needed a framework—specifically addressing: visual consistency." | "The brand needed a framework: specifically addressing visual consistency." OR "The brand needed a framework. Specifically, it needed to address visual consistency." |
+| **As a General Connector/Glue:** Linking closely related independent clauses or phrases when a comma, semicolon, or period is more natural. | Use a **comma** with a conjunction, a **semicolon** for closely related independent clauses without a conjunction, or a **period** for a clearer break. | "The system is agile—and it scales easily." | "The system is agile, and it scales easily." OR "The system is agile; it scales easily." |
+| **For Simple Enumeration:** Using dashes to set off simple enumerations within a sentence. | Rephrase to use **commas** or present as a formal list. | "The solution featured: a logo—colors—typography." | "The solution featured a logo, colors, and typography." |
+
+**Reinforced Rule:** When you detect an em dash, always consider if a comma, period, colon, or parentheses would be more precise and natural. If in doubt, re-phrase to avoid the dash. The goal is to make the writing flow as if a human wrote it, not to add artificial emphasis with excessive dashes.
 
 ---
 
@@ -218,7 +230,7 @@ If you see these in a draft, fix them:
 - [ ] "It is important to note that" (just note it)
 - [ ] "At the end of the day" / "in today's fast-paced world" / other cliché openers
 - [ ] Passive voice where the actor is known
-- [ ] Dashes are doing the work of full stops or commas across the paragraph
+- [ ] **Em dashes are misused:** (a) acting as generic connectors, (b) introducing lists/explanations where a colon/period is better, (c) for simple parentheticals where commas/parentheses suffice.
 - [ ] Bullet points where prose would flow better
 - [ ] A short explanatory block has been broken into bullets for no reader benefit
 - [ ] Prose where bullet points would scan better
