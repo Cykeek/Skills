@@ -72,3 +72,105 @@ Optimize keyword presence by spreading words across these strategic locations:
 Do not dump a massive, unformatted block of keywords at the bottom of the page or in hidden (white) font text. Modern parsers flag hidden text and list indexing, and human recruiters instantly reject resumes with meaningless skill blocks. Integrate skills naturally into bullet points:
 - *Bad:* Skills used: React, CSS, HTML, Webpack, Git, Agile, JIRA.
 - *Good:* Built **React** components styled with modern **CSS/HTML** and bundled using **Webpack**, managing tasks inside an **Agile** environment using **Jira**.
+
+---
+
+## 5. Plain Language for Non-Technical Audiences (HR, CEO, Leads)
+
+**Purpose:** Resumes are first read by HR, then hiring managers, then technical leads, and sometimes CEOs. Every bullet must be understandable by all audiences without losing technical precision.
+
+### 5.1 Translation Principle
+> **Lead with the business outcome, then the method.** Non-technical readers scan for impact first; technical readers verify the how.
+
+| Audience | What They Scan For | What They Need |
+|----------|-------------------|----------------|
+| **HR / Recruiter** | Keywords, titles, years, clear impact | "Increased conversion 9pp" — recognizable metric |
+| **CEO / VP** | Strategic value, scale, revenue, risk | "$460K ARR retained" — business outcome |
+| **Hiring Manager** | Relevant scope, team size, process | "15M+ merchants, 12 teams" — scope context |
+| **Technical Lead** | Tools, architecture, complexity | "React/TypeScript, A/B test (n=24k, p<0.01)" — technical proof |
+
+### 5.2 Technical → Plain Language Translation Table
+
+| Technical Term | Plain Language Alternative | When to Use Plain Version |
+|----------------|----------------------------|---------------------------|
+| **A/B testing** | "tested two versions to find what works better" | Summary, first mention |
+| **API** | "software connection" / "system interface" | First mention, non-tech bullets |
+| **CI/CD** | "automated testing and deployment" | Summary, cross-functional bullets |
+| **Component library** | "reusable design building blocks" | Skills, non-tech bullets |
+| **Design system** | "unified design standards across products" | Summary, first mention |
+| **Design tokens** | "centralized design values (colors, spacing)" | Technical bullets only |
+| **End-to-end** | "complete, from start to finish" | All contexts |
+| **Frontend / Backend** | "user-facing / behind-the-scenes" | First mention |
+| **Full-stack** | "works across user interface and server" | Summary, Skills |
+| **GraphQL** | "flexible data query system" | Technical bullets only |
+| **JTBD (Jobs to Be Done)** | "user needs research" | First mention |
+| **Microservices** | "independent service architecture" | Technical bullets only |
+| **PCI-DSS** | "payment security standard" | Domain bullets |
+| **Prototyping** | "building interactive mockups" | All contexts |
+| **React / TypeScript** | "modern web development stack" | Summary, non-tech bullets |
+| **REST API** | "standard web interface" | Technical bullets only |
+| **Storybook** | "component documentation tool" | Technical bullets only |
+| **WCAG 2.2 AA** | "accessibility standard (level AA)" | First mention |
+| **Zero-to-one (0→1)** | "building from scratch" | All contexts |
+
+### 5.3 Rewrite Patterns for Audience Clarity
+
+#### Pattern A: Lead with Outcome (CEO/HR Friendly)
+```
+TECHNICAL:  Architected Design System v2 token architecture: 12 teams, 87% UI coverage, 0 breaking changes in 18mo
+CLEAR:      Built unified design standards (Design System v2) adopted by 12 teams covering 87% of product UI — zero breaking changes in 18 months
+SIGNAL:     [Systems Thinking] [Technical Fluency]
+```
+
+#### Pattern B: Translate Method Inline (Manager Friendly)
+```
+TECHNICAL:  Pair-programmed React/TypeScript components with 2 E5 engineers; cut handoff 3.2 days→0.8 days
+CLEAR:      Collaborated directly with senior engineers to build production-ready components in React/TypeScript, reducing design-to-engineering handoff from 3.2 days to 0.8 days
+SIGNAL:     [Technical Fluency] [Cross-functional Leadership]
+```
+
+#### Pattern C: Domain Context for Non-Domain Experts (HR Friendly)
+```
+TECHNICAL:  Spearheaded checkout redesign for 15M+ merchants delivering +9pp activation (18%→27%), $460K ARR retained; validated via A/B test (n=24,847, p<0.01, holdout confirmed)
+CLEAR:      Led checkout redesign for 15+ million merchants, increasing completion rate by 9 percentage points (18% to 27%) and retaining $460K in annual revenue; proven through controlled experiment with 24,847 users
+SIGNAL:     [Data-Informed Iteration] [Cross-functional Leadership]
+```
+
+### 5.4 Rules for Audience-Aware Writing
+
+1. **First mention = plain + technical:** "A/B testing (controlled experiments comparing two versions)" — then use technical term subsequently
+2. **Summary = 80% plain, 20% technical:** CEO/HR reads this first
+3. **Skills section = exact technical terms:** ATS needs precise keywords
+4. **Experience bullets = 50/50 balance:** Lead with outcome, include method
+5. **Never assume domain knowledge:** "PCI-DSS (payment security standard)" not just "PCI-DSS"
+6. **Scale = concrete numbers:** "15M+ merchants" not "millions of users"
+7. **Time = calendar time:** "3.2 days → 0.8 days" not "75% faster"
+
+### 5.5 Anti-Patterns for Mixed Audiences
+
+| Anti-Pattern | Problem | Fix |
+|--------------|---------|-----|
+| Pure jargon in Summary | HR/CEO can't parse | Lead with business outcome |
+| Acronyms without expansion | Non-technical readers lost | Spell out first: "Design System (DS)" |
+| Technical detail without impact | "So what?" for leaders | Always pair method → result |
+| Vague scale ("large scale") | Not credible | Specific: "15M+ users, 12 teams" |
+| Statistical notation only | "p<0.01" means nothing to HR | Add plain: "statistically significant (p<0.01)" |
+| Tool lists without context | "Figma, React, Storybook" = skills dump | "Built in Figma, prototyped in React/Storybook" |
+
+---
+
+## 6. Quick Reference: Edit Commands for Clarity (LaTeX)
+
+```bash
+# Add plain language translation to bullet
+agent latex inject --resume main.tex --bullet 3 --prepend-translation "A/B testing" "tested two versions to find what works better"
+
+# Expand acronym at first use
+agent latex inject --resume main.tex --bullet 1 --expand-acronym "PCI-DSS" "Payment Card Industry Data Security Standard (payment security standard)"
+
+# Lead with outcome
+agent latex audience --resume main.tex --bullet 2 --restructure outcome-first
+
+# Add scale context
+agent latex inject --resume main.tex --bullet 4 --add-scale "12 teams" "12 cross-functional product teams"
+```
