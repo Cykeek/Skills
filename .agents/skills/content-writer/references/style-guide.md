@@ -60,17 +60,17 @@ Here's how.
 
 **Rule:** Active by default. Passive only when the actor is unknown, irrelevant, or you deliberately want to soften blame.
 
-### 🔹 Dash & Hyphen Usage (Restraint is Key)
+### 🔹 Dash & Hyphen Usage (Em Dash = Banned in Body Prose)
 
 Em dashes (—), en dashes (–), and hyphens (-) each have distinct roles. Misuse, especially of the em dash, can make prose feel artificial.
 
 | Punctuation | Recommended Use | Alternatives to Overused Forms / Common Errors |
 |---|---|---|
-| **Em dash (—)** | Use **only** for a strong, abrupt interruption, contrast, or to set off a parenthetical that needs extra emphasis, where a comma or parenthesis feels too weak. Typically, use a maximum of one per paragraph in body copy. | • Replace with a **period** (two separate sentences) if the break is a full stop.<br>• Replace with a **comma** for a lighter pause or non-essential clause.<br>• Replace with a **colon** when introducing an explanation or list.<br>• Re-phrase the sentence to avoid needing a dash altogether. Avoid using as a default connector between simple clauses. |
+| **Em dash (—)** | **Forbidden in body prose by default.** The only permitted uses are: (1) a direct quote where the source used one, (2) technical documentation that requires it specifically, (3) when the user explicitly requests it in writing. In all other cases, rephrase to avoid it entirely. | • **Period** – if the break is a full stop, split into two sentences.<br>• **Comma** – for a lighter pause or non-essential clause.<br>• **Colon** – to introduce an explanation or list.<br>• **Parentheses** – for a clarifying aside.<br>• **Rephrase** – restructure the sentence so no break is needed. |
 | **En dash (–)** | Use for numeric or date ranges (e.g., pp. 23–25, 2020–2021). Also for indicating a connection or conflict between two things of equal weight (e.g., New York–London flight). | Do not substitute for a hyphen in compound adjectives (e.g., user-friendly, not user–friendly). |
 | **Hyphen (-)** | Use for compound modifiers before a noun (e.g., a *user-friendly* interface) and for word breaks at the end of a line. Also used in some compound words (e.g., *co-worker*). | Do **not** substitute for en or em dashes. If a compound word is commonly used and understood, consider if the hyphen can be removed (e.g., *frontend* vs. *front-end*). |
 
-**Strict Rule:** Default to ZERO em dashes per paragraph in normal body copy. If you identify a need for an em dash, rigorously question if a period, comma, colon, or simple re-phrasing would achieve the same clarity or emphasis without the "robotic" feel. Em dashes are *only* permissible for truly strong, deliberate interruptions or contrasts that cannot be achieved otherwise, and even then, use them sparingly and judiciously.
+**Absolute Rule:** Em dashes are **banned in body prose** with no exceptions other than direct quotes and explicit user requests. Do not ask "can I use one here?" The answer is always no unless one of those two conditions is met. Every time you write a sentence containing —, stop and replace it before proceeding.
 
 ### 🔹 Em Dash Anti-Patterns & Human-Preferred Alternatives
 
@@ -83,7 +83,7 @@ AI often overuses em dashes in ways human writers avoid. Here's a guide to commo
 | **As a General Connector/Glue:** Linking closely related independent clauses or phrases when a comma, semicolon, or period is more natural. | Use a **comma** with a conjunction, a **semicolon** for closely related independent clauses without a conjunction, or a **period** for a clearer break. | "The system is agile—and it scales easily." | "The system is agile, and it scales easily." OR "The system is agile; it scales easily." |
 | **For Simple Enumeration:** Using dashes to set off simple enumerations within a sentence. | Rephrase to use **commas** or present as a formal list. | "The solution featured: a logo—colors—typography." | "The solution featured a logo, colors, and typography." |
 
-**Reinforced Rule:** When you detect an em dash, always consider if a comma, period, colon, or parentheses would be more precise and natural. If in doubt, re-phrase to avoid the dash. The goal is to make the writing flow as if a human wrote it, not to add artificial emphasis with excessive dashes.
+**Final Rule (no exceptions in prose):** When you find an em dash in something you have written, replace it. Do not evaluate whether it was justified. Replace it with a period, colon, comma, semicolon, or parenthesis, or rephrase the sentence. The evaluation is already done: em dashes in prose are not permitted. The only non-replaceable cases are (1) verbatim external quotes and (2) explicit user instruction in that message. Neither of those is a prose decision you are making.
 
 ---
 
@@ -254,8 +254,39 @@ When in doubt, ask: **"Would I say this out loud to a smart colleague?"**
 
 These rules come from reverse-engineering strong human-written SaaS blogs, landing pages, and long-form explanatory pieces. Use them while drafting and revising, not just during critique.
 
-### Lead with the reader's tension
-Don't open with background unless the background is the tension. Start where the reader already feels friction, curiosity, fear, hope, or urgency.
+### Opening sentence quality rules
+The first sentence is the most important sentence in any piece. Human readers make their "keep reading" decision within the first two sentences. AI-generated openings fail most often here.
+
+**Banned opening patterns (rewrite immediately if you find these):**
+| Banned pattern | Why it fails | Fix |
+|---|---|---|
+| "In today's [X] landscape..." | Throat-clearing. Reader already lives in today's landscape. | Start with what the reader is feeling or experiencing. |
+| "In this article, I will..." | Table-setting. The reader can see what the article contains by reading it. | Cut it. Start with the first real idea. |
+| "It is important to understand that..." | Stalling and condescending. It's all important or none of it is. | Just state the important thing. |
+| "As we all know..." | Sets up the writer's comfort, not the reader's. | Either the reader knows (so skip it) or they don't (so teach it directly). |
+| "[Topic] is a critical component of modern [field]." | Sounds like an essay introduction, not human writing. | Replace with a specific observation or a question the reader is already asking. |
+| "In recent years, [trends]..." | Always vague, never urgent. | Replace with the specific trend and its consequence. |
+
+**Strong opening patterns (use these instead):**
+- Drop into the reader's situation: "You're three hours into debugging and the error message says nothing useful."
+- Subvert an expectation: "Most dashboards show you everything except what you actually need."
+- State the thesis directly: "The best landing pages don't sell products. They resolve anxiety."
+- Pose the question the reader is already asking: "Should you write the blog post, the LinkedIn post, or the email series first?"
+- Open in medias res: "The proposal was due Monday. The writer had a blank document."
+
+### Voice drift detection
+A piece "drifts" when the tone shifts noticeably between sections, usually because the writer (or AI) slipped into a more formal register mid-draft without noticing.
+
+**How to check for it:** Read three non-adjacent paragraphs. If any paragraph sounds like a different writer (more corporate, more academic, more casual) it has drifted.
+
+**Common drift triggers to watch for:**
+- A paragraph that starts "It is worth noting that..." when the rest of the piece uses contractions
+- A paragraph that uses "utilize," "leverage," or "facilitate" when the rest uses plain English
+- A paragraph where every sentence starts with "The" or "This" when surrounding paragraphs vary their openings
+- A paragraph of 6-8 bullet points nested inside a prose-first piece
+- A paragraph that switches from "you" to "one" or "users"
+
+**Fix:** Rewrite the drifted paragraph in the voice of the opening paragraph. Ask: "Would the first paragraph's writer have said this?"
 
 | Weak opening | Stronger opening |
 |---|---|

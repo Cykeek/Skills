@@ -106,6 +106,33 @@ Guidelines:
 
 ## 2. Interaction Design Principles
 
+### Jakob Nielsen's 10 Usability Heuristics
+
+| Heuristic | Explanation | Product Design Application |
+|---|---|---|
+| **1. Visibility of system status** | The system should always keep users informed about what is going on. | Live upload progress rings, skeleton loading states, toast notifications. |
+| **2. Match between system and the real world** | Speak the user's language and use concepts that are familiar. | Trash icon for deleting, desktop folder metaphor, direct interaction models. |
+| **3. User control and freedom** | Users often choose system functions by mistake and need a marked "emergency exit". | Instant "Undo" toast on delete, clear cancel buttons in wizards. |
+| **4. Consistency and standards** | Users should not have to wonder whether different words, situations, or actions mean the same thing. | Adherence to design system components, standard button states, platform standards. |
+| **5. Error prevention** | A formulation that prevents a problem from occurring is better than a good error message. | Disable destructive CTAs until checkboxes are ticked, validate input formats inline on-the-fly. |
+| **6. Recognition rather than recall** | Minimize the user's memory load by making objects, actions, and options visible. | Auto-suggesting search history, clear navigation bars, visible command bars. |
+| **7. Flexibility and efficiency of use** | Accelerators — unseen by the novice user — may often speed up the interaction for the expert user. | Keyboard shortcuts, bulk action selection, saved filters. |
+| **8. Aesthetic and minimalist design** | Dialogs should not contain information which is irrelevant or rarely needed. | High signal-to-noise ratio, progressive disclosure, clean typography. |
+| **9. Help users recognize, diagnose, and recover from errors** | Error messages should be expressed in plain language, precisely indicate the problem, and constructively suggest a solution. | Clear error copy telling the user *why* and *how to fix* it instead of raw status codes. |
+| **10. Help and documentation** | System must provide documentation to help users understand how to complete their tasks. | In-context tooltips, search-friendly FAQ widgets, structured onboarding cards. |
+
+### Core Laws of Cognitive Psychology in UX
+
+*   **Jakob's Law:** Users spend most of their time on other sites. They expect your site to work similarly. Do not reinvent standard layout paradigms (e.g., shopping carts, login forms) unless there is a clear, proven improvement.
+*   **Miller's Law:** The average person can only keep 7 ± 2 items in their working memory. Group items in logical chunks (e.g., grouping custom settings into collapsible sections) rather than showing a long flat list.
+*   **Peak-End Rule:** Humans judge an experience largely based on how they felt at its peak (the most intense point) and at its end. Invest heavily in positive "success states" and smooth exit flows.
+*   **Zeigarnik Effect:** People remember uncompleted or interrupted tasks better than completed tasks. Use progress indicators and onboarding checklists to encourage completion.
+*   **Aesthetic-Usability Effect:** Users perceive aesthetically pleasing designs as more usable and trustworthy. Clean layout, consistent spacing, and visual harmony directly mitigate early task-failure frustration.
+*   **Tesler's Law (Law of Conservation of Complexity):** Every application has an inherent amount of complexity that cannot be removed. It must be absorbed by the design and development rather than passed to the user.
+*   **Postel's Law (Robustness Principle):** Be liberal in what you accept, and conservative in what you send. Accept diverse user inputs while showing clean, consistent outputs.
+*   **Von Restorff Effect (Isolation Effect):** When multiple similar elements are present, the one that differs from the rest is most likely to be remembered. Use visual contrast selectively only for primary focal points.
+
+
 ### Hick's Law
 The time it takes to make a decision increases with the number and complexity of choices.
 
@@ -474,9 +501,7 @@ Use progressive disclosure when:
 
 ### Prototyping best practices
 - Test early: low-fi reveals flow issues faster
-- Don't polish a bad idea
-- Test with real content whenever possible
-- Design the non-happy states before claiming the flow is done
+- Documentation changes do not need to be linted, built or tested unless there are specific tests for documentation.
 - Document interactions, not just screens
 
 ### Matching fidelity to the question
@@ -488,3 +513,109 @@ Use progressive disclosure when:
 | Do users understand the copy and consequences? | Mid-fi |
 | Does this feel trustworthy, reassuring, or premium? | Mid to high-fi |
 | Is this ready for engineering handoff? | High-fi or code |
+
+---
+
+## 8. Advanced Form UX & Inline Validation
+
+Forms are the primary interactive transition point for users. Designing forms requires minimizing friction and physical effort while maximizing accuracy and reassurance.
+
+### Form Structure & Inputs
+*   **Single-Column Layout:** Prefer single-column layouts over multi-column grids. Single-column layouts establish a clear visual path, reducing cognitive fatigue.
+*   **Visible Labels:** Never hide labels inside inputs as placeholders. Place labels clearly above the input field so they remain visible when the user begins typing.
+*   **Field Grouping:** Group related fields (e.g., shipping info, payment details) using white space, borders, or section titles to break the form into digestible chunks.
+
+### Inline Validation Sequence
+*   **Don't Validate on Keystroke:** Avoid showing validation errors while the user is typing (this increases error anxiety and interrupts their focus).
+*   **Validate on Blur:** Check field validity when the user shifts focus away from the input (on blur or tab transition).
+*   **Re-validate on Keystroke Only After Error:** If a field has been marked invalid, validate it immediately on keystroke as they correct the input.
+*   **Success Indicators:** Show green checkmarks or indicators only for high-complexity fields (e.g., password criteria, username availability) to avoid over-visualizing simple standard fields.
+
+### Error Messages & Recovery
+*   **Polite, Actionable Copy:** State clearly what is missing or wrong, and how to fix it (e.g., "Enter a valid email address containing @ and a domain").
+*   **Focus Management:** If the user attempts to submit a form with errors, prevent submission, scroll to the first invalid field, and place the keyboard focus on it.
+
+---
+
+## 9. Data Visualization & Analytics UX
+
+Data visualizations should serve comprehension and prompt actions, rather than just acting as decorative visual elements.
+
+### Chart Selection Guide
+*   **Comparison (Categories):** Use horizontal or vertical **Bar Charts**. Avoid using pie/donut charts with more than 5 categories (due to human difficulty comparing angles).
+*   **Trends Over Time:** Use **Line Charts** or **Area Charts**. Use a consistent time scale on the X-axis.
+*   **Distribution/Relationship:** Use **Scatter Plots** or histogram charts.
+*   **Proportions:** Use **Stacked Bar Charts** rather than multiple Pie Charts.
+
+### Visual Hierarchy & Density
+*   **Summarized Scorecards:** Always place high-level Key Performance Indicators (KPIs) with absolute values and positive/negative trend values (e.g., "+12% this week") above the detailed chart.
+*   **Axes & Gridlines:** Use clear label text parallel to axes. Keep gridlines thin, light gray, and unobtrusive.
+*   **Interactive Tooltips:** Provide micro-tooltips on hover that reveal the exact numeric values. Avoid truncating tooltips or using hard-to-parse formulas.
+
+### Accessibility in Charts
+*   **Dual Encoding:** Do not use color as the sole differentiator between data series. Pair colors with unique line patterns (dots, dashes) or distinct shape markers (circles, triangles) to support color-blind users.
+*   **Direct Labeling:** Whenever possible, place labels directly adjacent to lines/bars rather than in a separate legend box to minimize visual scanning.
+
+---
+
+## 10. Motion Choreography & UI Physics
+
+Motion helps orient the user within the interface, establishing spatial relationships and visual continuity.
+
+### The Dynamics of Motion
+*   **Expanding Cards:** Expand cards outward from their original layout position rather than fading in a modal in the center of the screen.
+*   **Slides & Drawers:** Slide-in sheets must exit along the reverse vector they entered (e.g., a drawer sliding in from the right must slide back to the right when dismissed).
+*   **State Transitions:** Ensure buttons, checkmarks, and list transitions have immediate micro-animations (e.g., a checkmark drawing itself in) to prevent user uncertainty.
+
+### UI Physics & Easing Curves
+*   **Avoid Linear Motion:** Linear motion feels mechanical. Use cubic-bezier easing to emulate physical friction.
+*   **Standard Easing Values:**
+    *   *Deceleration (Out-Easing):* `cubic-bezier(0.16, 1, 0.3, 1)` or `cubic-bezier(0.0, 0.0, 0.2, 1)`. Use when elements enter the screen.
+    *   *Acceleration (In-Easing):* `cubic-bezier(0.7, 0, 0.84, 0)` or `cubic-bezier(0.4, 0.0, 1, 1)`. Use when elements exit the screen.
+    *   *Standard (Ease-in-out):* `cubic-bezier(0.4, 0, 0.2, 1)`. Use for movement that remains on-screen.
+
+### Timing Guidelines
+*   **Micro-interactions (Hovers, Switches):** 100ms – 150ms.
+*   **Core Component Transitions (Modals, Dropdowns):** 200ms – 250ms.
+*   **Large Screen Transitions:** 300ms – 380ms.
+*   **Reduced Motion Support:** Respect CSS media query `@media (prefers-reduced-motion: reduce)`. Switch animations to quick cross-fades or absolute state jumps.
+
+---
+
+## 11. Global Layouts & Internationalization (i18n)
+
+An interface must adapt gracefully to different languages, reading directions, and cultural paradigms.
+
+### Layout Expansion
+*   **Text Expansion Rules:** English is highly compact. Dynamic translation text can expand by up to 30-40% in German, French, or Spanish. Always design containers, cards, and buttons with flexible auto-layout padding rather than hardcoded widths.
+*   **Text Truncation:** Avoid premature middle-line or end-line text truncation (`...`) on critical buttons. Wrap text or design secondary fallback layouts.
+
+### Right-to-Left (RTL) Layouts
+*   **Layout Flipping:** Mirror the entire interface for RTL languages (Arabic, Hebrew, Persian). The main navigation shifts from left to right, and sidebars move to the opposite edge.
+*   **Icon Behavior:** Flip directional icons (e.g., arrow keys, back/forward buttons, icons with text flow). Do NOT flip non-directional icons (e.g., home, share, search, brand logos).
+
+### Dates, Currency, and Numbers
+*   **Local Formatting:** Display dates using localized formats (DD/MM/YYYY vs. MM/DD/YYYY) or write the month out to avoid confusion (e.g., "10 Oct 2026").
+*   **Dynamic Currency Scaling:** Allow space for diverse currency formats (e.g., "$12.00" vs "12,00 €" vs "¥12,000"). Never assume single-symbol length.
+
+---
+
+## 12. Token Architecture & Naming Conventions
+
+A robust design token strategy bridges design and development teams, ensuring unified styling.
+
+### The 3-Tier System
+1.  **Global / Primitive Tokens:** The raw palette values, spacing bases, and font declarations. (e.g., `brand-blue-500`, `gray-100`, `font-size-base`).
+2.  **Semantic / Alias Tokens:** Tokens that convey meaning, intent, or usage role. These point directly to primitive tokens. (e.g., `color-bg-primary`, `color-text-danger`, `spacing-padding-md`).
+3.  **Component-Specific Tokens:** Tight bindings mapped to distinct specs of a single component. Point back to semantic tokens. (e.g., `button-primary-bg-color`, `card-border-radius`).
+
+### Naming Conventions
+Structure design tokens using the standard syntax: `[category]-[variant]-[specifier]-[state]`
+*   `color-bg-primary-hover`
+*   `font-size-heading-lg`
+*   `space-padding-container-sm`
+*   `border-width-focus`
+
+### Binding Rules
+*   **Never Hardcode:** Developers must never reference primitive colors or raw pixel margins inside components. Make sure all files bind semantic colors/spacings.
+*   **Theme Mapping:** Theme switches (light mode, dark mode, high contrast) must simply swap the semantic token mapping, without changing any component code.

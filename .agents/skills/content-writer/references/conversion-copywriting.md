@@ -67,9 +67,9 @@ Robert Cialdini's research shows that adding "because" + a reason increases comp
 ### CTA verb hierarchy
 | Commitment | Weak | Strong | Strongest |
 |---|---|---|---|
-| Low | "Learn More" | "See How It Works" | "Get the Free Template" |
-| Medium | "Sign Up" | "Start Your Free Trial" | "Create Your Account" |
-| High | "Buy Now" | "Start Your Plan" | "Book a Demo" |
+| Low | "Learn More" | "See How It Works" | "Get Free Template" |
+| Medium | "Sign Up" | "Start Free Trial" | "Create Account" |
+| High | "Buy Now" | "Start Your Plan" | "Book Demo" |
 
 ### CTA placement rules
 - **Low-friction offers**: CTA in hero and at end of page.
@@ -92,9 +92,9 @@ If a page has multiple CTAs, only one should be visually dominant. Secondary CTA
 ### The 3 objection types
 | Type | What the reader thinks | Response |
 |---|---|---|
-| **Emotional** | "I don't trust this / I'm anxious about changing" | Social proof, risk reversal, familiar patterns |
-| **Logical** | "I'm not convinced this will work for me" | Evidence, data, case studies, specificity |
-| **Technical** | "This won't integrate / comply / scale" | Technical docs, compliance badges, enterprise proof |
+| **Emotional** | "I don't trust this / I'm anxious about changing" | Social proof, risk reversal, familiarity |
+| **Logical** | "I'm not convinced this will work for me" | Evidence, data, case studies |
+| **Technical** | "This won't integrate / comply / scale" | Technical docs, compliance, proof |
 
 ### Addressing objections before they're asked
 The best conversion copy answers objections before the reader fully forms them. Common objections by page:
@@ -135,20 +135,20 @@ The best conversion copy answers objections before the reader fully forms them. 
 ### Pricing page copy patterns
 ```
 Free plan:
-"Get started. No risk. Upgrade when you need more."
+"Get started. No risk. Upgrade when needed."
 
 Recommended plan:
-"Most popular for growing teams. Everything you need to [core outcome]."
+"Most popular choice. All you need to [core outcome]."
 
 Enterprise plan:
-"For organizations that need custom security, compliance, and dedicated support."
+"Advanced needs covered. Security, compliance, dedicated support."
 ```
 
 ### Risk reversal copy
-- "Cancel anytime. No questions asked."
-- "No credit card required. Your first report in 5 minutes."
-- "30-day money-back guarantee. If you're not seeing results, we'll refund every cent."
-- "Pause your subscription anytime. Your data stays safe."
+- "Cancel anytime. No questions."
+- "No credit card needed. First report in 5 min."
+- "30-day guarantee. Full refund if no results."
+- "Pause anytime. Data stays safe."
 
 ---
 
@@ -175,14 +175,14 @@ Enterprise plan:
 
 | Signal | Best location |
 |---|---|
-| Logos of known customers | Hero / above fold |
-| Security badges (SSL, SOC2) | Signup form, pricing footer |
+| Customer logos | Hero / above fold |
+| Security badges | Signup form, pricing footer |
 | Money-back guarantee | Near CTA |
 | Customer count | Hero or after benefits |
 | Press mentions | Sidebar or between sections |
-| "As seen in" logos | Hero or footer |
-| Case study links | Near CTA for high-friction offers |
-| Review stars | Pricing page, near plan cards |
+| Media logos | Hero or footer |
+| Case study links | Near CTA |
+| Review stars | Pricing page, near plans |
 
 ---
 

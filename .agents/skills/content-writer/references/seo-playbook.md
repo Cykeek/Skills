@@ -133,7 +133,29 @@ Google's quality guidelines emphasize E-E-A-T. Bake these into content:
 
 ---
 
-## 6. Internal Linking
+## 6. Generative Engine Optimization (GEO)
+
+As search behavior shifts toward AI-powered engines (such as SearchGPT, Perplexity, and Google Gemini/SGE), optimize content to be easily retrieved, processed, and cited by Large Language Models.
+
+### Fact Density
+AI engines prioritize information-rich, low-fluff sources. 
+- Format key insights, data points, and statistics in structured summaries, bulleted definitions, or markdown tables.
+- Use explicit and direct language (e.g., "The current benchmark is 4.2%") to help AI models extract answers quickly.
+- Place summaries or takeaway cards at the top of long sections.
+
+### Conversational H2 Headers
+AI engine users search using natural language questions, not static terms.
+- Reframe static H2 keywords (such as "LTV Formula") into conversational, user-intent Q&As (such as "How to Calculate Customer Lifetime Value (LTV)").
+- Answer the question directly in the first paragraph immediately following the header before providing deeper content.
+
+### Clear Authority and Attribution
+Citation algorithms scan content for signals of authority before recommending or quoting.
+- Cite original sources alongside names, professional credentials, and organizational ranks. For example, use "According to Jane Doe, Chief Economist at Acme Corp," rather than a generic link.
+- Anchor links to specific claims. Use clear, descriptive anchor texts that reinforce the credibility of the cited source.
+
+---
+
+## 7. Internal Linking
 
 ### Why it matters
 - Helps Google understand site structure and topical relationships.
@@ -150,7 +172,7 @@ Google's quality guidelines emphasize E-E-A-T. Bake these into content:
 
 ---
 
-## 7. External Links
+## 8. External Links
 
 - Link out to authoritative sources (original research, official docs, primary sources).
 - This signals to Google that you've done research and your content is part of a credible ecosystem.
@@ -159,7 +181,7 @@ Google's quality guidelines emphasize E-E-A-T. Bake these into content:
 
 ---
 
-## 8. Schema Markup (Structured Data)
+## 9. Schema Markup (Structured Data)
 
 For the user to add to the page (mention when relevant, especially for technical/blogging audiences):
 
@@ -178,7 +200,7 @@ If the user is technical, suggest specific JSON-LD. If they're not, mention sche
 
 ---
 
-## 9. Meta Tag Templates
+## 10. Meta Tag Templates
 
 ### Title tag (60 chars)
 ```
@@ -196,7 +218,7 @@ Example: "Learn how webhooks work, when to use them vs polling, and how to build
 
 ---
 
-## 10. SEO Audit Checklist
+## 11. SEO Audit Checklist
 
 When the user asks you to audit content for SEO:
 
@@ -221,7 +243,7 @@ Return audit findings as a prioritized list (top 5 impactful fixes first), not a
 
 ---
 
-## 11. SEO Pitfalls to Avoid
+## 12. SEO Pitfalls to Avoid
 
 - ❌ **Keyword stuffing**: anywhere. Search engines penalize; readers bounce.
 - ❌ **Writing for a different intent than the query**: Google won't rank it.

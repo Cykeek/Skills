@@ -561,3 +561,92 @@ Tool used: [axe / WAVE / Lighthouse / etc.]
 2. [Fix] — High — [Rationale]
 3. [Fix] — High — [Rationale]
 ```
+
+---
+
+## 11. HAX (Human-AI) Review Checklist
+
+Use this checklist when designing products powered by Artificial Intelligence or Machine Learning to ensure the experience is intuitive, transparent, and respectful of user agency.
+
+```text
+# Human-AI (HAX) Design Review: [Feature Name]
+
+## Phase 1: Gaining Trust (Initially)
+These guidelines ensure the AI sets realistic expectations early.
+- [ ] G1: Show what the system can do. Make the AI's capabilities completely obvious (e.g., "I can summarize documents up to 50 pages").
+- [ ] G2: Show how well the system can do it. Be transparent about accuracy rates or dynamic models (e.g., "Sometimes ignores handwritten text").
+- [ ] G3: Clear system state. Is the AI actively processing, thinking, or waiting for input? Show dynamic status indicators.
+
+## Phase 2: Collaboration (During Interaction)
+These guidelines support context-sensitive interaction flow.
+- [ ] G4: Social and cultural context. Match the AI's tone, vocabulary, and volume to the user's focus (e.g., professional, concise, reassuring).
+- [ ] G5: Mitigate social bias. Ensure recommendations and visual assets do not promote harmful biases or stereotyping.
+- [ ] G6: Support user control. Give the user an easy option to dismiss, edit, or override the AI's suggestions at any time.
+
+## Phase 3: Mitigating Errors (When Wrong)
+These guidelines cover failure recovery and fallback states.
+- [ ] G7: Support efficient invocation. Let users easily trigger, trigger-on-demand, or turn off automatic AI prompts.
+- [ ] G8: Support efficient correction. If the AI output is incorrect, is there a single-click action to correct, regenerate, or edit it manually?
+- [ ] G9: Clear fallback options. When the confidence score is too low, does the system fade out gracefully and prompt standard non-AI rules?
+- [ ] G10: User control over inputs. Let users inspect and update the data or context the AI is using to generate results.
+
+## Phase 4: Over Time (Learning & Calibration)
+These guidelines manage the relationship as the product is used.
+- [ ] G11: Remember user preferences. Capture and respect explicit preferences (e.g., default formatting preferences, preferred writing styles).
+- [ ] G12: Learn from user behavior. Provide clear thumbs up/down, edit actions, or ratings so the model can calibrate its confidence thresholds.
+- [ ] G13: Provide a clear "Reset" state. Let users wipe dynamic learning profiles clean and start fresh.
+```
+
+---
+
+## 12. UX Metrics & ROI Spec Sheet
+
+Use this template to connect design changes to clear business returns and user experience metrics. Fill this out during the definition phase and submit it with the handoff specification.
+
+```text
+# UX Metrics & ROI Spec: [Feature/Project Name]
+
+## 1. Executive Summary
+- **Business Problem:** [Why are we doing this? e.g., High cart bounce rate due to complex checkouts.]
+- **Proposed Design Solution:** [Summary of changes: e.g., Direct checkout with inline tab checkout and guest option.]
+- **Primary Business Metric Bound:** [e.g., Cart Completion Rate (%), Support Ticket Count]
+
+## 2. Objective & Key Results (OKRs)
+- **Objective:** [Optimize checkout UI to build user trust and reduce motor load.]
+- **Key Result 1 (UX):** Increase task success rate of guest checkout from 65% to 90%.
+- **Key Result 2 (Business):** Reduce checkout-related support queries by 40%.
+
+## 3. UX Metrics Dashboard (HEART Framework)
+
+| Dimension | Specific UX Metric | Measurement Method | Baseline | Target |
+|---|---|---|---|---|
+| **Task Success** | Guest checkout completion rate | Product Analytics Logs | 65% | 90% |
+| **Happiness** | Post-purchase CSAT | Single-question prompt on success page | 3.4 / 5 | 4.5 / 5 |
+| **Engagement** | Time-on-task during checkout | Event logging (Start -> Payment) | 185s | <120s |
+| **Adoption** | Save-payment-details toggle opt-in | Toggle event click trackers | N/A | 35% |
+
+## 4. Projected Business ROI Calculator
+
+- **Direct Conversion Impact:**
+  *   Current Monthly Traffic: [100,000 users]
+  *   Baseline Conversion Rate: [2.0% -> 2,000 checkouts/mo]
+  *   Target Conversion Increase (Conservative 10% gain): [2.2% -> 2,200 checkouts/mo]
+  *   Average Order Value (AOV): [$50.00]
+  *   **Projected Revenue Gain/Month:** [+200 orders * $50 = $10,000/mo ($120,000 ARR)]
+
+- **Support Cost Reduction:**
+  *   Current Monthly Support Tickets: [800 tickets]
+  *   Cost Per Ticket: [$8.00]
+  *   Target Reduction in Checkout Errors (40%): [320 tickets saved/mo]
+  *   **Projected Support Savings/Month:** [320 * $8 = $2,560/mo ($30,720 ARR)]
+
+## 5. Analytics & Instrumentation Requirements
+- **Required Events to Log:**
+  *   `checkout_started` (triggered on entering checkout step 1)
+  *   `validation_error_triggered` (should include dynamic payload: `field_id`, `error_type`)
+  *   `payment_option_selected` (payload: `option_type`)
+  *   `checkout_completed` (triggered at success screen)
+- **Verification Plan:**
+  *   Check event streams in staging once design is built.
+  *   Run A/B test for 14 days or until statistical significance (p < 0.05) is met.
+```

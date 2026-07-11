@@ -68,9 +68,9 @@ If the headline is:
 
 | Weak | Strong |
 |---|---|
-| "Real-time analytics dashboard" | "See your metrics update as they happen. No refresh button needed." |
-| "256-bit encryption" | "Your data is encrypted in transit and at rest. We meet SOC 2 Type II standards." |
-| "Integrates with Slack" | "Get a daily summary in Slack. No dashboard login required." |
+| "Real-time analytics" | "See live metrics update without refreshing." |
+| "Bank-level security" | "Your data encrypted in transit and at rest." |
+| "Slack integration" | "Get daily summaries delivered to Slack." |
 
 ### Feature page structure
 ```

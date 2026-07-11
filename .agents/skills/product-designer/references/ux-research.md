@@ -53,6 +53,30 @@ If we learn [answer A], we will [action A].
 If we learn [answer B], we will [action B].
 ```
 
+### UX Metrics & Evaluation Frameworks
+
+Metrics ensure design changes are grounded in measurable user behavior and business success. Use these frameworks to define and monitor design effectiveness.
+
+#### Google HEART Framework
+The Google HEART framework helps product and design teams select metrics that focus on user experience quality.
+
+| Dimension | What it measures | Key Metrics |
+|---|---|---|
+| **H**appiness | User attitudes, satisfaction, and ease of use. | Net Promoter Score (NPS), Customer Satisfaction (CSAT), ease-of-use rating. |
+| **E**ngagement | Level of user involvement (frequency, depth). | Session length, actions per user, active days per week/month. |
+| **A**doption | New users who start using a feature or product. | First-time feature uses, new account registrations over time, rate of upgrade. |
+| **R**etention | The rate at which existing users return over time. | Churn rate, active return rate (30-day retention), repeat purchases. |
+| **T**ask Success | Efficiency, effectiveness, and error rate of actions. | Task completion rate (%), time-on-task (seconds), error frequency. |
+
+#### Pirate Metrics (AARRR)
+The AARRR framework aligns user experience transitions with business growth and conversion funnel optimization.
+
+*   **A**cquisition (How do users find you?): Bounce rate, click-through rate (CTR) on landing pages, sign-up flow start rate.
+*   **A**ctivation (First good experience): Rate of completing critical onboarding tasks (the "aha!" moment, e.g., connecting a first account or creating a first document).
+*   **R**etention (Do users return?): Monthly/Daily active user ratio (MAU/DAU), login frequency, unsubscribe rates.
+*   **R**eferral (Do users tell others?): Net Promoter Score (NPS), social shares, viral coefficients (invitations accepted per user).
+*   **R**evenue (How do you make money?): Average Revenue Per User (ARPU), Customer Lifetime Value (LTV), checkout conversion rate.
+
 ---
 
 ## 2. When to Use Which Research Method
@@ -283,6 +307,25 @@ A usable flow can still be untrustworthy. Treat comprehension and fairness as se
 | **SUS** | System usability | 10-question standardized scale (1-5) |
 | **SEQ** | Task-level ease | "How difficult was this task?" (1-7) |
 | **Trust / confidence pulse** | Perceived safety or clarity | "I understood what would happen next" (Likert) |
+
+---
+
+## 5.5: Lean Prototyping & Experimentation
+
+Lean prototyping and experimentation focus on accelerating learning while minimizing development overhead. Use these methods to validate product appeal and usability assumptions before building full-production features.
+
+### Low-Overhead Experimentation Methods
+
+*   **Smoke Test / Painted Door:** Place a button, card, or entry point for a premium or upcoming feature directly into the live UI. When clicks occur, display a polite "Coming Soon / Join the Waitlist" modal. Measure click-through rate (CTR) to validate interest.
+*   **Concierge MVP:** Deliver a complex service completely manually to the user, directly in the background. The user sees a polished front-end wizard, but the logic is executed manually by a teammate (e.g., human-mediated automation). Validates value proposition before writing backend code.
+*   **Wizard of Oz:** Simulate automated system functionality or AI responses through manual backend control without the customer knowing there is a human in the loop. Helps test natural conversational interfaces or recommendations.
+*   **Paper or Interactive Clickable Prototypes:** Run users through static design screens linked together. Validates information hierarchy, task flows, and comprehension before engineering kickoff.
+
+### Experimentation Structuring
+Ensure every experiment has a structured hypothesis card:
+1.  **Hypothesis:** "We believe that by adding [feature], [users] will achieve [outcome]."
+2.  **Measure:** "We will track this using [specific metric, e.g., Activation Rate] and look for [threshold goal, e.g., 15% increase]."
+3.  **Failsafe/Risk Mitigation:** "If we observe [negative metric threshold, e.g., 5% support ticket surge], we will rollback immediately."
 
 ---
 

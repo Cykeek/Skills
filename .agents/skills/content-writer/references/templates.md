@@ -115,15 +115,74 @@ Preheader: [1-line continuation of subject. Don't waste it on "View in browser."
  important point or a hidden bonus.]
 ```
 
-### Example subject lines
-- "Your pricing page is leaking, probably"
-- "We shipped the thing you asked for"
-- "12 minutes to clean up your inbox"
+### Email subject line formula library
+
+Write 5–10 subject line options per email, then pick the best 2 for the user to choose from. Great subject lines are short (under 50 characters ideally), specific, and create a reason to open without being clickbait.
+
+**Formula 1: Direct benefit**
+> "[Outcome] in [timeframe]"
+- "Your churn report in 5 minutes"
+- "A cleaner inbox by Friday"
+
+**Formula 2: Curiosity gap (specific)**
+> "Why [specific thing] [unexpected outcome]"
+- "Why your welcome email is killing signups"
+- "Why shorter landing pages convert less"
+
+**Formula 3: The number**
+> "[Number] [things] for [audience/goal]"
+- "3 fixes for your pricing page"
+- "7 subject lines worth stealing"
+
+**Formula 4: We shipped something**
+> "[Feature/update]: [concrete benefit]"
+- "New: bulk-edit saves 40 minutes a week"
+- "Changelog: the three things you asked for"
+
+**Formula 5: The honest admission**
+> "We [honest thing]. Here's what we learned."
+- "We lost 200 customers last quarter. Here's why."
+- "We killed our most-loved feature. Here's what replaced it."
+
+**Formula 6: The reader's problem**
+> "[Their specific pain], fixed"  or  "Still [struggling with X]?"
+- "Still exporting reports manually?"
+- "The meeting that never ends, fixed"
+
+**Formula 7: The personal/conversational**
+> "[First-person, low-key, real]"
+- "Quick question about your dashboard"
+- "We should talk about your trial"
+- "Something I noticed about your account"
+
+**Formula 8: The contrast**
+> "[Old way] vs [new way]"
+- "Spreadsheets vs dashboards: which actually works?"
+- "Manual reviews vs automated: the real tradeoff"
+
+**Formula 9: The tease**
+> "[Hint at the value without giving it away]"
+- "The pricing trick almost no one uses"
+- "Your competitors know something you don't"
+
+**Formula 10: Scarcity / time-bound (use sparingly)**
+> "[Specific deadline] + [specific thing at stake]"
+- "Your free trial ends tomorrow"
+- "Seats close Friday: last chance"
+
+**Subject line quality test:**
+- Under 50 characters? (preview length on mobile)
+- Specific enough that removing one word changes the meaning?
+- Pays off in the first sentence of the email?
+- Could double as a headline for the email's main point?
+- Would the reader feel deceived if the email doesn't deliver on this?
 
 ### Pitfalls
 - Burying the CTA below 4 paragraphs.
 - Subject lines that don't pay off in the first sentence.
 - Corporate sign-off ("The Marketing Team") kills the connection. Use a name.
+- Subject lines that say "Important update" or "Newsletter #47": they earn zero curiosity.
+- Fake urgency ("Act now!!!") that trains readers to ignore you.
 
 ---
 

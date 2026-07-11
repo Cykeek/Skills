@@ -278,6 +278,35 @@ Ready for handoff when: all five areas are addressed.
 
 ---
 
+## 4.5. The Meta-Cognitive Review Pipeline
+
+Before delivering any final critique or design review, run every interface concept through this meta-cognitive pipeline to audit the user's implicit mental model, physical effort, and systemic trust.
+
+### A. Scan-Path Mapping
+*   **Visual Anchors & Hierarchy:** Identify the top 3 high-contrast elements that attract primary visual attention. Ensure visual weight aligns with user intent, preventing ocular distraction by secondary graphics or unrelated cards.
+*   **Ocular Visual Patterns:** Map the expected scan-path. Apply the **F-pattern** for text-heavy content layouts, **Z-pattern** for promotional landings, or the **Gutenberg Diagram** for balanced information layouts, ensuring critical information and CTAs sit on natural terminals.
+*   **Visual Noise & Focus Handoff:** Ensure smooth transition paths between UI sections. Group fields into logical sections of 7 ± 2 items (Miller's Law) and clean up extraneous layout decorations that break focus flow.
+
+### B. Interaction Cost Auditing
+*   **Physical vs. Cognitive Cost:** Map every motion required. Count clicks, scrolls, keystrokes, and layout transitions. Reduce steps by 50%+ using smart defaults, inline progressive disclosures, and auto-completions.
+*   **Decision Friction:** Under Hick's Law, minimize extraneous load. Reduce choice counts, organize deep menus into logical categories, and remove secondary actions in high-cognitive-load situations.
+*   **Affordance & Fitts's Law:** Touch targets must be at least 44x44px (mobile) or 32x32px (desktop) with proportional spacing. Interactive states (hover, focus, active) must offer immediate visual feedback.
+
+### C. Trust & Consent Auditing
+*   **Deceptive Patterns Audit:** Scan for pre-selected checkboxes, hidden pricing, manipulative copy (confirmshaming), or visual obstruction of choices. Ensure equal visual weight for alternative pathways.
+*   **Data & System Transparency:** State system actions clearly (Nielsen's 1st heuristic). Provide unambiguous microcopy for data collection, permissions, automated actions, and billing changes.
+*   **Reversibility & Error Resilience:** Ensure users have immediate, accessible escape routes ("undo", edit, delete). Prevent errors with constraint validation; preserve user-entered content if errors occur, offering clear recovery paths.
+
+### D. Trade-off Optimization
+*   **Minimalism vs. Utility:** Balance clean visual designs with functional utility. Do not hide primary links or labels behind hover-only or hamburger states to preserve aesthetic purity.
+*   **Novice vs. Expert Paths:** Design linear flows for novices, but expose shortcuts (hotkeys, custom presets, multi-item batch edits) for power users.
+*   **Conversion vs. Safety Friction:** Introduce intentional speed bumps (e.g., double-confirmation modals, text entry validation) for destructive, billing, or security actions, trade-off speed for error resilience.
+
+### E. Validation Design
+*   **Pre-launch Usability Metrics:** Establish baseline targets: System Usability Scale (SUS) > 75, Single Subjective Difficulty (SEQ) average < 3, and Task Success Rate > 90%.
+*   **Quantitative Analytics & Telemetry:** Track Time-on-Task (ToT), Task Success Rate (TSR), and User Error Rates (UER) in production.
+*   **Falsification Conditions:** Formulate a binary operational condition for failure (e.g., "The design has failed if bounce rate at payment increases by >2% or if post-setup change rate exceeds 15%").
+
 ## 5. Response Templates
 
 Structure your responses according to the query type.

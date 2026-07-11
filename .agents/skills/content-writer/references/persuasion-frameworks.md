@@ -202,11 +202,11 @@ Every persuasive piece should anticipate and answer objections. Here are 5 ways:
 
 | Framework | How it works | Example |
 |---|---|---|
-| **Feel-Felt-Found** | Acknowledge → relate → share solution | "I understand how you feel. Many customers felt the same way. What they found was..." |
-| **Pros-Cons-Honest** | List pros, list cons, then weigh them | "Here's what you gain. Here's what you lose. Here's how to decide." |
-| **Even-If** | Address the worst case | "Even if you only use this feature, it still pays for itself." |
-| **What-This-Isn't** | Define what you're NOT saying | "This isn't about replacing your team. It's about removing their most tedious work." |
-| **Liked-Loved-Loathed** | Three-tier testimonial structure | "What our users liked, loved, and loathed. The honest feedback." |
+| **Feel-Felt-Found** | Feel → felt → found | "I get how you feel. Others felt that way. Here's what they found." |
+| **Pros-Cons-Honest** | Pros → cons → decision | "Gains: ____. Losses: ____. How to choose?" |
+| **Even-If** | Even if scenario | "Even with just this, it pays off." |
+| **What-This-Isn't** | Not about X | "Not about replacing you. About removing tedious work." |
+| **Liked-Loved-Loathed** | Liked/loved/loathed | "Liked: __", "Loved: __", "Loathed: __" |
 
 ---
 

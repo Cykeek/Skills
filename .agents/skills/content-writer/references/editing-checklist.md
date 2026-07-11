@@ -6,23 +6,21 @@ This is the deep reference for editing, critiquing, and revising content. Read t
 
 ---
 
-## 1. The Editing Order Matters
+## 1. The Three Editorial Phases
 
-Edit in this order. Fixing structure before sentences, sentences before words, words before commas: the inverse wastes effort.
+Edit in sequence. Do not proofread commas when the structure is broken. Aligning work into these three distinct phases ensures editing effort is spent where it matters most:
 
-1. **Structure & flow**: Is the right thing in the right place?
-2. **Clarity & argument**: Is each idea clear and supported?
-3. **Concision**: Is anything wasted?
-4. **Voice & tone**: Does it sound human and on-brand?
-5. **Sentence-level mechanics**: Grammar, word choice, rhythm.
-6. **Proofreading**: Typos, spelling, punctuation.
+1. **Phase 1: Developmental Editing** (auditing structure, logical flow, value of the hook, and argument strength).
+2. **Phase 2: Copyediting** (polishing tone, readability, sentence variety, contraction levels, and enforcing the em-dash ban).
+3. **Phase 3: Proofreading** (addressing spelling, mechanics, spaces, grammar).
 
 ---
 
-## 2. The Master Checklist
+## 2. Phase 1: Developmental Editing
 
-### A. Structure & Flow
+Auditing the core structure, flow, and argument strength of the content.
 
+### Structure & Flow
 - [ ] **Does the opening earn the next sentence?** The first 50 words decide whether the reader continues.
 - [ ] **Is the lede buried?** Real insight should be near the top, not in paragraph 4.
 - [ ] **Does each section deliver on what its heading promises?** No bait-and-switch.
@@ -31,10 +29,9 @@ Edit in this order. Fixing structure before sentences, sentences before words, w
 - [ ] **In cards, grids, or compact UI copy, would heading + short paragraph feel more natural than mini-bullets?**
 - [ ] **Do sections flow logically?** Each section should set up the next. No jarring jumps.
 - [ ] **Is there a clear takeaway?** Reader should leave knowing the one thing the piece wanted to say.
-- [ ] **Does the closing land?** Last sentence lingers: does it leave the reader with something?
+- [ ] **Does the closing land?** Last sentence lingers: does it leave the reader with something specific to act on, think about, or feel?
 
-### B. Clarity & Argument
-
+### Clarity & Argument Strength
 - [ ] **Is the core argument clear?** Summarize it in one sentence. If you can't, the piece isn't clear.
 - [ ] **Is every claim supported?** Either with data, an example, or a clear line of reasoning.
 - [ ] **Are generalities specific?** "Many businesses struggle" → "73% of mid-market SaaS companies report churn above 5%" (or cut the claim).
@@ -43,8 +40,13 @@ Edit in this order. Fixing structure before sentences, sentences before words, w
 - [ ] **Are counterarguments acknowledged?** It builds trust and preempts objections.
 - [ ] **Does each paragraph make one point?** If a paragraph does three things, split it.
 
-### C. Concision (the 10–20% cut)
+---
 
+## 3. Phase 2: Copyediting
+
+Polishing sentence structure, tone, readability, concision, and mechanics.
+
+### Concision (the 10–20% cut)
 - [ ] **Are there filler words?** "In order to" → "to." "Due to the fact that" → "because." "At this point in time" → "now."
 - [ ] **Are adverbs and adjectives earning their place?** "Very," "really," "actually," "essentially": cut almost all of them.
 - [ ] **Are there redundant pairings?** "Each and every," "first and foremost," "future plans": pick one.
@@ -52,37 +54,52 @@ Edit in this order. Fixing structure before sentences, sentences before words, w
 - [ ] **Are there throat-clearing openers?** "It is important to note that…" → just note it.
 - [ ] **Could the piece lose 10–20% of its words and be better?** Almost always yes.
 
-### D. Voice & Tone
-
+### Voice, Tone & Readability
 - [ ] **Does it sound like a human?** Use the "would I say this out loud?" test.
-- [ ] **Are contractions used?** Should be ~70–80% of eligible spots. (See `style-guide.md`.)
+- [ ] **Are contractions used?** Should be ~70–80% of eligible spots (refer to `style-guide.md`).
 - [ ] **Is the tone consistent?** Don't switch from peer-to-peer to formal-academic mid-piece.
+- [ ] **Voice drift check:** Read only paragraphs 1, 3, and 5 (or a sample spread across the piece). Do they sound like the same writer in the same mood? If a middle paragraph sounds noticeably more corporate or robotic, rewrite it.
 - [ ] **Is it the right tone for the audience?** Developers vs executives vs consumers: adjust accordingly.
-- [ ] **Are sentences varied in length?** Mix short for punch with longer for flow.
+- [ ] **Are sentences varied in length?** Mix short for punch with longer for flow. Ensure high readability.
+- [ ] **Opening sentence quality:** Does the first sentence drop directly into the reader's situation, tension, or question, without scene-setting preamble? Red flags: "In today's world," "As we all know," "In this article, I will," "It is important to understand that," "The [X] landscape is evolving." If any of these appear, rewrite the opening sentence before presenting.
 - [ ] **Is voice on-brand?** If the user has a brand voice, does this match? (See `style-guide.md` Section 6.)
 - [ ] **Are hedging and overclaiming balanced?** >2 hedges per paragraph = too soft. Zero hedging where uncertain = too rigid.
 
-### E. Sentence-Level Mechanics
-
+### Sentence-Level Polish & Em-Dash Ban
 - [ ] **Active voice by default.** Convert passive where the actor is known.
 - [ ] **Strong verbs over adverbs.** "He ran quickly" → "He sprinted."
 - [ ] **No "utilize" for "use."** No "leverage" as a verb (unless physics). No "incentivize" if "encourage" works.
-- [ ] **Are dashes used deliberately rather than repeatedly?** If a short paragraph has multiple dashes, replace some with periods, commas, or a colon.
-- [ ] **Subject-verb agreement.** Especially in long sentences where the verb drifts.
-- [ ] **Pronouns have clear antecedents.** "It" and "they" should point to one obvious noun.
-- [ ] **Parallel structure in lists.** All bullets should match in form (all imperative, or all noun phrases: not mixed).
-
-### F. Proofreading
-
-- [ ] Spelling (watch for homophones: their/there/they're, your/you're, its/it's).
-- [ ] Punctuation (apostrophes, dashes: em-dash for interruption, en-dash for ranges, hyphen for compound modifiers).
-- [ ] Capitalization consistency (title case in H2s, sentence case in body: pick one and stick).
-- [ ] Numbers and dates formatting consistency.
-- [ ] Links work and point where intended.
+- [ ] **Zero em dashes in body prose (non-negotiable).** Scan every paragraph for — characters. Replace each one: use a period if it's a full stop, a comma for a light pause, a colon to introduce an explanation, or parentheses for an aside. An em dash is only permissible in a direct quote where the source used one. No other body-copy use is acceptable.
 
 ---
 
-## 3. The "Read Aloud" Test
+## 4. Phase 3: Proofreading
+
+Addressing grammar, spelling, mechanics, spaces, and formatting.
+
+### Mechanical Check
+- [ ] **Spelling & Typos:** Watch for homophones (their/there/they're, your/you're, its/it's).
+- [ ] **Punctuation:** Apostrophes correct; **no em dashes (—) in body prose** (use commas, colons, or periods instead); en-dash (–) for numeric/date ranges only; hyphen (-) for compound modifiers.
+- [ ] **Capitalization consistency:** Title case in H2s, sentence case in body: pick one and stick.
+- [ ] **Numbers and dates formatting consistency.**
+- [ ] **Links work** and point where intended.
+
+### Grammar & Sentence Mechanics
+- [ ] **Subject-verb agreement:** Especially in long sentences where the verb drifts.
+- [ ] **Pronouns have clear antecedents:** "It" and "they" should point to one obvious noun.
+- [ ] **Parallel structure in lists:** All bullets should match in form (all imperative, or all noun phrases: not mixed).
+- [ ] **Spacing:** Ensure there are no double spaces or spacing inconsistencies.
+
+### Automated Content Linter
+- [ ] **Run the Python content linter script:** Validate the draft against the em-dash ban, transition starters, and robotic tells by running:
+  ```bash
+  python .agents/skills/content-writer/lint_content.py path/to/draft.md
+  ```
+  Ensure all warnings are resolved before submitting.
+
+---
+
+## 5. The "Read Aloud" Test
 
 The single best edit pass. Read the piece aloud (or mouth it silently). Flag every place you:
 - **stumble** → sentence is probably poorly constructed.
@@ -93,7 +110,7 @@ The single best edit pass. Read the piece aloud (or mouth it silently). Flag eve
 
 ---
 
-## 4. The "10% Cut Rule"
+## 6. The "10% Cut Rule"
 
 Almost every draft gets better when you cut 10–20% of the words.
 
@@ -113,7 +130,7 @@ Almost every draft gets better when you cut 10–20% of the words.
 
 ---
 
-## 5. Diagnosing Common Problems
+## 7. Diagnosing Common Problems
 
 ### "It feels flat"
 - Likely cause: no specific examples, no stakes.
@@ -149,7 +166,7 @@ Almost every draft gets better when you cut 10–20% of the words.
 
 ---
 
-## 6. Delivering Edit Feedback
+## 8. Delivering Edit Feedback
 
 When the user asks you to "review" or "critique" their content, don't dump the full checklist. Prioritize.
 
@@ -184,15 +201,17 @@ When the user asks you to "review" or "critique" their content, don't dump the f
 
 ---
 
-## 7. The Final Pass (Before Saying "Done")
+## 9. The Final Pass (Before Saying "Done")
 
 - [ ] Title earns the click but the piece delivers on it.
-- [ ] First sentence earns the second.
+- [ ] First sentence earns the second. Does not start with "In today's world," "In this article," "It is important," or any scene-setting preamble.
 - [ ] Last sentence leaves the reader with something.
 - [ ] The piece has at least one concrete example, number, or quote per major section.
 - [ ] Every paragraph earns its place.
 - [ ] Lists are used only where scanning, comparison, or sequence actually helps.
-- [ ] Dash punctuation is restrained.
+- [ ] Zero em dashes in body prose: scan the full text for "—" and replace every instance with a comma, period, colon, or parenthesis. No exceptions for "forceful contrast" in prose you generate.
+- [ ] If the piece contains a card grid or feature grid: word count each card's body text. All cards in the same row must be within 15 words of each other. Heading lengths must be within 2-3 words of each other.
+- [ ] Voice is consistent from first paragraph to last. No drift into formal, corporate, or academic register mid-piece.
 - [ ] The piece passed the "read aloud" test.
 - [ ] The takeaway is clear: could a reader summarize it in one sentence?
 - [ ] It's 10–20% shorter than the first draft.

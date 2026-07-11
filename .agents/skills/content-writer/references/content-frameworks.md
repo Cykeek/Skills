@@ -398,10 +398,16 @@ If the card is simply explaining one benefit, one feature, or one idea, prose is
 1. Let the **heading carry the label**.
 2. Let the **body paragraph carry the meaning**.
 3. Keep each card to **one main claim**.
-4. Keep neighboring cards at **roughly parallel length**.
-5. Avoid nested structure in small surfaces. A card should not feel like a mini document.
+4. **Hard length targets for visual parity** (these create the grid rhythm users feel before they read):
+   - **Card headings:** 2–5 words per heading. All headings in the same grid must be within 2 words of each other. A 2-word heading next to a 7-word heading creates visual imbalance.
+   - **Card body text:** 15–35 words per card (1–2 sentences). All body texts in the same grid row must be within 10 words of each other. Trim the longest; deepen the shortest.
+   - **3-column grids:** Target ~20–25 words per card body. This is the Goldilocks zone at standard desktop column widths.
+   - **4-column grids:** Target ~12–18 words per card body. Columns are narrower; shorter text avoids wrapping differently across cards.
+   - **2-column grids:** Up to 35–45 words per card body is acceptable, but both cards must still be within 10 words of each other.
+5. **Do a word-count pass** before presenting any grid content. Count the words in each card's body text. If the range exceeds 15 words from shortest to longest in the same visual row, revise.
+6. Avoid nested structure in small surfaces. A card should not feel like a mini document.
 
-### Before / after
+### Before / after (with word count parity check)
 
 **Too list-heavy inside a small card**
 
@@ -418,3 +424,142 @@ Fast setup
 Fast setup
 Launch in minutes with a workflow your team can understand on day one. No long onboarding trail.
 ```
+(Body: 21 words)
+
+**Grid parity failure (visual imbalance)**
+
+```
+Balancing authority with innovation            (4 words, heading)
+The identity needed to convey UN-level         (17 words, body)
+credibility while signaling cutting-edge
+technological optimism.
+
+Serving diverse audiences                      (3 words, heading)
+It had to resonate with policymakers,          (26 words, body)
+international experts, and engaged citizens
+worldwide without losing clarity or impact.
+
+Ensuring scalability                           (2 words, heading)
+The system had to launch immediately and       (40 words, body)
+accommodate new program lines, such as
+scholarships and regional chapters, without
+requiring a full redesign.
+```
+(Body word counts: 17, 26, 40. Range = 23 words. Heading word counts: 4, 3, 2. This is mismatched and creates visual imbalance at the heading level too.)
+
+**Fixed for parity**
+
+```
+Balancing authority with innovation           (4 words, heading)
+The identity had to feel credible enough      (20 words, body)
+for a UN audience while signaling genuine
+technological optimism.
+
+Reaching diverse audiences                    (3 words, heading)
+It needed to work for policymakers,           (20 words, body)
+international experts, and everyday citizens
+without losing impact or clarity.
+
+Scaling without starting over                 (4 words, heading)
+The system had to handle new programs,        (20 words, body)
+regional chapters, and expanded use cases
+without requiring a redesign each time.
+```
+(Body word counts: 20, 20, 20. Headings: 4, 3, 4 words. Visually balanced. Same row, same rhythm.)
+
+---
+
+## 13. Hook Taxonomy
+
+A hook is the first 1–3 sentences of any piece. Its only job: earn the next sentence. Without a strong hook, the rest of the writing doesn't matter.
+
+### The 8 hook types
+
+| Hook type | What it does | Best for | Example |
+|---|---|---|---|
+| **The contradiction** | States something that conflicts with what the reader believes | Thought leadership, essays, blog posts | "Your fastest-growing customers are usually the ones you should fire." |
+| **The surprising stat** | Opens with a number the reader doesn't expect | Data-driven posts, reports, LinkedIn | "73% of SaaS companies have never spoken to a churned customer. That's why churn keeps happening." |
+| **The micro-story** | Opens with a specific, concrete scenario (1–2 sentences) | Case studies, long-form, email | "It was 11pm when the Slack message came in. 'The checkout is broken.' $30k in revenue, gone before sunrise." |
+| **The direct question** | Asks the reader a question they immediately want to answer | Blog posts, social, landing pages | "How long would your product survive if your top three engineers quit today?" |
+| **The bold claim** | States a strong, defensible position without hedging | Opinion pieces, thought leadership | "Most design sprints are theater. Here's what they should be instead." |
+| **The reader's tension** | Names the exact frustration or anxiety the reader already feels | Landing pages, emails, support docs | "You've tried three analytics tools. You still don't know why users are churning." |
+| **The knowledge gap** | Reveals that something the reader thinks they know is incomplete | Explainers, how-tos, educational content | "Most teams set OKRs. Almost none of them are using them the way Google intended." |
+| **The specific scene** | Places the reader in a vivid, particular moment | Narrative content, brand storytelling | "In 2018, a 4-person team in Helsinki built a product used by 30 million people today. They never took outside funding." |
+
+### Hook quality test
+
+Before accepting a hook, ask:
+1. Would a reader stop scrolling for this? If not, sharpen it.
+2. Does it promise something the piece actually delivers? If not, fix the piece or the hook.
+3. Is it specific? Generic hooks ("In today's digital age...") are invisible. Name something.
+4. Does it address the reader's reality, not the writer's perspective? "We built something great" is not a hook.
+
+### Hooks to avoid
+
+- **"In today's fast-paced world..."** (cliché, no specificity)
+- **"I'm excited to share..."** (centers the writer, not the reader)
+- **"Let's talk about X."** (passive, earns nothing)
+- **"X is important."** (tells the reader what to feel instead of making them feel it)
+- **Starting with the company's name** (unless the brand is the story)
+
+---
+
+## 14. UI Copy Character Budget
+
+When writing copy for UI surfaces (cards, grids, feature sections, buttons, tooltips, onboarding), apply character limits to maintain visual consistency across the layout.
+
+Visual inconsistency in grids is almost always a copy problem, not a design problem. When one card has a 6-word heading and another has 14 words, the grid breaks visually even if the design is correct.
+
+### Character budgets by surface
+
+| Surface | Heading limit | Body copy limit | Notes |
+|---|---|---|---|
+| **Feature card (3-col grid)** | 3–5 words / 20–35 chars | 15–25 words / 90–130 chars | Strict. Parallel length across all cards in the row. |
+| **Feature card (2-col grid)** | 4–6 words / 25–40 chars | 20–35 words / 120–200 chars | More breathing room, but still parallel across the pair. |
+| **Hero headline** | 4–8 words / 30–55 chars | N/A (subhead handles support) | One clear idea. Not two. |
+| **Hero subhead** | 10–20 words / 60–120 chars | N/A | Clarifies the headline. Should narrow it, not repeat it. |
+| **Navigation label** | 1–2 words / 5–15 chars | N/A | No verbs unless it's an action (e.g., "Get started"). |
+| **Button / CTA** | 2–4 words / 10–25 chars | N/A | Verb-first. Describes the action, not the destination. |
+| **Tooltip** | 5–12 words / 35–70 chars | N/A | One complete thought. No heading needed. |
+| **Empty state heading** | 4–8 words / 25–50 chars | 10–20 words / 60–120 chars | Explain what's missing + how to fix it. |
+| **Error message** | 4–8 words / 25–50 chars | 10–20 words / 60–120 chars | What went wrong + how to fix it. Never just a code. |
+| **Onboarding step** | 3–6 words / 20–40 chars | 15–25 words / 90–150 chars | Action-oriented. Present tense. |
+| **Table column header** | 1–3 words / 5–20 chars | N/A | Noun or noun phrase. No verbs. |
+| **Toast / notification** | 5–12 words / 35–70 chars | N/A | Result-first (what happened), then context if needed. |
+
+### Rules for maintaining visual consistency across a grid
+
+1. **Write all cards in one sitting.** Editing them separately causes length drift.
+2. **Count words, not just characters.** A heading with 4 long words reads longer than one with 6 short words.
+3. **Trim to the shortest card.** If one card only needs 12 words of body, trim all others to match. Do not pad the short card to reach the longest.
+4. **Headings must be parallel in form.** All gerunds ("Building X"), all noun phrases ("Build time"), or all imperative ("Build X"). Do not mix forms.
+5. **Read all cards aloud in sequence.** If the rhythm breaks between cards, the lengths are off.
+6. **One idea per card.** If a card tries to say two things, the copy gets long and the visual balance breaks.
+
+### Before / after: grid with visual imbalance
+
+**Inconsistent (breaks the grid)**
+```
+Balancing authority with innovation          ← 4 words
+The identity needed to convey UN-level credibility while signaling cutting-edge optimism.  ← 17 words
+
+Serving diverse audiences                    ← 3 words
+It had to resonate with policymakers, international experts, and engaged citizens worldwide without losing clarity.  ← 16 words
+
+Ensuring scalability                         ← 2 words
+The system had to launch immediately and accommodate new program lines, such as scholarships and regional chapters, without a full redesign.  ← 23 words
+```
+
+**Consistent (grid holds)**
+```
+Authority with innovation                    ← 3 words
+A brand that signals UN credibility while staying modern and approachable.  ← 11 words
+
+Built for every audience                     ← 4 words
+Resonates with policymakers, experts, and citizens without losing clarity.  ← 9 words
+
+Designed to scale                            ← 3 words
+Launches instantly and grows as new programs, regions, and chapters are added.  ← 12 words
+```
+
+When writing copy for a grid, deliver all cards to the same word and rhythm standard before presenting them.

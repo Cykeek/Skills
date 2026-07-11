@@ -214,23 +214,23 @@ If the story can't pass this test, the narrative isn't focused enough.
 ### The "Near Miss" story
 Tell a story about how something almost went wrong, but didn't. Creates tension and relief.
 
-- "We almost launched without testing on mobile. Good thing we caught it: 60% of our users would have seen a broken page."
+- "Almost launched without mobile testing. Caught it in time: 60% of users would've seen broken display."
 
 ### The "Outsider" perspective
 Tell the story from the perspective of someone who doesn't have the context. Forces clarity and surprises the reader.
 
-- "When my mom asked what I do for a living, I realized our product pitch was gibberish. So I rewrote it."
+- "Mom asked what I do for work. Realized our pitch was gibberish. Rewrote it immediately."
 
 ### The "Lesson from failure"
 Stories about failure build more trust than stories about success. They're more relatable and don't feel like marketing.
 
-- "Our first onboarding email had a 2% click rate. Here's what we changed to get to 45%."
+- "First onboarding email got 2% clicks. Changed approach: now 45% click rate."
 
 ### The "Small detail that says everything"
-One specific, concrete detail can convey more than a paragraph of abstract claims.
+One specific, concrete detail conveys more than abstract claims.
 
-- Instead of "We prioritize design": "We spent 3 months deciding whether that button should be blue or green. We chose green."
-- Instead of "We take support seriously": "Our CEO answers support tickets on Sundays. Not because she has to, because she wants to know what breaks."
+- Instead of "We prioritize design": "Spent 3 months picking button blue vs green. Chose green."
+- Instead of "We take support seriously": "CEO answers support tickets Sundays. Wants to know what breaks."
 
 ---
 
@@ -238,11 +238,11 @@ One specific, concrete detail can convey more than a paragraph of abstract claim
 
 | Pitfall | Why it fails | Fix |
 |---|---|---|
-| Brand as hero | Reader feels irrelevant | Make the customer the hero, brand the guide |
-| No specificity | Story feels generic or fictional | Add names, dates, numbers, concrete details |
-| Perfect hero | Unrelatable, preachy | Show flaws, struggles, and doubts |
-| Too long | Reader loses the thread | Cut to the essential arc: setup, tension, resolution, insight |
-| Happy ending without struggle | No tension = no story | Show the real conflict, the near-failure, the hard choice |
-| Moral at the end that doesn't connect | Feels tacked on | The insight should emerge from the story, not be stapled to it |
-| Forgettable characters | No one to root for | Give the protagonist a name, a role, and a relatable goal |
-| "We've always believed..." openings | Corporate, cold | Start with a person, a scene, or a tension instead |
+| Brand as hero | Feels irrelevant | Customer as hero, brand as guide |
+| No specificity | Seems fictional | Add names, dates, numbers |
+| Perfect hero | Unrelatable | Show flaws and struggles |
+| Too long | Loses focus | Cut to core: setup, tension, resolution |
+| Happy without struggle | No tension | Show real conflict and near-failure |
+| Disconnected moral | Feels tacked on | Let insight emerge from story |
+| Forgettable characters | No one to root for | Name protagonist, role, goal |
+| "Always believed" openings | Corporate, cold | Start with person/scene/tension |

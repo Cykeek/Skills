@@ -111,10 +111,10 @@ Every empty state has a job: orient the user, explain why it's empty, and guide 
 ### Tooltip patterns
 | Situation | Pattern | Example |
 |---|---|---|
-| Metric definition | "[Metric] = [formula or explanation]" | "MRR = Monthly Recurring Revenue, the total predictable revenue from subscriptions." |
-| Data source | "Data from [source] updated [timeframe]" | "Data from Stripe, updated in real time." |
-| Action warning | "[Action] will [consequence]" | "Deleting this report will permanently remove it for all team members." |
-| State explanation | "Why [this state]?" | "Why is this metric unavailable? The source integration needs to be reconnected." |
+| Metric definition | "[Metric] = [explanation]" | "LTV = Customer lifetime value in dollars." |
+| Data source | "Data from [source]" | "Data from Stripe, updated hourly." |
+| Action warning | "[Action] → [result]" | "Delete → removes item permanently." |
+| State explanation | "Why [state]?" | "Offline: syncing with server." |
 
 ### Tooltip don'ts
 - ❌ Repeating what's already visible in the label.
@@ -134,9 +134,9 @@ Every empty state has a job: orient the user, explain why it's empty, and guide 
 ### Helper text patterns
 | Location | Pattern | Example |
 |---|---|---|
-| Above the field | Format guidance | "Use the format: name@company.com" |
-| Below the field | Purpose or example | "We'll send your report here every Monday." |
-| Inline error | Fix instruction | "Enter a valid email address." |
+| Above field | Format hint | "Format: name@company.com" |
+| Below field | Purpose/example | "Report delivered Mondays" |
+| Inline error | Fix direction | "Enter valid email" |
 
 ### Placeholder patterns
 - Use placeholders for examples, not instructions: "e.g., https://acme.com" not "Paste your URL here."
@@ -158,14 +158,14 @@ Every empty state has a job: orient the user, explain why it's empty, and guide 
 ### CTA verb patterns
 | Action | Verb | Stronger verb |
 |---|---|---|
-| Save | Save | Publish, Deploy, Submit (depends on context) |
-| Cancel | Cancel | Dismiss, Discard changes (if unsaved) |
-| Delete | Delete | Remove, Archive, Deactivate (lower severity) |
-| Create | Create | Add, New, Build, Generate |
+| Save | Save | Publish, Deploy, Submit |
+| Cancel | Cancel | Dismiss, Discard, Abandon |
+| Delete | Delete | Remove, Archive, Deactivate |
+| Create | Create | Add, Build, Generate |
 | Edit | Edit | Customize, Configure, Modify |
-| View | View | Open, Preview, See details |
-| Download | Download | Export, Generate report |
-| Close | Close | Done, Got it, Dismiss |
+| View | View | Open, Preview, Inspect |
+| Download | Download | Export, Generate, Extract |
+| Close | Close | Dismiss, Complete, Done |
 
 ### Button copy rules
 - Start with a verb: "Save changes," not "Changes."
@@ -191,10 +191,10 @@ Examples:
 ### Success messages
 | Context | Pattern | Example |
 |---|---|---|
-| Background action | "Done." / "Complete." | "Report generated." |
-| User-initiated action | "[Action] completed" | "Report saved." |
-| Multi-step action | "[Action] completed. Next: [next step]" | "Project created. Next: invite your team." |
-| Scheduled action | "[Action] scheduled for [time]" | "Report scheduled for Monday at 9 AM." |
+| Background action | "Done" / "Complete" | "Report generated." |
+| User action | "[Action] completed" | "Report saved." |
+| Multi-step | "[Action] done. Next: [step]" | "Project created. Next: invite team." |
+| Scheduled | "[Action] set for [time]" | "Report scheduled Monday 9 AM." |
 
 ### Success message rules
 - Don't over-celebrate. "Congratulations! Your file has been uploaded!" feels patronizing for a routine task.
@@ -208,10 +208,10 @@ Examples:
 ### In-app notification patterns
 | Type | Pattern | Example |
 |---|---|---|
-| Informational | "[Event] happened" | "Your report is ready." |
-| Positive | "[Event] completed successfully" | "Import completed: 245 contacts added." |
-| Warning | "We're having trouble with [X]" | "We're having trouble connecting to Stripe. Data may be delayed." |
-| Error | "Something went wrong with [X]" | "Something went wrong while saving your report. [Try again] or [contact support]." |
+| Informational | "[Event] happened" | "Report ready." |
+| Positive | "[Event] completed" | "Import done: 245 added." |
+| Warning | "Trouble with [X]" | "Stripe connection issue." |
+| Error | "Problem with [X]" | "Save failed. Try again or contact support." |
 
 ### Alert rules
 - State what happened, what it means for the user, and what to do.
@@ -238,6 +238,31 @@ For new users who haven't set up their dashboard:
 5. Step 3: Invite your team
 6. "Start with [step 1 CTA]"
 
+### Product Onboarding Steps (Product Tours)
+Standardize short-form copy for step-by-step product tours by focusing on action outcomes (what the user gains by doing this step) rather than just pointing at UI buttons, and use interactive button states.
+
+- **Title:** Focus on the benefit or outcome (e.g., "Add your first host"). Avoid generic titles like "Step X" or "Onboarding Step 1."
+- **Body:** Under 25 words. Focus on the action/outcome and why it matters.
+- **Progress indicator:** Short and clear (e.g., "Step 1 of 3").
+- **Navigation:** Primary action button starts with a value-driven verb ("Create," "Next," etc.) or "Got it" / "Finish." Secondary button (if applicable) is "Skip."
+
+*Structure:*
+```
+Title: [Outcome/Benefit]
+Body: [Actions to take + why they matter]
+Footer: [Skip] [Next / CTA]
+```
+
+*Example Tour Steps:*
+- **Step 1:**
+  - *Title:* Connect your repository
+  - *Body:* Link your GitHub account to import your repositories. You will be able to deploy your first project in one click.
+  - *Navigation:* `[Skip]` and `[Connect Account]`
+- **Step 2:**
+  - *Title:* Choose a deployment template
+  - *Body:* Select a framework template to build your site. Templates pre-configure your build settings automatically.
+  - *Navigation:* `[Skip]` and `[Next: Configure Settings]`
+
 ### Inline guidance pattern
 For complex workflows, use subtle inline guidance:
 ```
@@ -252,12 +277,23 @@ Not:
 
 ## 10. Error Message Patterns
 
-### The 3-part error formula
-```
-1. What happened (in plain language)
-2. Why it happened (if known and helpful)
-3. What the user can do about it
-```
+### Three-Part Error Recovery Messages
+Standardize error messages around a recovery-centric framework:
+1. **State what happened:** Acknowledge the problem immediately using plain, non-technical language.
+2. **Explain why it matters:** Convey the immediate impact on the user's workload or goal.
+3. **Offer a clear resolution CTA:** Provide a specific, actionable step to resolve the issue.
+
+#### The Recovery Framework in Action
+
+| Mapped Element | Copy Pattern | Example |
+|---|---|---|
+| **What happened** | "We couldn't [action or process]." | "We couldn't import your contacts." |
+| **Why it matters** | "Your [related asset] will be [consequence]." | "Your marketing campaign will be paused until these contacts are loaded." |
+| **Clear resolution** | "[Action verb] to resolve this." | "Check the CSV file for missing headers and upload again." |
+
+#### Good vs. Bad Recovery Messages
+- **Bad:** "Error 402: Account delinquent. Payment required." (Stops flow, cold tone, no recovery guidance).
+- **Good:** "Payment failed: Your workspace is now read-only. Your campaigns are paused until billing is active. Please update your payment details to resume." (Clear impact and immediate recovery path).
 
 ### Error type reference
 | Type | Pattern | Example |
@@ -278,7 +314,33 @@ Not:
 
 ---
 
-## 11. UX Copy Tone Calibration
+## 11. AI/LLM Greeting States & System Prompts
+
+Greeting states and prompt alerts set the tone for conversational AI interactions. Keep copy collaborative, boundary-clear, and actionable.
+
+### Greeting States (Empty Chat)
+When the user first opens an AI interface, the greeting must establish what the system can do and prompt the next step.
+- **Welcome:** Warm, contextual greeting.
+- **Capabilities:** Clearly state 2-3 specific tasks the LLM excels at.
+- **Suggested Prompts:** Provide click-to-run templates so the user does not face a blank prompt box.
+
+#### Greeting Example
+> **System:** "Hello! I am your research assistant. I can help analyze documents, synthesize key findings, or generate summaries. What are we working on?
+> 
+> **Try these: **
+> - [Synthesize key statistics from my reports]
+> - [Find contradictions in our meeting transcripts]
+> - [Draft a summary of this research paper]"
+
+### Prompt Alerts & Boundary Messages
+If the AI reaches a limitation (such as offline database access or long processing times), explain the system status and manage expectations.
+- **Be transparent about capability:** Clearly state what the AI cannot perform (e.g., "I cannot access live internet data").
+- **State resource requirements:** If a prompt takes time, tell the user (e.g., "This synthesis requires about 30 seconds. Feel free to browse other tabs while I finish").
+- **Acknowledge boundaries gracefully:** Avoid apologetic language. Use "I can only access files loaded into this project. Please upload the PDF to analyze it" instead of "Sorry, I am just an AI and cannot do that."
+
+---
+
+## 12. UX Copy Tone Calibration
 
 | Dashboard type | Tone | Example |
 |---|---|---|

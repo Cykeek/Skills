@@ -266,7 +266,44 @@ Experienced designers treat ethics as a design quality issue, not an afterthough
 - misleading free-trial copy
 - hard-to-find cancellation
 - emotional pressure designed to shame or rush
+
 - AI outputs presented with more confidence than they deserve
+
+### Deceptive & Dark Patterns Auditing
+
+Ensure your designs are free from manipulative structures by conducting a structured audit against the following checklist:
+
+#### 1. Common Deceptive Patterns to Flag
+*   **Roach Motel (Hard to Cancel):** Easy to subscribe or opt-in, but requires high friction (e.g., calling customer support, navigating through 5+ page submenus) to opt-out or cancel.
+*   **Confirmshaming:** Wording option choices to emotionally manipulate or shame the user into a specific path (e.g., "No thanks, I hate saving money" or "No, I want to keep my site insecure").
+*   **Sneak into Basket:** Silently auto-adding secondary items, memberships, or optional warranties to the shopping cart without explicit user selection.
+*   **Hidden Costs:** Hiding mandatory service fees, transaction costs, or delivery charges until the absolute final step of a multi-page checkout flow.
+*   **Artificial Urgency & Scarcity:** Generating fake countdown timers, vague inventory warnings (e.g., "12 people are looking at this room right now"), or peer-pressure prompts.
+*   **Bait and Switch:** Displaying an action button (e.g., a "Download" or "Play" icon) that performs an unexpected, high-risk action like downloading adware or starting a recurring subscription.
+
+#### 2. The Auditing Protocol
+1.  **Visual Weight Assessment:** Audit color, scale, and placement of competing choices. If a conversion path is a bright primary button and the alternative option is a tiny, low-contrast, un-clickable-looking gray link, balance them to allow true choice.
+2.  **Copywriting Ethics Log:** Scan for double negatives, emotional guilt-tripping, or vague disclosures. Ensure pricing and subscription conditions are expressed in plain language immediately adjacent to the action button.
+3.  **Default Settings Check:** Document all pre-checked state inputs. Defaults must represent the safest, lowest-cost, or most data-private option for the user.
+4.  **The Fairness Test:** Formulate the core baseline question: *'Would an independent, first-time user describe this interface as transparent, honest, and acting in their own interest?'* If the answer is no, the design fails the audit.
+
+### Deceptive & Dark Patterns Auditing
+
+Deceptive patterns (also known as dark patterns) are user interfaces meticulously crafted to trick users into doing things they might not otherwise do, prioritizing short-term business metrics over long-term customer trust.
+
+#### Taxonomy of Deceptive Patterns to Audit:
+1.  **Roach Motel (Subscribed Easily, Trapped on Exit):** An experience that is extremely easy to enter but disproportionately difficult to leave (e.g., subscribing online with one click, but requiring a phone call to customer support during business hours to cancel).
+2.  **Sneak into Basket (Hidden Add-ons):** Silently adding an item or service to the user's cart or checklist via pre-selected inputs or hidden pages.
+3.  **Confirmshaming (Emotional Manipulation):** Opt-out copy written to emotionally manipulate or shame the user into compliance (e.g., a newsletter opt-out button labeled "No thanks, I prefer paying full price").
+4.  **Hidden Costs (Late-stage Surcharges):** Disclosing mandatory fees, service costs, or charges only at the very final step of a checkout sequence, after the user has invested significant time.
+5.  **Forced Continuity (Silent Billing):** Charging a customer automatically when a free trial ends without sending a renewal query or providing simple, instant cancellation.
+6.  **Disguised Ads:** Presenting advertisements as independent editorial content, organic search listings, or system alerts.
+7.  **Misdirection / Visual Dominance:** Using extreme differences in visual weight, color, and positioning to guide users toward an option that benefits the business, while making the user-preferred choice near-invisible.
+
+#### Ethical Auditing Checklist:
+*   **The Equal Weight Rule:** Are the "Accept" and "Decline" (or "Subscribe" and "Cancel") actions presented with similar visual prominence and readability?
+*   **The Transparency Rule:** Are all dynamic billing models, subscriptions, and recurring payments clearly labeled before the user inputs credit card details?
+*   **The Simple Cancellation Rule:** Is canceling a service or deleting an account just as easy as it was to sign up? (e.g., same number of steps, same interface channel).
 
 ---
 
