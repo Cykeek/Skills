@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Keyword Injection Map Schema",
+  "description": "Exact locations and counts for keyword injection during optimization",
+  "type": "object",
+  "required": ["injections"],
+  "properties": {
+    "injections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["keyword", "target_density", "current_density", "locations", "variant"],
+        "properties": {
+          "keyword": {"type": "string", "minLength": 1},
+          "target_density": {"type": "number", "minimum": 0},
+          "current_density": {"type": "number", "minimum": 0},
+          "locations": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^(summary|skills|experience:\\d+|projects:\\d+|education:\\d+|certifications:\\d+)$"
+            },
+            "minItems": 1
+          },
+          "variant": {"type": "string"},
+          "priority": {"type": "string", "enum": ["critical", "high", "medium", "low"]}
+        }
+      }
+    }
+  }
+}

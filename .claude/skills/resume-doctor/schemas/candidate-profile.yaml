@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Candidate Profile Schema",
+  "description": "Master candidate inventory - YAML format (JSON schema for validation)",
+  "type": "object",
+  "required": ["name", "headline", "total_years", "skills", "experience", "education"],
+  "properties": {
+    "name": {"type": "string"},
+    "headline": {"type": "string"},
+    "total_years": {"type": "integer", "minimum": 0},
+    "target_roles": {"type": "array", "items": {"type": "string"}},
+    "skills": {
+      "type": "object",
+      "required": ["hard_skills", "soft_skills", "tools", "domain_knowledge", "technical"],
+      "properties": {
+        "hard_skills": {"type": "array", "items": {"type": "string"}},
+        "soft_skills": {"type": "array", "items": {"type": "string"}},
+        "tools": {"type": "array", "items": {"type": "string"}},
+        "domain_knowledge": {"type": "array", "items": {"type": "string"}},
+        "technical": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "experience": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["company", "role", "dates", "bullets"],
+        "properties": {
+          "company": {"type": "string"},
+          "role": {"type": "string"},
+          "dates": {"type": "string"},
+          "bullets": {"type": "array", "items": {"type": "string"}},
+          "signals": {"type": "array", "items": {"type": "string"}},
+          "stack": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "education": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["degree", "school", "years"],
+        "properties": {
+          "degree": {"type": "string"},
+          "school": {"type": "string"},
+          "years": {"type": "string"}
+        }
+      }
+    },
+    "certifications": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "projects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "context", "dates", "role", "stack", "signals"],
+        "properties": {
+          "name": {"type": "string"},
+          "context": {"type": "string"},
+          "dates": {"type": "string"},
+          "role": {"type": "string"},
+          "stack": {"type": "array", "items": {"type": "string"}},
+          "signals": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    }
+  }
+}

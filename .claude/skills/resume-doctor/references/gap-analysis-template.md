@@ -204,3 +204,217 @@ candidate_profile:
 - [ ] Domain keywords appear in Summary + ≥2 Experience bullets
 - [ ] Signal tags match target role requirements
 - [ ] ATS validation passes (format, sections, dates, bullets)
+```
+
+---
+
+## 4. Python Module Interface (Executable)
+
+**All pseudo-code replaced with callable functions:**
+
+```python
+# tools/gap_analyzer.py
+
+from resume_doctor.gap_analyzer import (
+    analyze_gaps,
+    GapReport,
+    KeywordInjectionMap,
+    Gap,
+    Severity
+)
+
+# Full gap analysis
+gap_report, injection_map = analyze_gaps(
+    job_analysis="job-analysis.json",
+    candidate_profile="candidate-profile.yaml"
+)
+# Returns: GapReport (dataclass), KeywordInjectionMap (dict)
+
+# GapReport fields:
+# - executive_summary: dict (match_pct, critical_count, high_count, est_fix_min)
+# - critical_gaps: list[Gap]
+# - high_gaps: list[Gap]
+# - medium_gaps: list[Gap]
+# - remediation_queue: list[Remediation]
+# - keyword_injection_map: KeywordInjectionMap
+# - reframing_suggestions: list[Reframe]
+
+# KeywordInjectionMap schema:
+# {
+#   "injections": [
+#     {"keyword": "design systems", "target_count": 4, "current": 1, "locations": ["summary", "skills", "experience:0", "experience:1"]}
+#   ]
+# }
+```
+
+### Dataclass Definitions
+
+```python
+@dataclass
+class Gap:
+    category: str                 # hard_skills, tools, domain_knowledge, keyword_density, experience, education
+    item: str                     # e.g., "React", "design systems"
+    severity: Severity            # CRITICAL, HIGH, MEDIUM, LOW
+    current: float | str          # current value (density %, years, etc.)
+    target: float | str           # target value
+    suggestion: str               # specific remediation
+
+@dataclass
+class Severity:
+    CRITICAL = 4
+    HIGH = 3
+    MEDIUM = 2
+    LOW = 1
+
+@dataclass
+class GapReport:
+    executive_summary: dict
+    critical_gaps: list[Gap]
+    high_gaps: list[Gap]
+    medium_gaps: list[Gap]
+    low_gaps: list[Gap]
+    remediation_queue: list[dict]
+    keyword_injection_map: dict
+    reframing_suggestions: list[dict]
+
+@dataclass
+class KeywordInjectionMap:
+    injections: list[dict]  # keyword, target_count, current, locations
+```
+
+---
+
+## 5. General ATS Audit Gap Analysis (No Job Target)
+
+**For users without a specific job.** Compares resume against universal ATS best practices.
+
+```python
+# tools/gap_analyzer.py
+
+from resume_doctor.gap_analyzer import analyze_general_ats_gaps
+report = analyze_general_ats_gaps(resume_path="main.tex")
+# Returns: GeneralATSGapReport
+```
+
+### `ats-audit-gap-report.md` Output
+
+```markdown
+# General ATS Audit Gap Analysis — main.tex
+
+**Generated:** 2026-07-12
+
+---
+
+## Executive Summary
+
+| Metric | Value |
+|--------|-------|
+| **Overall ATS Readiness** | 87/100 |
+| **Critical Gaps** | 1 |
+| **High Gaps** | 2 |
+| **Medium Gaps** | 3 |
+
+---
+
+## Format Compliance
+
+| Check | Status | Fix |
+|-------|--------|-----|
+| Linear single-column flow | ✅ PASS | — |
+| No tables/tabularx | ✅ PASS | — |
+| No TikZ/graphics | ✅ PASS | — |
+| Article class only | ✅ PASS | — |
+| cmap + glyphtounicode | ❌ FAIL | Add before font packages |
+| microtype enabled | ✅ PASS | — |
+| Contact in body (not header) | ✅ PASS | — |
+
+---
+
+## Structure Completeness
+
+| Required Section | Present | Notes |
+|------------------|---------|-------|
+| Professional Summary | ✅ | 3 sentences, needs template compliance |
+| Skills | ✅ | Categorized, could add more core skills |
+| Professional Experience | ✅ | 3 roles, reverse chron |
+| Education | ✅ | 2 entries, correct format |
+| Certifications | ✅ | 2 entries |
+| Projects | ✅ | 3 entries with signals |
+
+---
+
+## Keyword Hygiene
+
+| Check | Status | Details |
+|-------|--------|---------|
+| No keyword stuffing (>3.5%) | ✅ PASS | Max density: "figma" at 2.1% |
+| Core design skills present | ⚠️ PARTIAL | Missing: "design tokens", "Storybook" |
+| Variant coverage | ✅ PASS | "prototyping" + "high-fidelity prototyping" |
+| Keywords in Experience + Summary | ✅ PASS | — |
+
+---
+
+## Readability Baseline
+
+| Metric | Threshold | Actual | Status |
+|--------|-----------|--------|--------|
+| Flesch-Kincaid Grade | ≥ 30 | 42 | ✅ |
+| Gunning Fog | ≤ 14 | 11.8 | ✅ |
+| Avg Sentence Length | ≤ 25 | 18.2 | ✅ |
+
+---
+
+## Unicode Extraction
+
+| Glyph | Extracts Correctly | Status |
+|-------|-------------------|--------|
+| fi/fl/ffi | Yes | ✅ |
+| Bullet (•) | Yes | ✅ |
+| En-dash (–) | Yes | ✅ |
+| Em-dash (—) | Yes | ✅ |
+
+---
+
+## Parser Simulation
+
+| Parser | Contact | Summary | Skills | Experience | Education | Projects |
+|--------|---------|---------|--------|------------|-----------|----------|
+| Greenhouse | ✅ | ✅ | ✅ | ✅ | ✅ | ⚠️ |
+| Lever | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Workday | ✅ | ✅ | ⚠️ | ✅ | ✅ | ❌ |
+| iCIMS | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Taleo | ✅ | ✅ | ⚠️ | ✅ | ✅ | ❌ |
+
+---
+
+## Prioritized Fixes
+
+| Priority | Issue | Effort |
+|----------|-------|--------|
+| 1 | Add cmap + glyphtounicode before font packages | 1 min |
+| 2 | Add "design tokens", "Storybook" to Skills | 3 min |
+| 3 | Ensure Projects section has standard header for Workday/Taleo | 5 min |
+| 4 | Verify 3-sentence Summary template compliance | 5 min |
+| 5 | Add signal tags to all bullets (currently 60% coverage) | 10 min |
+```
+
+---
+
+## 6. CLI Entry Points
+
+```bash
+# Targeted gap analysis (with job)
+python -m resume_doctor.gap_analyzer --job job-analysis.json --candidate candidate-profile.yaml --out gap-report.md --injection-map keyword-injection-map.json
+
+# General ATS audit gap analysis (no job)
+python -m resume_doctor.gap_analyzer ats-audit --resume main.tex --out ats-audit-gap-report.md
+```
+
+---
+
+## 7. Maintenance
+
+- **Gap scoring weights:** Review quarterly against hiring outcomes
+- **Keyword density thresholds:** Calibrate per company/role from A/B tests
+- **Domain taxonomy:** Sync with job-analysis-engine.md TAXONOMY quarterly
+- **Remediation templates:** Update with new optimization patterns

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ATS Audit Result Schema",
+  "description": "General ATS audit output (no job target required)",
+  "type": "object",
+  "required": ["meta", "overall_score", "passed", "findings"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["resume_file", "audited_at", "auditor_version"],
+      "properties": {
+        "resume_file": {"type": "string"},
+        "audited_at": {"type": "string", "format": "date-time"},
+        "auditor_version": {"type": "string"}
+      }
+    },
+    "overall_score": {"type": "integer", "minimum": 0, "maximum": 100},
+    "passed": {"type": "boolean"},
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["gate", "passed", "details"],
+        "properties": {
+          "gate": {"type": "string", "enum": ["format_compliance", "structure_completeness", "keyword_hygiene", "readability_baseline", "unicode_extraction", "ats_parser_simulation"]},
+          "passed": {"type": "boolean"},
+          "details": {"type": "object"}
+        }
+      }
+    }
+  }
+}

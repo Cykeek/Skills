@@ -85,43 +85,91 @@ AFTER:  - **Design:** Product Design, **Design Systems**, Design Operations, Use
 
 ---
 
-## 3. Density Calibration Algorithm
+## 3. Density Calibration Algorithm (Executable)
+
+### 3.1 Python Module Interface
+
+```python
+# tools/optimizer.py
+
+from resume_doctor.optimizer import (
+    calculate_density,
+    check_targets,
+    auto_calibrate_density,
+    inject_keywords,
+    calibrate_density,
+    upgrade_verbs,
+    add_signal_tags,
+    apply_nda_abstraction,
+    reorder_sections,
+    apply_audience_aware,
+    OptimizationResult
+)
+
+# Calculate current density
+density = calculate_density(resume_text, keywords)
+
+# Check against targets
+report = check_targets(density, targets)
+
+# Full auto-calibration (post-rewrite)
+optimized_latex = auto_calibrate_density(latex, job_analysis, mode="designer-polish")
+
+# Individual transformations
+optimized_latex = upgrade_verbs(latex)
+optimized_latex = inject_keywords(latex, injection_map, mode)
+optimized_latex = add_signal_tags(latex, taxonomy)
+optimized_latex = apply_nda_abstraction(latex, level="pattern-abstracted")
+optimized_latex = reorder_sections(latex, role="design")
+optimized_latex = apply_audience_aware(latex, job_analysis)
+```
+
+### 3.2 Function Signatures
 
 ```python
 def calculate_density(resume_text: str, keywords: list[str]) -> dict:
-    words = resume_text.lower().split()
-    total = len(words)
-    results = {}
-    for kw in keywords:
-        # Count exact phrase occurrences
-        count = resume_text.lower().count(kw.lower())
-        # Density = (keyword_word_count * occurrences) / total_words * 100
-        kw_words = len(kw.split())
-        density = (count * kw_words / total) * 100
-        results[kw] = {"count": count, "density": round(density, 2)}
-    return results
+    """Returns {kw: {"count": int, "density": float}} for each keyword."""
+    ...
 
 def check_targets(density_results: dict, targets: dict) -> ValidationReport:
-    issues = []
-    for kw, target in targets.items():
-        actual = density_results.get(kw, {"density": 0})["density"]
-        if actual < target["min"]:
-            issues.append(f"⚠️ {kw}: {actual}% (target ≥ {target['min']}%) — UNDER")
-        elif actual > target["max"]:
-            issues.append(f"⚠️ {kw}: {actual}% (target ≤ {target['max']}%) — OVER (stuffing risk)")
-        else:
-            issues.append(f"✅ {kw}: {actual}%")
-    return ValidationReport(issues)
+    """Returns ValidationReport with issues list."""
+    ...
 
-# Target bands (from job-analysis.json keyword_targets)
-TARGETS = {
-    "design systems": {"min": 2.0, "max": 3.5},
-    "a/b testing": {"min": 1.5, "max": 3.0},
-    "figma": {"min": 1.5, "max": 3.0},
-    "stakeholder": {"min": 1.0, "max": 2.5},
-    "react": {"min": 1.0, "max": 2.0},
-    "typescript": {"min": 0.5, "max": 1.5},
-}
+def auto_calibrate_density(resume_latex: str, job_analysis: dict, mode: str) -> str:
+    """
+    Post-rewrite density calibration pass.
+    Injects keywords at exact locations per Placement Priority Matrix (§2.1).
+    Runs iteratively until all keywords within [min, max] bands.
+    """
+    ...
+
+def inject_keywords(latex: str, injection_map: dict, mode: str) -> str:
+    """Inject keywords at specified locations from keyword-injection-map.json."""
+    ...
+
+def calibrate_density(latex: str, targets: dict, mode: str) -> str:
+    """Fine-tune density by adding/removing/replacing keyword occurrences."""
+    ...
+
+def upgrade_verbs(latex: str) -> str:
+    """Replace all Tier 3 verbs with Tier 1/2 equivalents."""
+    ...
+
+def add_signal_tags(latex: str, taxonomy: dict) -> str:
+    """Add \signaltag{} macros to bullets based on taxonomy triggers."""
+    ...
+
+def apply_nda_abstraction(latex: str, level: str) -> str:
+    """Apply NDA abstraction ladder (L0-L4) to sanitize confidential content."""
+    ...
+
+def reorder_sections(latex: str, role: str) -> str:
+    """Reorder sections per career stage + target role rules (§4)."""
+    ...
+
+def apply_audience_aware(latex: str, job_analysis: dict) -> str:
+    """Apply HR/CEO/Manager/Lead comprehension transforms (§6.4)."""
+    ...
 ```
 
 ### 3.3 Density Fix Commands
@@ -131,6 +179,26 @@ TARGETS = {
 | **UNDER** (below min) | Add keyword to Summary (+1), Skills (+1), 1-2 Experience bullets (+1-2) |
 | **OVER** (above max) | Replace exact matches with variants; remove from Skills if listed multiple times |
 | **MISSING** (0 count) | Inject in Summary + Skills + 2 bullets minimum |
+
+### 3.4 Variant-Aware Density Counting
+
+```python
+# tools/optimizer.py
+
+VARIANT_MAP = {
+    "design systems": ["design system", "component library", "design tokens", "storybook", "zeroheight"],
+    "a/b testing": ["experimentation", "split testing", "statistical significance", "p-value", "holdout"],
+    "figma": ["figma", "figjam", "devmode", "auto layout", "components", "variants"],
+    "accessibility": ["wcag", "wcag 2.2 aa", "screen reader", "keyboard navigation", "inclusive design"],
+}
+
+def count_with_variants(text: str, keyword: str) -> int:
+    """Count primary keyword + all variants toward density target."""
+    count = text.lower().count(keyword.lower())
+    for variant in VARIANT_MAP.get(keyword, []):
+        count += text.lower().count(variant.lower())
+    return count
+```
 
 ---
 
@@ -249,6 +317,7 @@ grep -i "react" main.txt
 **Principle:** Every bullet must be understood by HR (keywords), CEO (business value), Hiring Manager (scope), and Technical Lead (proof) — in that order.
 
 ### 6.4.1 Pattern: Lead with Business Outcome
+
 | Technical-Heavy | Audience-Balanced |
 |-----------------|-------------------|
 | Architected Design System v2 token architecture: 12 teams, 87% UI coverage, 0 breaking changes in 18mo | **Built unified design standards (Design System v2) adopted by 12 teams covering 87% of product UI — zero breaking changes in 18 months** [`Systems Thinking` `Technical Fluency`] |
@@ -256,6 +325,7 @@ grep -i "react" main.txt
 | Pair-programmed React/TypeScript components with 2 E5 engineers; cut handoff 3.2 days→0.8 days | **Collaborated directly with senior engineers to build production-ready components in React/TypeScript, reducing design-to-engineering handoff from 3.2 days to 0.8 days** [`Technical Fluency` `Cross-functional Leadership`] |
 
 ### 6.4.2 Pattern: Inline Technical Translation (First Mention)
+
 | Acronym/Term | First-Mention Format | Subsequent Uses |
 |--------------|---------------------|-----------------|
 | A/B testing | "A/B testing (controlled experiments comparing two versions)" | "A/B testing" |
@@ -268,6 +338,7 @@ grep -i "react" main.txt
 | CI/CD | "CI/CD (automated testing and deployment)" | "CI/CD" |
 
 ### 6.4.3 Pattern: Scale Context for Non-Domain Experts
+
 | Bare Number | With Context |
 |-------------|--------------|
 | 15M+ merchants | 15+ million merchants (payment processing scale) |
@@ -279,6 +350,7 @@ grep -i "react" main.txt
 | n=24,847 | tested with 24,847 users |
 
 ### 6.4.4 Pattern: Replace Jargon with Plain Verbs
+
 | Jargon Verb | Plain Verb | When to Use |
 |-------------|------------|-------------|
 | Architected | Built / Designed | Non-tech bullets, Summary |
@@ -293,6 +365,7 @@ grep -i "react" main.txt
 | Synthesized | Combined / Organized | Research bullets |
 
 ### 6.4.5 Audience Check Checklist (Per Bullet)
+
 Before finalizing each bullet, verify:
 - [ ] **HR** can identify 1-2 keywords from job description
 - [ ] **CEO** sees business outcome (revenue, users, risk, speed)
@@ -328,34 +401,36 @@ main-{company}-{role}-{YYYYMMDD}.txt  # Plain text fallback (pdftotext)
 
 ---
 
-## 8. Quick Reference: Edit Commands (LaTeX)
+## 8. Quick Reference: Python Module Interface
 
 ```bash
+# All pseudo-code `agent latex ...` commands replaced with:
+
 # Inject keyword into LaTeX bullet
-agent latex inject --file main.tex --bullet 3 --keyword "design systems" --after "Spearheaded"
+python -m resume_doctor.optimizer inject_keywords --resume main.tex --map keyword-injection-map.json
 
 # Replace weak verb in LaTeX
-agent latex verb --file main.tex --bullet 5 --from "Worked on" --to "Spearheaded"
+python -m resume_doctor.optimizer upgrade_verbs --resume main.tex
 
 # Add metric to LaTeX bullet
-agent latex metric --file main.tex --bullet 2 --append "+23% conversion (n=4,200, p<0.01)"
+python -m resume_doctor.optimizer add_metrics --resume main.tex --gap-report gap-report.md
 
 # Add signal tag to LaTeX bullet
-agent latex signal --file main.tex --bullet 1 --tags "Systems Thinking,Cross-functional Leadership"
+python -m resume_doctor.optimizer add_signal_tags --resume main.tex --taxonomy signals.json
 
 # Apply NDA abstraction
-agent latex nda --file main.tex --level pattern-abstracted
+python -m resume_doctor.optimizer apply_nda --resume main.tex --level pattern-abstracted
 
 # Apply audience-aware transforms
-agent latex audience --file main.tex --expand-acronyms --translate-jargon --lead-with-outcome --add-scale-context
+python -m resume_doctor.optimizer apply_audience --resume main.tex --job job-analysis.json
 
 # Validate LaTeX
-agent validate latex-format --resume main.tex
-agent validate density --resume main.tex --job job-analysis.json
-agent validate parsers --resume main.tex --parsers all
-agent validate unicode-extraction --resume main.tex
-agent validate readability --resume main.tex
-agent validate audience --resume main.tex --job job-analysis.json
+python -m resume_doctor.validation_gates validate_latex_format --resume main.tex
+python -m resume_doctor.validation_gates validate_density --resume main.tex --job job-analysis.json
+python -m resume_doctor.validation_gates validate_parsers --resume main.tex --parsers all
+python -m resume_doctor.validation_gates validate_unicode --resume main.tex
+python -m resume_doctor.validation_gates validate_readability --resume main.tex
+python -m resume_doctor.validation_gates validate_audience --resume main.tex --job job-analysis.json
 ```
 
 ---

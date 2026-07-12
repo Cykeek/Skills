@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Job Analysis Schema",
+  "description": "Structured output from job analysis engine",
+  "type": "object",
+  "required": ["meta", "company", "role_title", "keyword_targets"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["source_url", "source_type", "extracted_at", "extractor_version"],
+      "properties": {
+        "source_url": {"type": "string", "format": "uri"},
+        "source_type": {"type": "string", "enum": ["url", "text", "pdf", "json"]},
+        "extracted_at": {"type": "string", "format": "date-time"},
+        "extractor_version": {"type": "string"}
+      }
+    },
+    "company": {"type": "string"},
+    "role_title": {"type": "string"},
+    "role_level": {"type": "string"},
+    "employment_type": {"type": "string"},
+    "location": {"type": "string"},
+    "visa_sponsorship": {"type": "boolean"},
+    "remote_policy": {"type": "string"},
+    "description_raw": {"type": "string"},
+    "must_have": {
+      "type": "object",
+      "required": ["hard_skills", "soft_skills", "tools", "domain_knowledge", "years_experience", "education"],
+      "properties": {
+        "hard_skills": {"type": "array", "items": {"type": "string"}},
+        "soft_skills": {"type": "array", "items": {"type": "string"}},
+        "tools": {"type": "array", "items": {"type": "string"}},
+        "domain_knowledge": {"type": "array", "items": {"type": "string"}},
+        "years_experience": {"type": "string"},
+        "education": {"type": "string"}
+      }
+    },
+    "nice_to_have": {
+      "type": "object",
+      "properties": {
+        "hard_skills": {"type": "array", "items": {"type": "string"}},
+        "certifications": {"type": "array", "items": {"type": "string"}},
+        "domain": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "keywords_at_freq": {
+      "type": "object",
+      "additionalProperties": {"type": "integer", "minimum": 0}
+    },
+    "keyword_targets": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["min", "max", "priority"],
+        "properties": {
+          "min": {"type": "number", "minimum": 0},
+          "max": {"type": "number", "minimum": 0},
+          "priority": {"type": "string", "enum": ["critical", "high", "medium", "low"]}
+        }
+      }
+    },
+    "ats_signals": {
+      "type": "object",
+      "required": ["preferred_format", "required_sections", "avoid", "keyword_density_target", "parser"],
+      "properties": {
+        "preferred_format": {"type": "string"},
+        "required_sections": {"type": "array", "items": {"type": "string"}},
+        "avoid": {"type": "array", "items": {"type": "string"}},
+        "keyword_density_target": {"type": "string"},
+        "parser": {"type": "string"}
+      }
+    },
+    "company_intel": {
+      "type": "object",
+      "properties": {
+        "stage": {"type": "string"},
+        "size": {"type": "string"},
+        "founded": {"type": "integer"},
+        "culture_keywords": {"type": "array", "items": {"type": "string"}},
+        "tech_stack": {"type": "array", "items": {"type": "string"}},
+        "design_maturity": {"type": "string"},
+        "design_leadership": {"type": "string"},
+        "recent_news": {"type": "array", "items": {"type": "string"}},
+        "glassdoor_rating": {"type": "number"},
+        "interview_process": {"type": "array", "items": {"type": "string"}},
+        "compensation_band": {"type": "object"}
+      }
+    }
+  }
+}

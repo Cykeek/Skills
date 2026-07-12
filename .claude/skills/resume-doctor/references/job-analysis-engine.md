@@ -253,33 +253,112 @@ def analyze_gaps(job_analysis: dict, candidate_profile: dict) -> GapReport:
 
 ---
 
-## 6. Agent Commands
+## 6. Python Module Interface (Executable)
 
-```bash
+**All pseudo-code `agent job ...` commands replaced with direct Python calls:**
+
+```python
+# tools/job_analyzer.py
+
+from resume_doctor.job_analyzer import (
+    analyze_job,
+    gather_company_intel,
+    JobAnalysis,
+    CompanyIntel
+)
+
 # Analyze from URL
-agent job analyze --url "https://boards.greenhouse.io/stripe/jobs/12345" --out job-stripe-pd.json
+job = analyze_job(source="https://boards.greenhouse.io/stripe/jobs/12345", source_type="url")
+# Returns JobAnalysis dataclass matching job-analysis.json schema
 
-# Analyze from text
-agent job analyze --text-file job-description.txt --out job-analysis.json
+# Analyze from text file
+job = analyze_job(source="job-description.txt", source_type="text")
 
 # Analyze from PDF
-agent job analyze --pdf job-description.pdf --out job-analysis.json
+job = analyze_job(source="job-description.pdf", source_type="pdf")
 
 # Deep company intel
-agent job intel --company "Stripe" --role "Senior Product Designer" --out company-intel.json
+intel = gather_company_intel(company="Stripe", role="Senior Product Designer")
+# Returns CompanyIntel dataclass matching job-analysis.json.company_intel
 
-# Gap analysis
-agent job gap --job job-analysis.json --candidate candidate-profile.yaml --out gap-report.md
+# Save artifacts
+job.to_json("job-analysis.json")
+intel.to_json("company-intel.json")
+```
 
-# Keyword targets
-agent job keywords --job job-analysis.json --resume main.tex --out keyword-report.md
+### Function Signatures
+
+```python
+def analyze_job(source: str, source_type: Literal["url", "text", "pdf"]) -> JobAnalysis:
+    """Full pipeline: ingest → clean → segment → extract entities → classify → build targets → gather intel."""
+    ...
+
+def gather_company_intel(company: str, role: str) -> CompanyIntel:
+    """Fetches company intelligence from public sources."""
+    ...
+
+def build_keyword_targets(entities: dict, requirements: dict) -> dict:
+    """Converts entity frequencies + requirement priority into density bands."""
+    ...
 ```
 
 ---
 
-## 7. Maintenance
+## 7. General ATS Audit Mode (No Job Target)
 
-- **Taxonomy update**: Quarterly (new tools, frameworks, methodologies)
-- **Parser update**: Monthly (ATS vendor changes)
-- **Company intel cache**: 7-day TTL (refresh on demand)
-- **Keyword target calibration**: Per-application A/B test → aggregate per company/role
+**For users without a specific job target.** Runs standalone audit producing `ats-audit.json`.
+
+```python
+# tools/ats_audit.py
+
+from resume_doctor.ats_audit import run_ats_audit
+audit = run_ats_audit(latex_path="main.tex")
+# Returns ATSAuditResult matching schemas/ats-audit.json
+```
+
+### `ats-audit.json` Schema
+
+```json
+{
+  "meta": {
+    "resume_file": "main.tex",
+    "audited_at": "2026-07-12T14:32:00Z",
+    "auditor_version": "2.1.0"
+  },
+  "overall_score": 87,
+  "passed": true,
+  "findings": [
+    {"gate": "format_compliance", "passed": true, "details": {...}},
+    {"gate": "structure_completeness", "passed": true, "details": {...}},
+    {"gate": "keyword_hygiene", "passed": false, "details": {"missing_core": ["react"], "stuffing_detected": []}},
+    {"gate": "readability_baseline", "passed": true, "details": {"flesch_kincaid": 45.2, "gunning_fog": 11.3}},
+    {"gate": "unicode_extraction", "passed": true, "details": {"recovery_rate": 0.99}},
+    {"gate": "ats_parser_simulation", "passed": true, "details": {"parsers": {...}}}
+  ]
+}
+```
+
+### Gates in General ATS Audit
+
+| Gate | Description |
+|------|-------------|
+| **format_compliance** | Linear flow, no tables/columns/graphics, cmap+glyphtounicode, T1/UTF8, microtype |
+| **structure_completeness** | Required sections present (Summary, Experience, Skills, Education) |
+| **keyword_hygiene** | No stuffing (>3.5%), no missing core skills, variant coverage, keywords in Experience+Summary |
+| **readability_baseline** | Flesch-Kincaid ≥ 30, Gunning Fog ≤ 14, sentence length ≤ 25 words |
+| **unicode_extraction** | pdftotext -layout recovers ≥98% chars, ligatures resolved |
+| **ats_parser_simulation** | Greenhouse, Lever, Workday, iCIMS, Taleo all parse core sections |
+
+**CLI Contract:**
+```bash
+resume-doctor ats-audit --resume main.tex --out ats-audit.json
+```
+
+---
+
+## 8. Maintenance
+
+- **Taxonomy update:** Quarterly (new tools, frameworks, methodologies)
+- **Parser update:** Monthly (ATS vendor changes)
+- **Company intel cache:** 7-day TTL (refresh on demand)
+- **Keyword target calibration:** Per-application A/B test → aggregate per company/role

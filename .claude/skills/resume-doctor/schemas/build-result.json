@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Build Result Schema",
+  "description": "Output from latex_builder.build() - compilation artifacts",
+  "type": "object",
+  "required": ["success", "pdf_path", "txt_path", "normalized_txt_path", "docx_path", "compilation_log"],
+  "properties": {
+    "success": {"type": "boolean"},
+    "pdf_path": {"type": "string"},
+    "txt_path": {"type": "string"},
+    "normalized_txt_path": {"type": "string"},
+    "docx_path": {"type": "string"},
+    "compilation_log": {"type": "string"},
+    "pdflatex_exit_code": {"type": "integer"},
+    "warnings": {"type": "array", "items": {"type": "string"}},
+    "errors": {"type": "array", "items": {"type": "string"}},
+    "page_count": {"type": "integer", "minimum": 1}
+  }
+}

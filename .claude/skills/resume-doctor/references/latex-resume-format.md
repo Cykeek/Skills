@@ -15,10 +15,11 @@ description: Overleaf-compatible pdflatex executive LaTeX resume template with A
 |-----------|----------------|
 | **ATS Linear Extraction** | `\hfill`-based paragraph alignment (no `tabularx`/tables) so `pdftotext -layout` reads Company → Date → Title → Location sequentially |
 | **Unicode Glyph Mapping** | `\usepackage{cmap} + \input{glyphtounicode} + \pdfgentounicode=1` before font loading — ligatures (`fi`, `fl`, `ffi`) and bullets map to correct Unicode |
-| **Zero Dependencies** | Standard TeX Live packages only: `article`, `geometry`, `titlesec`, `enumitem`, `hyperref`, `xcolor`, `microtype`, `mathptmx` |
+| **Zero Dependencies** | Standard TeX Live packages only: `article`, `geometry`, `titlesec`, `enumitem`, `hyperref`, `xcolor`, `microtype`, `mathptmx`/`tgheros` |
 | **Audience Signal Highlighting** | `\signaltag{Tag}` macro renders as colored badge for CEOs/Leads, extracts as plain text `[Tag]` for HR keyword scanners |
 | **Single-File Output** | One `main.tex` — self-contained, version-controlled, diffable |
 | **Dual Layout Modes** | **`ats-max`** (dense, keyword-heavy, parser-first) **OR** **`designer-polish`** (professional typography, visual hierarchy, designer-credible) — both 100% ATS-compatible |
+| **PDF Metadata Injection** | `\hypersetup` auto-populated from candidate profile + job analysis: `pdfauthor`, `pdftitle`, `pdfsubject`, `pdfkeywords` |
 
 ---
 
@@ -50,6 +51,8 @@ Add **one line** at the very top of your `main.tex` (before `\documentclass`) to
 | Signal tag render | `[\textbf{Tag}]` inline | **Badge** with padding + rounded corners (TikZ-free) |
 | Page margins | 1.6cm/1.8cm | **1.8cm/2.0cm** (wider optical margins) |
 | Font size | 10.5pt | **10.5pt** (same) |
+| Font family | `mathptmx` (Times) | **`tgheros`** (Helvetica-clone, sans-serif) |
+| Skills position | After Experience | **After Projects** (per design role convention) |
 
 ---
 
@@ -65,18 +68,25 @@ Add **one line** at the very top of your `main.tex` (before `\documentclass`) to
 
 \documentclass[10.5pt, a4paper]{article}
 
-% ── Engine Detection (for glyph mapping compatibility) ──
+% ── Engine Detection & Encoding Compatibility (Zero Warnings across engines) ──
 \usepackage{ifpdf}
-
-% ── Unicode / Glyph Mapping (MUST come before font packages) ──
-% Only needed for pdfLaTeX; XeLaTeX/LuaLaTeX handle Unicode natively
 \ifpdf
+  % pdfLaTeX engine: T1 encoding, utf8 input, and glyphtounicode for ATS extraction
   \usepackage{cmap}
   \input{glyphtounicode}
   \pdfgentounicode=1
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else
+  % XeLaTeX / LuaLaTeX engine: Unicode native encodings (TU engine)
+  \usepackage{fontspec}
 \fi
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
+
+% ── Zero-Warning Line Breaking & Overflow Protection ──
+\emergencystretch=3em
+\tolerance=1000
+\hbadness=10000
+\hfuzz=0.5pt
 
 % ── Mode-Dependent Geometry ──
 \ifdefined\resumemode
@@ -97,14 +107,31 @@ Add **one line** at the very top of your `main.tex` (before `\documentclass`) to
   \usepackage[a4paper, top=1.8cm, bottom=1.8cm, left=2.0cm, right=2.0cm]{geometry}%
 }
 
+% ── PDF Metadata Injection (Auto-populated from candidate profile + job analysis) ──
+% Agent populates these at build time from candidate-profile.yaml and job-analysis.json
+\hypersetup{
+  pdfauthor  = {Candidate Name},           % ← populated by agent from candidate-profile.yaml
+  pdftitle   = {Target Role at Company},   % ← populated by agent from job-analysis.json
+  pdfsubject = {Target Role at Company},   % ← populated by agent
+  pdfkeywords = {kw1, kw2, kw3, kw4},      % ← populated by agent from job-analysis.json keyword_targets
+  hidelinks  = true
+}
+
 % ── Paragraphs ──
 \usepackage{parskip}
 
 % ── Microtype (protrusion, expansion, kerning) ──
 \usepackage{microtype}
 
-% ── Font: Times-compatible, professional ──
-\usepackage{mathptmx}
+% ── Mode-Dependent Font ──
+\providecommand{\resumemode@ats-max@font}{%
+  \usepackage{mathptmx}% Times-compatible, serif
+}
+\providecommand{\resumemode@designer-polish@font}{%
+  \usepackage[scale=0.92]{tgheros}% Helvetica-clone, sans-serif; ATS-safe ligatures
+  \renewcommand{\familydefault}{\sfdefault}%
+}
+\csname resumemode@\resumemode @font\endcsname
 
 % ── Colors ──
 \usepackage{xcolor}
@@ -115,14 +142,15 @@ Add **one line** at the very top of your `main.tex` (before `\documentclass`) to
 \definecolor{signalcolor}{RGB}{15, 82, 186}
 \definecolor{signalbg}{RGB}{230, 242, 255}  % Light blue badge background
 
-% ── Hyperref (hidelinks for clean ATS extraction) ──
+% ── Hyperref with PDF Metadata Injection (auto-populated) ──
 \usepackage[hidelinks]{hyperref}
 \hypersetup{
   colorlinks=false,
   pdfborder={0 0 0},
-  pdfauthor={},
-  pdfsubject={},
-  pdfkeywords={},
+  pdfauthor={},          % Filled by agent from candidate profile
+  pdftitle={},           % Filled by agent: "Full Name — Target Role at Company"
+  pdfsubject={},         % Filled by agent: "Tailored resume for Target Role at Company"
+  pdfkeywords={},        % Filled by agent: comma-separated critical/high keywords from job-analysis.json
   pdfproducer={LaTeX with pdflatex},
   pdfcreator={resume-doctor}
 }
@@ -131,14 +159,14 @@ Add **one line** at the very top of your `main.tex` (before `\documentclass`) to
 \usepackage{titlesec}
 \providecommand{\resumemode@ats-max@section}{%
   \titleformat{\section}
-    {\normalfont\fontsize{9pt}{11pt}\selectfont\bfseries\color{muted}\scshape}
+    {\normalfont\fontsize{9pt}{11pt}\selectfont\bfseries\color{muted}\MakeUppercase}
     {}{0em}{}
     [\vspace{1pt}{\color{rulecolor}\hrule height 0.4pt}\vspace{4pt}]%
   \titlespacing{\section}{0pt}{8pt}{4pt}%
 }
 \providecommand{\resumemode@designer-polish@section}{%
   \titleformat{\section}
-    {\normalfont\fontsize{9.5pt}{12pt}\selectfont\bfseries\color{muted}\scshape}
+    {\normalfont\fontsize{9.5pt}{12pt}\selectfont\bfseries\color{muted}\MakeUppercase}
     {}{0em}{}
     [\vspace{2pt}{\color{rulecolor}\hrule height 0.5pt}\vspace{6pt}]%
   \titlespacing{\section}{0pt}{14pt}{6pt}%
@@ -242,6 +270,8 @@ Add **one line** at the very top of your `main.tex` (before `\documentclass`) to
 \csname resumemode@\resumemode @certentry\endcsname
 
 % Mode-Dependent Signal Tag Rendering
+% DESIGNER-POLISH: Visual badge + ATS-visible bracketed text
+% ATS-MAX: Inline bracketed text only
 \providecommand{\resumemode@ats-max@signaltag}{%
   \newcommand{\signaltag}[1]{%
     \textcolor{signalcolor}{[\textbf{##1}]}%
@@ -253,6 +283,7 @@ Add **one line** at the very top of your `main.tex` (before `\documentclass`) to
       \fboxsep=2pt\relax
       \colorbox{signalbg}{\strut[\textbf{##1}]}%
     }%
+    \ \textnormal{[\textbf{##1}]}% ATS-visible fallback
   }%
 }
 \csname resumemode@\resumemode @signaltag\endcsname
@@ -301,6 +332,7 @@ Add **one line** at the very top of your `main.tex` (before `\documentclass`) to
 \csname resumemode@\resumemode @baseline\endcsname
 
 % ── HEADER ──
+% VALIDATION GATE: Single target role only — no "UI/UX Designer & Product Designer"
 \begin{center}
   {\LARGE \textbf{Full Name}} \\[4pt]
   {\large Target Role — Domain Specialization} \\[6pt]
@@ -310,53 +342,63 @@ Add **one line** at the very top of your `main.tex` (before `\documentclass`) to
 \divider
 
 % ── PROFESSIONAL SUMMARY ──
+% TEMPLATE: 3-sentence plain paragraph (no macros in last sentence)
+% 1. [Role] with [years] experience in [domains].
+% 2. [Method/skills] — [1-2 metrics with scale context].
+% 3. [Passion/values — plain language, no macros].
 \section*{Professional Summary}
-% 2-4 lines, 3-5 bold keywords, 1-2 metrics, no pronouns
-Target Role with X years building \kw{Domain} and \kw{Domain} products at scale.
-Led \kw{Keyword} adoption across \metric{12 teams} (\metric{87\%} coverage, \metric{0} breaking changes in \metric{18mo}).
-Drove \metric{+9pp activation} (\metric{18\%→27\%}) via \kw{checkout redesign} validated through \kw{A/B testing} (\metric{n=24k, p<0.01}).
-Fluently collaborate with \kw{React/TypeScript} engineers; ship production prototypes in \kw{Storybook}.
-Passionate about \kw{payments infrastructure}, \kw{KYC/AML compliance}, and \kw{accessible} financial experiences.
+Senior Product Designer with 7 years building FinTech and B2B SaaS products at scale.
+Led design systems adoption across \metric{12 cross-functional product teams} (\metric{87\%} UI coverage, \metric{0} breaking changes in \metric{18 months}); drove \metric{+9pp activation (18\%→27\%)} via checkout redesign validated through \kw{A/B testing (controlled experiments, n=24k, p<0.01)}.
+Passionate about payments infrastructure, KYC/AML compliance, and accessible financial experiences.
 
 \divider
 
-% ── SKILLS ──
-\section*{Skills}
+% ── MODE-DEPENDENT SECTION ORDERING ──
+% ats-max: Summary → Skills → Experience → Education → Certifications → Projects → Signals
+% designer-polish: Summary → Experience → Education → Certifications → Projects → Skills → Signals
+\ifx\resumemode\designer-polish
+  % Designer-polish: Skills moved after Projects (design role convention)
+\else
+  % ats-max: Skills in top 1/3
+  % ── SKILLS ──
+  \section*{Skills}
 
-\subsection*{Technical Skills}
-\begin{itemize}
-  \item \textbf{Product Design:} Product Design, \kw{Design Systems}, Design Operations, User Research (JTBD, Usability), Prototyping (\kw{Figma}, \kw{React}, Framer), \kw{Accessibility (WCAG 2.2 AA)}, \kw{A/B Testing}, Analytics (Mixpanel, Looker)
-  \item \textbf{Engineering:} \kw{React}, \kw{TypeScript}, HTML/CSS, Tailwind, Storybook, Design Tokens, CI/CD, GraphQL
-\end{itemize}
+  \subsection*{Technical Skills}
+  \begin{itemize}
+    \item \textbf{Product Design:} Product Design, \kw{Design Systems}, Design Operations, User Research (JTBD, Usability), Prototyping (\kw{Figma}, \kw{React}, Framer), \kw{Accessibility (WCAG 2.2 AA)}, \kw{A/B Testing}, Analytics (Mixpanel, Looker)
+    \item \textbf{Engineering:} \kw{React}, \kw{TypeScript}, HTML/CSS, Tailwind, Storybook, Design Tokens, CI/CD, GraphQL
+  \end{itemize}
 
-\subsection*{Tools \& Platforms}
-\kw{Figma}, FigJam, Jira, Linear, Mixpanel, Amplitude, Looker, Git, GitHub, Storybook, Zeroheight, Notion, Miro, Dovetail
+  \subsection*{Tools \& Platforms}
+  \kw{Figma}, FigJam, Jira, Linear, Mixpanel, Amplitude, Looker, Git, GitHub, Storybook, Zeroheight, Notion, Miro, Dovetail
 
-\subsection*{Domain Knowledge}
-FinTech, Payments, KYC/AML, PCI-DSS, B2B SaaS, Marketplace, E-commerce, Design Systems
+  \subsection*{Domain Knowledge}
+  FinTech, Payments, KYC/AML, PCI-DSS, B2B SaaS, Marketplace, E-commerce, Design Systems
 
-\divider
+  \divider
+\fi
 
 % ── PROFESSIONAL EXPERIENCE ──
 \section*{Professional Experience}
 
-\roleentry{\company{Stripe}}{San Francisco, CA}{\role{Senior Product Designer (Lead)}}{\dates{July 2022 – Present}}
+\roleentry{\company{Stripe}}{San Francisco, CA}{\role{Senior Product Designer (Lead)}}{\dates{07/2022 – Present}}
 \begin{itemize}
-  \item \textbf{Spearheaded} checkout redesign for \metric{15M+ merchants} delivering \metric{+9pp activation (18\%→27\%)}, \metric{\$460K ARR retained}; validated via \kw{A/B test} (\metric{n=24,847, p<0.01}, holdout confirmed) \signaltag{Data-Informed Iteration} \signaltag{Cross-functional Leadership}
-  \item \textbf{Architected} Design System v2 token architecture: \metric{12 teams}, \metric{87\% UI coverage}, \metric{0 breaking changes in 18mo}; migrated \metric{240+} components to \kw{React/TypeScript} \signaltag{Systems Thinking} \signaltag{Technical Fluency}
+  \item \textbf{Spearheaded} checkout redesign for \metric{15+ million merchants (payment processing scale)} delivering \metric{+9pp activation (18\%→27\%)}, \metric{\$460K ARR retained}; validated via \kw{A/B test (controlled experiment, n=24,847, statistically significant p<0.01, holdout confirmed)} \signaltag{Data-Informed Iteration} \signaltag{Cross-functional Leadership}
+  \item \textbf{Built} unified design standards (Design System v2) adopted by \metric{12 cross-functional product teams} covering \metric{87\%} of product UI — \textbf{zero breaking changes in 18 months}; migrated \metric{240+} components to \kw{React/TypeScript} \signaltag{Systems Thinking} \signaltag{Technical Fluency}
   \item \textbf{Established} JTBD research practice: \metric{52 interviews/year}, insights logged in Dovetail, \textbf{directly informed 3 product pivots} \signaltag{User Research Rigor} \signaltag{Strategic Influence}
-  \item \textbf{Championed} WCAG 2.2 AA compliance: audited \metric{240 components}, trained \metric{15 engineers}, \textbf{reduced a11y bugs 78\%} (\metric{47→10/quarter}) \signaltag{Accessibility Advocacy}
+  \item \textbf{Championed} \kw{WCAG 2.2 AA (accessibility standard, level AA)} compliance: audited \metric{240 components}, trained \metric{15 engineers}, \textbf{reduced a11y bugs 78\%} (\metric{47→10/quarter}) \signaltag{Accessibility Advocacy}
 \end{itemize}
 
-\roleentry{\company{Airbnb}}{San Francisco, CA}{\role{Product Designer}}{\dates{July 2020 – June 2022}}
+\roleentry{\company{Airbnb}}{San Francisco, CA}{\role{Product Designer}}{\dates{07/2020 – 06/2022}}
 \begin{itemize}
-  \item \textbf{Delivered} host onboarding redesign: \metric{+23\% activation}, \metric{-45min setup time} via JTBD-driven progressive disclosure \signaltag{0→1 Ambiguity} \signaltag{Data-Informed Iteration}
+  \item \textbf{Delivered} host onboarding redesign: \metric{+23\% activation}, \metric{-45 min setup time} via JTBD-driven progressive disclosure \signaltag{0→1 Ambiguity} \signaltag{Data-Informed Iteration}
   \item \textbf{Designed} marketplace trust flows (identity verification, reviews): \metric{+15\% booking conversion} for new hosts \signaltag{Cross-functional Leadership}
 \end{itemize}
 
 \divider
 
 % ── EDUCATION ──
+% FORMAT: 2-line rhythm — Degree | Date / Institution | Location
 \section*{Education}
 
 \eduentry{M.S. Human-Computer Interaction}{\dates{2020}}{Stanford University}{Stanford, CA}
@@ -364,7 +406,8 @@ FinTech, Payments, KYC/AML, PCI-DSS, B2B SaaS, Marketplace, E-commerce, Design S
 
 \divider
 
-% ── CERTIFICATIONS ──
+% ── CONTINUOUS LEARNING / CERTIFICATIONS ──
+% SAME 2-line rhythm as Education
 \section*{Certifications}
 
 \certentry{Certified Usability Analyst (CUA)}{\dates{2021}}{Human Factors International}{}
@@ -382,6 +425,25 @@ FinTech, Payments, KYC/AML, PCI-DSS, B2B SaaS, Marketplace, E-commerce, Design S
 \end{itemize}
 
 \divider
+
+% ── SKILLS (designer-polish mode only) ──
+\ifx\resumemode\designer-polish
+  \section*{Skills}
+
+  \subsection*{Technical Skills}
+  \begin{itemize}
+    \item \textbf{Product Design:} Product Design, \kw{Design Systems}, Design Operations, User Research (JTBD, Usability), Prototyping (\kw{Figma}, \kw{React}, Framer), \kw{Accessibility (WCAG 2.2 AA)}, \kw{A/B Testing}, Analytics (Mixpanel, Looker)
+    \item \textbf{Engineering:} \kw{React}, \kw{TypeScript}, HTML/CSS, Tailwind, Storybook, Design Tokens, CI/CD, GraphQL
+  \end{itemize}
+
+  \subsection*{Tools \& Platforms}
+  \kw{Figma}, FigJam, Jira, Linear, Mixpanel, Amplitude, Looker, Git, GitHub, Storybook, Zeroheight, Notion, Miro, Dovetail
+
+  \subsection*{Domain Knowledge}
+  FinTech, Payments, KYC/AML, PCI-DSS, B2B SaaS, Marketplace, E-commerce, Design Systems
+
+  \divider
+\fi
 
 % ── SIGNALS DEMONSTRATED ──
 \section*{Signals Demonstrated}
@@ -485,12 +547,27 @@ cat main.txt
 
 | Gate | Check | Tool |
 |------|-------|------|
-| **Compiles** | `pdflatex main.tex` exits 0 | Overleaf / local |
+| **Zero-Warning Clean Compiles** | Compiles with **0 errors and 0 warnings** under `pdflatex` or `xelatex` (no `Overfull \hbox`, no font substitution, no missing characters `"ec-lmb10"`) | Overleaf / local log |
+| **No Overfull Boxes** | Log contains zero `Overfull \hbox` lines (enforced via `\emergencystretch=3em` and breaking long lists) | Log inspection |
 | **ATS Linear** | `pdftotext -layout main.pdf` reads Company→Date→Title→Location per role | `pdftotext` |
 | **Unicode Glyphs** | `fi`, `fl`, `•` extract correctly in `main.txt` | `pdftotext` + `cat` |
-| **No Missing Fonts** | Log shows only standard TeX Live fonts | `pdflatex` log |
+| **No Missing Fonts/Shapes** | Log shows zero `Font shape ... undefined` or substitution warnings | `pdflatex` / `xelatex` log |
 | **Hyperref Clean** | No colored link boxes in PDF | Visual |
 | **Signal Tags Extract** | `\signaltag{Tag}` → `[Tag]` in text | `pdftotext` |
+
+---
+
+## 7.5 Banned Raw Characters & Safe Symbols Table
+
+When generating or refactoring LaTeX resume files, **NEVER paste raw Unicode symbols** that lack glyphs in standard T1/EC fonts (`ec-lmb10`). Always use clean LaTeX macros or text equivalents:
+
+| Banned Raw Character | Source / Example Issue | Safe Clean LaTeX Equivalent |
+|----------------------|----------------------|-----------------------------|
+| `★` (U+2605) | Rating / STAR icon (`Missing character: There is no ★ in font ec-lmb10!`) | `4.8/5.0` or `$\star$` |
+| `→` (U+2192) | Arrow in metrics (`18%→27%`) | `$\rightarrow$` or plain text `->` |
+| `–` / `—` (raw dashes) | En-dash / Em-dash in dates | `--` (en-dash for date ranges) or `---` (em-dash) |
+| `“` / `”` | Smart double quotes | ```text''` or standard neutral quotes |
+| Unescaped `%`, `&`, `$` | LaTeX special characters | `\%`, `\&`, `\$` |
 
 ---
 
@@ -519,6 +596,9 @@ resume/
 | Unconditional `\input{glyphtounicode}` | Breaks XeLaTeX/LuaLaTeX (command undefined) | Use `\ifpdf` ... `\fi` guard |
 | Colored text without `hidelinks` | Link boxes appear in PDF | `\usepackage[hidelinks]{hyperref}` |
 | Text in header/footer | `fancyhdr` with content | Contact info in body only via `\contactline` |
+| Raw Unicode symbols (`★`, `→`) | Log shows `Missing character: There is no ★ in font ec-lmb10!` | Use clean LaTeX symbols (`4.8/5.0`, `$\rightarrow$`) per §7.5 |
+| Using `\scshape` with `\bfseries` where unsupported | Log shows `Font shape 'T1/lmr/b/sc' undefined` or substitutions | Use `\MakeUppercase` with `\bfseries` in `\titleformat{\section}` |
+| Unwrapped long technical lists | Log shows `Overfull \hbox (42.1pt too wide)` | Set `\emergencystretch=3em` and break long lists logically |
 
 ---
 

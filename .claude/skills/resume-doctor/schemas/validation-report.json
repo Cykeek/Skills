@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Validation Report Schema",
+  "description": "Phase 5 validation output - all 10 gates must pass",
+  "type": "object",
+  "required": ["overall_passed", "gates"],
+  "properties": {
+    "overall_passed": {"type": "boolean"},
+    "gates": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "required": ["gate", "passed", "details"],
+        "properties": {
+          "gate": {"type": "string", "enum": ["latex_format", "keyword_density", "parser_simulation", "unicode_extraction", "readability", "audience_comprehension", "metric_plausibility", "single_role", "summary_template", "portfolio_crossref"]},
+          "passed": {"type": "boolean"},
+          "details": {"type": "object"}
+        }
+      }
+    }
+  }
+}

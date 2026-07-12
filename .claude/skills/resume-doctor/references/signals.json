@@ -1,0 +1,232 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Signal Tag Taxonomy",
+  "description": "Controlled vocabulary of 10 signal tags for resume bullet annotation. No custom tags allowed. Referenced by validation_gates.validate_signal_tags()",
+  "version": "2.0",
+  "tags": [
+    {
+      "key": "data-informed-iteration",
+      "display": "Data-Informed Iteration",
+      "description": "Decisions driven by metrics, A/B tests, analytics, experimentation",
+      "triggers": [
+        "A/B testing",
+        "statistical significance",
+        "p-value",
+        "conversion rate",
+        "activation",
+        "retention",
+        "metrics-driven",
+        "analytics",
+        "experimentation",
+        "holdout"
+      ],
+      "examples": [
+        "Validated via A/B test (n=24,847, p<0.01, holdout confirmed) driving +9pp conversion",
+        "Established experimentation practice: 12 tests/quarter, 67% win rate, $2.1M ARR impact"
+      ],
+      "required_evidence": "Must include metric, method (A/B test, cohort analysis), and outcome"
+    },
+    {
+      "key": "cross-functional-leadership",
+      "display": "Cross-functional Leadership",
+      "description": "Leading PM/Eng/Design collaboration, driving alignment, establishing rituals",
+      "triggers": [
+        "cross-functional",
+        "directed",
+        "led",
+        "orchestrated",
+        "facilitated",
+        "design review",
+        "roadmap",
+        "prioritization",
+        "RACI",
+        "stakeholder"
+      ],
+      "examples": [
+        "Directed 3D/2E/1PM through quarterly roadmap prioritization (RICE); established design review rituals adopted org-wide",
+        "Facilitated weekly design reviews with 12 cross-functional stakeholders; resolved 47 handoff issues in Q3"
+      ],
+      "required_evidence": "Must specify team composition, cadence, and measurable outcome"
+    },
+    {
+      "key": "systems-thinking",
+      "display": "Systems Thinking",
+      "description": "Design systems, component libraries, token architecture, governance at scale",
+      "triggers": [
+        "design system",
+        "component library",
+        "design tokens",
+        "Storybook",
+        "Zeroheight",
+        "Style Dictionary",
+        "governance",
+        "coverage",
+        "breaking changes",
+        "migration"
+      ],
+      "examples": [
+        "Architected Design System v2 token architecture: 12 teams, 87% UI coverage, 0 breaking changes in 18mo",
+        "Built component library (240 components) in React/TypeScript; established contribution model for 50+ engineers"
+      ],
+      "required_evidence": "Must include scale (teams, components), coverage metric, and governance model"
+    },
+    {
+      "key": "technical-fluency",
+      "display": "Technical Fluency",
+      "description": "Production code, prototypes in code, engineering collaboration, technical decision-making",
+      "triggers": [
+        "React",
+        "TypeScript",
+        "JavaScript",
+        "HTML",
+        "CSS",
+        "Storybook",
+        "prototype",
+        "production code",
+        "engineering collaboration",
+        "CI/CD",
+        "GraphQL",
+        "REST"
+      ],
+      "examples": [
+        "Pair-programmed React/TypeScript components with 2 E5 engineers; cut handoff 3.2 days to 0.8 days",
+        "Shipped production prototypes in Storybook for 3 features; engineers adopted components without modification"
+      ],
+      "required_evidence": "Must name specific technologies, collaboration mode, and measurable efficiency gain"
+    },
+    {
+      "key": "user-research-rigor",
+      "display": "User Research Rigor",
+      "description": "Interviews, usability tests, JTBD, synthesis leading to product decisions",
+      "triggers": [
+        "user research",
+        "usability testing",
+        "JTBD",
+        "jobs to be done",
+        "interviews",
+        "surveys",
+        "card sorting",
+        "tree testing",
+        "diary studies",
+        "synthesis"
+      ],
+      "examples": [
+        "Established JTBD research practice: 52 interviews/year, insights logged in Dovetail, directly informed 3 product pivots",
+        "Conducted 12 usability studies (n=8 each); synthesized findings into journey maps driving Q3 roadmap reprioritization"
+      ],
+      "required_evidence": "Must include method, sample size, tool, and traceable product impact"
+    },
+    {
+      "key": "accessibility-advocacy",
+      "display": "Accessibility Advocacy",
+      "description": "WCAG audit, inclusive patterns, training, bug reduction, compliance",
+      "triggers": [
+        "WCAG",
+        "accessibility",
+        "a11y",
+        "screen reader",
+        "keyboard navigation",
+        "inclusive design",
+        "ARIA",
+        "Section 508",
+        "audit",
+        "compliance"
+      ],
+      "examples": [
+        "Championed WCAG 2.2 AA compliance: audited 240 components, trained 15 engineers, reduced a11y bugs 78%",
+        "Established accessibility review gate in design system contribution pipeline; 100% of new components ship accessible"
+      ],
+      "required_evidence": "Must include WCAG version/level, scope (components/pages), and measurable improvement"
+    },
+    {
+      "key": "craft-polish",
+      "display": "Craft & Polish",
+      "description": "Motion specs, edge cases, pixel-perfect, design QA, interaction detail",
+      "triggers": [
+        "motion",
+        "animation",
+        "micro-interaction",
+        "edge case",
+        "pixel-perfect",
+        "design QA",
+        "interaction spec",
+        "framer",
+        "principle",
+        "protopie"
+      ],
+      "examples": [
+        "Authored motion specification system (duration, easing, choreography) adopted by 8 product teams; reduced animation bugs 90%",
+        "Specified 47 edge cases for checkout flow (empty states, errors, loading, internationalization); zero post-launch UX bugs"
+      ],
+      "required_evidence": "Must include specification artifact, adoption scope, and quality metric"
+    },
+    {
+      "key": "zero-to-one-ambiguity",
+      "display": "0→1 Ambiguity",
+      "description": "Defined problem, strategy from scratch, shipped v1, navigated unknown",
+      "triggers": [
+        "0 to 1",
+        "0→1",
+        "from scratch",
+        "greenfield",
+        "ambiguity",
+        "undefined",
+        "strategy",
+        "v1",
+        "MVP",
+        "product strategy",
+        "problem definition"
+      ],
+      "examples": [
+        "Defined 0→1 product strategy for B2B marketplace (Series A, $12M): IA, design language, component library from scratch",
+        "Shipped v1 developer platform in 6 months: defined problem space, designed API surface, built design system from zero"
+      ],
+      "required_evidence": "Must describe initial ambiguity, strategic choices made, and v1 ship evidence"
+    },
+    {
+      "key": "strategic-influence",
+      "display": "Strategic Influence",
+      "description": "Roadmap change, budget secured, exec memo, org process change, thought leadership",
+      "triggers": [
+        "roadmap",
+        "budget",
+        "executive",
+        "VP",
+        "C-suite",
+        "memo",
+        "strategy",
+        "influence",
+        "organizational",
+        "process change",
+        "hiring"
+      ],
+      "examples": [
+        "Authored design strategy memo adopted by VP Product; shifted Q3 roadmap to prioritize enterprise billing ($2.1M ARR)",
+        "Secured $200K budget for design system migration through business case presented to CFO; approved unanimously"
+      ],
+      "required_evidence": "Must name decision-maker, specific decision changed, and quantified business impact"
+    },
+    {
+      "key": "mentorship-culture",
+      "display": "Mentorship & Culture",
+      "description": "Mentees promoted, rituals created, hiring panels, community building, knowledge sharing",
+      "triggers": [
+        "mentor",
+        "mentee",
+        "promoted",
+        "ritual",
+        "hiring panel",
+        "interview",
+        "community",
+        "knowledge sharing",
+        "design critique",
+        "culture"
+      ],
+      "examples": [
+        "Mentored 2 junior designers to promotion within 18mo; created design critique framework adopted by 8 teams",
+        "Led hiring panel for 15 designer roles; established structured interview rubric reducing bias; 40% female hires"
+      ],
+      "required_evidence": "Must include mentee outcomes, ritual/process created, and adoption scope"
+    }
+  ]
+}
