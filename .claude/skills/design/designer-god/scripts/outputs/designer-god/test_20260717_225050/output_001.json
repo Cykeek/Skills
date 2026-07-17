@@ -1,0 +1,45 @@
+{
+  "template_name": "Principled Critique",
+  "structure": [
+    "Overall read",
+    "What is working",
+    "Where the design breaks down (Problem/goal fit, Flow/interaction, Craft/hierarchy, Trust/accessibility)",
+    "Recommendations with rationale",
+    "Open questions",
+    "Principles referenced"
+  ],
+  "principles": [
+    "Krug",
+    "Rams",
+    "Norman",
+    "Maeda",
+    "JTBD",
+    "WCAG"
+  ],
+  "example": {
+    "overall_read": "Strong visual design but primary action is buried",
+    "what_is_working": [
+      "Typography scale is consistent",
+      "Color palette supports brand"
+    ],
+    "breakdowns": [
+      {
+        "area": "Problem/goal fit",
+        "issue": "Design solves a different problem than stated",
+        "severity": "high"
+      }
+    ],
+    "recommendations": [
+      "Elevate primary CTA - because Krug says don't make them think",
+      "Reduce secondary actions - Rams says less but better"
+    ],
+    "open_questions": [
+      "What is the actual user job here?"
+    ],
+    "principles_referenced": [
+      "Krug",
+      "Rams"
+    ]
+  },
+  "reference_file": "references/design-templates.md"
+}

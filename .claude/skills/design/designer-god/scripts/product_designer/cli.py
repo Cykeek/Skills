@@ -11,6 +11,9 @@ import sys
 from typing import Any, Dict, List
 from pathlib import Path
 
+# Add parent directory to path for workspace_utils
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
 from product_designer.output_manager import OutputManager, OutputFormat
 from product_designer.validators import validate_request, validate_response
 from product_designer.diagnostics import ProductDesignerDiagnostics
@@ -21,7 +24,7 @@ class CLI:
 
     def __init__(self):
         self.diagnostics = ProductDesignerDiagnostics()
-        self.output_manager = OutputManager(OutputFormat.JSON)
+        self.output_manager = OutputManager(OutputFormat.JSON, skill_name="designer-god")
         self.parser = self._create_parser()
 
     def _create_parser(self) -> argparse.ArgumentParser:
@@ -45,6 +48,11 @@ Examples:
             choices=["json", "text", "table"],
             default="json",
             help="Output format (default: json)"
+        )
+        parser.add_argument(
+            "--task-type",
+            default="run",
+            help="Task type for output subfolder (review, framing, research, brief, critique, checklist)"
         )
         parser.add_argument(
             "--validate",
@@ -99,8 +107,9 @@ Examples:
             self.parser.print_help()
             return 1
 
-        # Set output format
+        # Set output format and task type
         self.output_manager.set_format(parsed.output)
+        self.output_manager.task_type = parsed.task_type
 
         # Route to command handler
         if parsed.command == "design-review":
@@ -126,10 +135,10 @@ Examples:
         if args.validate:
             valid, errors = validate_response("design-review-response", result)
             if not valid:
-                self.output_manager.output({"validation_errors": errors})
+                self.output_manager.output({"validation_errors": errors}, write_file=True)
                 return 1
 
-        self.output_manager.output(result)
+        self.output_manager.output(result, write_file=True)
         return 0
 
     def cmd_problem_framing(self, args) -> int:
@@ -144,10 +153,10 @@ Examples:
         if args.validate:
             valid, errors = validate_response("problem-framing-response", result)
             if not valid:
-                self.output_manager.output({"validation_errors": errors})
+                self.output_manager.output({"validation_errors": errors}, write_file=True)
                 return 1
 
-        self.output_manager.output(result)
+        self.output_manager.output(result, write_file=True)
         return 0
 
     def cmd_research_plan(self, args) -> int:
@@ -159,10 +168,10 @@ Examples:
         if args.validate:
             valid, errors = validate_response("research-plan-response", result)
             if not valid:
-                self.output_manager.output({"validation_errors": errors})
+                self.output_manager.output({"validation_errors": errors}, write_file=True)
                 return 1
 
-        self.output_manager.output(result)
+        self.output_manager.output(result, write_file=True)
         return 0
 
     def cmd_design_brief(self, args) -> int:
@@ -174,10 +183,10 @@ Examples:
         if args.validate:
             valid, errors = validate_response("design-brief-response", result)
             if not valid:
-                self.output_manager.output({"validation_errors": errors})
+                self.output_manager.output({"validation_errors": errors}, write_file=True)
                 return 1
 
-        self.output_manager.output(result)
+        self.output_manager.output(result, write_file=True)
         return 0
 
     def cmd_critique_template(self, args) -> int:
@@ -187,16 +196,16 @@ Examples:
         if args.validate:
             valid, errors = validate_response("critique-template", result)
             if not valid:
-                self.output_manager.output({"validation_errors": errors})
+                self.output_manager.output({"validation_errors": errors}, write_file=True)
                 return 1
 
-        self.output_manager.output(result)
+        self.output_manager.output(result, write_file=True)
         return 0
 
     def cmd_checklist(self, args) -> int:
         """Get design review checklist."""
         result = self.diagnostics.get_design_checklist(args.type)
-        self.output_manager.output(result)
+        self.output_manager.output(result, write_file=True)
         return 0
 
 

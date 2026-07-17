@@ -1,0 +1,264 @@
+{
+  "meta": {
+    "resume_file": "D:\\AI-Workflows\\resumes\\main_honest_final.tex",
+    "audited_at": "2026-07-17T09:01:49.219869Z",
+    "auditor_version": "2.2.0"
+  },
+  "overall_score": 93,
+  "passed": false,
+  "findings": [
+    {
+      "gate": "format_compliance",
+      "passed": true,
+      "details": {
+        "issues": [],
+        "warnings": []
+      }
+    },
+    {
+      "gate": "structure_completeness",
+      "passed": true,
+      "details": {
+        "sections": {
+          "WORK_EXPERIENCE": "PASS",
+          "SKILLS": "PASS",
+          "EDUCATION": "PASS",
+          "SUMMARY": "PASS",
+          "Certifications": "PASS",
+          "Projects": "PASS",
+          "Continuous Learning": "PASS",
+          "Contact in body": "PASS",
+          "Linear flow": "PASS"
+        },
+        "issues": []
+      }
+    },
+    {
+      "gate": "keyword_hygiene",
+      "passed": true,
+      "details": {
+        "densities": {
+          "figma": 0.92,
+          "design system": 1.84,
+          "prototyping": 0.37,
+          "user research": 1.1,
+          "accessibility": 0.74,
+          "react": 0.0,
+          "typescript": 0.0,
+          "a/b testing": 0.37,
+          "stakeholder": 0.18
+        },
+        "issues": []
+      }
+    },
+    {
+      "gate": "readability_baseline",
+      "passed": false,
+      "details": {
+        "flesch_kincaid_grade": 12.9,
+        "avg_sentence_length": 14.9,
+        "passive_hits": [],
+        "issues": [
+          "Flesch-Kincaid grade 12.9 exceeds 12"
+        ]
+      }
+    },
+    {
+      "gate": "unicode_extraction",
+      "passed": true,
+      "details": {
+        "issues": [],
+        "recovery_rate": 1.0,
+        "normalized_path": "D:\\AI-Workflows\\resumes\\main_honest_final.normalized.txt"
+      }
+    },
+    {
+      "gate": "ats_parser_simulation",
+      "passed": true,
+      "details": {
+        "parsers": {
+          "greenhouse": {
+            "contact": "PASS",
+            "summary": "PASS",
+            "skills": "PASS",
+            "experience": "PASS",
+            "education": "PASS",
+            "dates": "PASS",
+            "projects": "PASS",
+            "certifications": "PASS"
+          },
+          "lever": {
+            "contact": "PASS",
+            "summary": "PASS",
+            "skills": "PASS",
+            "experience": "PASS",
+            "education": "PASS",
+            "dates": "PASS",
+            "projects": "PASS",
+            "certifications": "PASS"
+          },
+          "workday": {
+            "contact": "PASS",
+            "summary": "PASS",
+            "skills": "PASS",
+            "experience": "PASS",
+            "education": "PASS",
+            "dates": "PASS",
+            "projects": "PASS",
+            "certifications": "PASS"
+          },
+          "icims": {
+            "contact": "PASS",
+            "summary": "PASS",
+            "skills": "PASS",
+            "experience": "PASS",
+            "education": "PASS",
+            "dates": "PASS",
+            "projects": "PASS",
+            "certifications": "PASS"
+          },
+          "taleo": {
+            "contact": "PASS",
+            "summary": "PASS",
+            "skills": "PASS",
+            "experience": "PASS",
+            "education": "PASS",
+            "dates": "PASS",
+            "projects": "PASS",
+            "certifications": "PASS"
+          }
+        },
+        "canonical_mapping": {
+          "WORK_EXPERIENCE": true,
+          "SKILLS": true,
+          "EDUCATION": true,
+          "SUMMARY": true
+        },
+        "layout_linear_ready": true,
+        "issues": []
+      }
+    },
+    {
+      "gate": "5_subagent_validation_harness",
+      "passed": true,
+      "details": {
+        "overall_passed": true,
+        "subagents": {
+          "engine_compatibility": {
+            "auditor": "Engine Compatibility",
+            "status": "PASS",
+            "issues": []
+          },
+          "char_escaping": {
+            "auditor": "Character Escaping",
+            "status": "PASS",
+            "issues": []
+          },
+          "ats_structure": {
+            "auditor": "ATS Structure",
+            "status": "PASS",
+            "issues": []
+          },
+          "unicode_ligatures": {
+            "auditor": "Unicode & Ligatures",
+            "status": "PASS",
+            "issues": []
+          },
+          "recruiter_hygiene": {
+            "auditor": "Recruiter & Keyword Hygiene",
+            "status": "PASS",
+            "issues": []
+          }
+        }
+      }
+    }
+  ],
+  "factor_scores": {
+    "lexical_cleanliness": 100,
+    "structural_readiness": 100,
+    "keyword_hygiene_prominence": 100,
+    "readability_recency": 75
+  },
+  "subagent_harness": {
+    "overall_passed": true,
+    "subagents": {
+      "engine_compatibility": {
+        "auditor": "Engine Compatibility",
+        "status": "PASS",
+        "issues": []
+      },
+      "char_escaping": {
+        "auditor": "Character Escaping",
+        "status": "PASS",
+        "issues": []
+      },
+      "ats_structure": {
+        "auditor": "ATS Structure",
+        "status": "PASS",
+        "issues": []
+      },
+      "unicode_ligatures": {
+        "auditor": "Unicode & Ligatures",
+        "status": "PASS",
+        "issues": []
+      },
+      "recruiter_hygiene": {
+        "auditor": "Recruiter & Keyword Hygiene",
+        "status": "PASS",
+        "issues": []
+      }
+    }
+  },
+  "recruiter_scorecard": {
+    "designation_family": "design_ux",
+    "overall_score": 100,
+    "max_score": 100,
+    "verdict": "INTERVIEW_READY",
+    "bonus_points": 10,
+    "deductions": 0,
+    "pillars": {
+      "proven_impact": {
+        "name": "Proven Impact & Scale",
+        "max_score": 35,
+        "score": 35,
+        "evidence": [
+          "Found quantitative metrics: 28+ projects, 24x, 2K, 23K, 24x"
+        ],
+        "gaps": []
+      },
+      "domain_rigor": {
+        "name": "Domain & Technical Rigor",
+        "max_score": 25,
+        "score": 25,
+        "evidence": [
+          "Domain rigor signals present: figma, user research, usability, accessibility, design system"
+        ],
+        "gaps": []
+      },
+      "verifiable_proof": {
+        "name": "Verifiable External Proof",
+        "max_score": 20,
+        "score": 20,
+        "evidence": [
+          "Verifiable external evidence cues found: figma, dribbble, portfolio, design system"
+        ],
+        "gaps": []
+      },
+      "signal_to_noise": {
+        "name": "Signal-to-Noise Ratio",
+        "max_score": 20,
+        "score": 20,
+        "evidence": [
+          "Clean signal-to-noise ratio: professional action verbs used without fluff."
+        ],
+        "gaps": []
+      }
+    },
+    "bonuses_awarded": [
+      "+5 High metric plaque: 5+ quantified outcomes",
+      "+5 Live artifact verification link present"
+    ],
+    "deductions_applied": [],
+    "recruiter_summary": "Strong evidence-backed profile tailored for design_ux. Clear impact metrics and verifiable domain rigor."
+  }
+}

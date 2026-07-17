@@ -14,6 +14,14 @@ from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Optional, Any, Tuple
 
+# Import workspace utilities for standardized output management
+# workspace_utils.py is copied to this skill's scripts/ directory by scaffold_skill.py
+from workspace_utils import get_skill_output_dir, create_task_dir
+
+# Import workspace utilities for standardized output management
+# workspace_utils.py is copied to this skill's scripts/ directory by scaffold_skill.py
+from workspace_utils import get_skill_output_dir, create_task_dir
+
 
 # =============================================================================
 # TEMPLATES - Pre-filled briefs for common formats
@@ -261,8 +269,13 @@ def load_brief_from_file(filepath: str) -> Brief:
 
 
 def save_brief(brief: Brief, filename: str) -> str:
-    """Save brief to briefs/ directory."""
-    briefs_dir = Path.cwd() / "briefs"
+    """Save brief to the skill's standardized output directory.
+
+    Writes to <workspace>/outputs/content-writer/briefs/<filename>.
+    Keeps .claude/ clean by routing all artifacts out of the skill tree.
+    """
+    output_dir = get_skill_output_dir("content-writer")
+    briefs_dir = output_dir / "briefs"
     briefs_dir.mkdir(parents=True, exist_ok=True)
     filepath = briefs_dir / filename
     with open(filepath, "w", encoding="utf-8") as f:
@@ -349,7 +362,11 @@ def audit_existing_content(filepath: str, output_json: bool = False) -> Brief:
     print_brief(brief, as_json=output_json)
 
     if not output_json:
-        saved_path = save_brief(brief, f"audit_{Path(filepath).stem}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json")
+        # Save to standardized output directory with task folder
+        task_dir = create_task_dir("content-writer", "audit")
+        saved_path = task_dir / f"audit_{Path(filepath).stem}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+        with open(saved_path, "w", encoding="utf-8") as f:
+            json.dump(brief.to_dict(), f, indent=2, ensure_ascii=False)
         print(f"Saved audit brief to: {saved_path}")
 
     return brief
@@ -538,6 +555,12 @@ def create_parser() -> argparse.ArgumentParser:
         help="Fail if any required fields are missing (for CI/automation)",
     )
 
+    parser.add_argument(
+        "--task-type",
+        default="brief",
+        help="Task type for output subfolder (brief, audit, generate)",
+    )
+
     return parser
 
 
@@ -607,7 +630,11 @@ def main():
     print_brief(brief, as_json=args.json)
 
     if args.save:
-        saved_path = save_brief(brief, args.save)
+        # Use standardized output directory with task subfolder
+        task_dir = create_task_dir("content-writer", args.task_type)
+        saved_path = task_dir / args.save
+        with open(saved_path, "w", encoding="utf-8") as f:
+            json.dump(brief.to_dict(), f, indent=2, ensure_ascii=False)
         if not args.json:
             print(f"Saved to: {saved_path}")
 

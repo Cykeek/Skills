@@ -15,18 +15,27 @@ import hmac
 import json
 import time
 import uuid
-from . import __version__
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent))
+
 from datetime import datetime, timezone
 from enum import Enum
-from pathlib import Path
+from pathlib import Path as PathType
 from typing import Any, AsyncGenerator, Dict, List, Optional, Union
 from urllib.parse import urljoin
 
 import httpx
 import jsonschema
 
-from .validation import validate_request, validate_response, ValidationError as SchemaValidationError
-from .output_manager import OutputManager, OutputFormat
+# Handle both module import and direct script execution
+try:
+    from . import __version__
+except ImportError:
+    __version__ = "2.1.0"
+
+from validation import validate_request, validate_response, ValidationError as SchemaValidationError
+from output_manager import OutputManager, OutputFormat
 
 
 class AuthMethod(Enum):
@@ -219,6 +228,7 @@ class CalComClient:
         output_manager: OutputManager = None,
         validate_requests: bool = True,
         validate_responses: bool = True,
+        task_dir: Path = None,
     ):
         """
         Initialize Cal.com client.
@@ -235,6 +245,7 @@ class CalComClient:
             output_manager: Output manager for structured output
             validate_requests: Enable request schema validation
             validate_responses: Enable response schema validation
+            task_dir: Task directory for JSON file output (from workspace_utils)
         """
         self.auth_method = auth_method
         self.api_key = api_key
@@ -243,7 +254,7 @@ class CalComClient:
         self.base_url = base_url or self.BASE_URL
         self.timeout = timeout
         self.api_version = api_version
-        self.output_manager = output_manager or OutputManager(OutputFormat.JSON)
+        self.output_manager = output_manager or OutputManager(OutputFormat.JSON, task_dir=task_dir)
         self.validate_requests = validate_requests
         self.validate_responses = validate_responses
 
@@ -1030,6 +1041,10 @@ class CalComClient:
     def set_output_format(self, format: OutputFormat) -> None:
         """Set output format for CLI commands."""
         self.output_manager.format = format
+
+    def set_task_dir(self, task_dir: Path) -> None:
+        """Set task directory for JSON file output."""
+        self.output_manager.task_dir = task_dir
 
     def output(self, data: Any, format: OutputFormat = None) -> None:
         """Output data using configured output manager."""

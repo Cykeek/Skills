@@ -1,39 +1,61 @@
 """
 Master output directory management for resume-doctor.
 
-Every CLI command and Python module must call `ensure_master_output_dir()`
-before writing any artifacts. This is idempotent and safe to call repeatedly.
+Uses shared workspace_utils for workspace detection and standardized output folders.
+Every CLI command and Python module should use `get_skill_output_dir()` and `create_task_dir()`.
 """
 
 from pathlib import Path
 from typing import Optional
+import sys
+
+# Add .claude/scripts to path for workspace_utils
+SCRIPTS_DIR = Path(__file__).parent.parent.parent.parent.parent.parent / ".claude" / "scripts"
+if SCRIPTS_DIR.exists():
+    sys.path.insert(0, str(SCRIPTS_DIR))
+
+try:
+    from workspace_utils import (
+        get_workspace_root,
+        get_skill_output_dir,
+        create_task_dir,
+    )
+except ImportError:
+    # Fallback for when workspace_utils is not available
+    def get_workspace_root(start: Optional[Path] = None) -> Path:
+        current = (start or Path.cwd()).resolve()
+        for parent in [current] + list(current.parents):
+            if (parent / ".git").exists():
+                return parent
+        return Path("D:/AI-Workflows")
+
+    def get_skill_output_dir(skill_name: str, workspace_root: Optional[Path] = None) -> Path:
+        root = workspace_root or get_workspace_root()
+        skill_dir = root / "outputs" / skill_name
+        skill_dir.mkdir(parents=True, exist_ok=True)
+        return skill_dir
+
+    def create_task_dir(skill_name: str, task_type: str, workspace_root: Optional[Path] = None, timestamp: Optional[str] = None) -> Path:
+        from datetime import datetime
+        if timestamp is None:
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        skill_dir = get_skill_output_dir(skill_name, workspace_root)
+        safe_task_type = "".join(c if c.isalnum() or c in "-_" else "_" for c in task_type)
+        task_dir = skill_dir / f"{safe_task_type}_{timestamp}"
+        task_dir.mkdir(parents=True, exist_ok=True)
+        return task_dir
 
 
+# Backward compatibility aliases
 MASTER_FOLDER_NAME = "resume-doctor-output"
 
-
 def find_workspace_root(start: Optional[Path] = None) -> Path:
-    """
-    Locate the workspace root by walking up from `start` (default: cwd)
-    looking for a .git directory. Falls back to current working directory.
-    """
-    current = (start or Path.cwd()).resolve()
-    for parent in [current] + list(current.parents):
-        if (parent / ".git").exists():
-            return parent
-    # Fallback to project root if git not found
-    return Path("D:/AI-Workflows")
+    """Locate the workspace root (deprecated: use workspace_utils.get_workspace_root)."""
+    return get_workspace_root(start)
 
 def ensure_master_output_dir(workspace_root: Optional[Path] = None) -> Path:
-    """
-    Ensure the master output folder exists. Returns its path.
-
-    Called by every CLI entry point and Python module before any file I/O.
-    """
-    root = find_workspace_root(workspace_root)
-    master_dir = root / MASTER_FOLDER_NAME
-    master_dir.mkdir(parents=True, exist_ok=True)
-    return master_dir
+    """Ensure the master output folder exists (deprecated: use get_skill_output_dir)."""
+    return get_skill_output_dir("resume-doctor", workspace_root)
 
 
 def create_task_subfolder(
@@ -46,20 +68,11 @@ def create_task_subfolder(
     """
     Create a dated task subfolder under the master output directory.
 
-    Args:
-        master_dir: Path returned by `ensure_master_output_dir()`
-        task_type: One of "ats-audit", "tailor", "review", "analyze", "build"
-        resume_stem: Basename of resume file without extension (e.g., "main")
-        job_stem: Basename of job source (e.g., "stripe-senior-pd" or "url_abc123")
-        timestamp: ISO-like timestamp "YYYYMMDD_HHMMSS"
-
-    Returns:
-        Path to the created task subfolder.
+    DEPRECATED: Use create_task_dir(skill_name, task_type) instead.
+    This signature is kept for backward compatibility.
     """
-    folder_name = f"{task_type}_{resume_stem}__{job_stem}_{timestamp}"
-    task_dir = master_dir / folder_name
-    task_dir.mkdir(parents=True, exist_ok=True)
-    return task_dir
+    skill_dir = master_dir.parent if master_dir.name == "resume-doctor-output" else master_dir
+    return create_task_dir("resume-doctor", task_type, timestamp=timestamp)
 
 
 def write_overleaf_instructions(task_dir: Path, mode: str = "designer-polish") -> Path:

@@ -174,7 +174,7 @@ def scaffold_skill(spec: Dict[str, Any], skills_root: Path, dry_run: bool = Fals
     # Write SKILL.md
     (skill_path / "SKILL.md").write_text(rendered, encoding='utf-8')
 
-    # Create placeholder script
+    # Create placeholder script with workspace output management
     script_content = f'''#!/usr/bin/env python3
 """{{{{DESCRIPTION}}}} - CLI tool for {skill_name} skill."""
 import argparse
@@ -182,19 +182,31 @@ import json
 import sys
 from pathlib import Path
 
+# Import workspace utilities for standardized output management.
+# workspace_utils.py is copied to this skill's scripts/ directory by scaffold_skill.py.
+# For shared updates, run scaffold again or copy from .claude/scripts/workspace_utils.py
+from workspace_utils import get_skill_output_dir, create_task_dir
+
 
 def main():
     parser = argparse.ArgumentParser(description="{{DESCRIPTION}}")
     parser.add_argument("--input", help="Input file or value")
     parser.add_argument("--output", help="Output file (default: stdout)")
     parser.add_argument("--format", choices=["json", "text"], default="json")
+    parser.add_argument("--task-type", default="run", help="Task type for output subfolder")
     args = parser.parse_args()
+
+    # Initialize skill output directory (creates outputs/<skill-name>/)
+    skill_output_dir = get_skill_output_dir("{skill_name}")
+    # Create timestamped task subfolder (outputs/<skill-name>/<task-type>_YYYYMMDD_HHMMSS/)
+    task_dir = create_task_dir("{skill_name}", args.task_type)
 
     # TODO: Implement skill logic
     result = {{
         "skill": "{skill_name}",
         "status": "implemented",
-        "message": "TODO: Implement skill logic"
+        "message": "TODO: Implement skill logic",
+        "output_dir": str(task_dir)
     }}
 
     if args.format == "json":
@@ -203,9 +215,13 @@ def main():
         output = str(result)
 
     if args.output:
-        Path(args.output).write_text(output, encoding='utf-8')
+        output_path = Path(args.output)
     else:
-        print(output)
+        # Default: write to task directory
+        output_path = task_dir / "output.json"
+
+    output_path.write_text(output, encoding='utf-8')
+    print(f"Output written to: {{output_path}}", file=sys.stderr)
 
     return 0
 
@@ -249,6 +265,12 @@ Example content
 *Part of {skill_name} skill references*
 '''
     (skill_path / "references" / f"{skill_name}-playbook.md").write_text(ref_content, encoding='utf-8')
+
+    # Copy workspace utilities to skill scripts for standalone execution
+    import shutil
+    workspace_utils_src = Path(__file__).parent / "workspace_utils.py"
+    if workspace_utils_src.exists():
+        shutil.copy2(workspace_utils_src, skill_path / "scripts" / "workspace_utils.py")
 
     # Create placeholder asset
     asset_content = f'''# {skill_name.replace('-', ' ').title()} Template

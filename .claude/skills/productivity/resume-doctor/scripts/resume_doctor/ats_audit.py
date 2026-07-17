@@ -201,7 +201,7 @@ def validate_keyword_hygiene(latex_path: str):
 
 
 def latex_to_plain(latex: str) -> str:
-    text = re.sub(r'%.*', '', latex)
+    text = re.sub(r'(?<!\\)%.*', '', latex)
     text = re.sub(r'\\(kw|metric|signaltag|textbf|textit|emph)\{([^}]*)\}', r'\2', text)
     text = re.sub(r'\\[a-zA-Z]+\*?(?:\[[^]]*\])?(?:\{[^}]*\})?', ' ', text)
     text = re.sub(r'[{}]', ' ', text)

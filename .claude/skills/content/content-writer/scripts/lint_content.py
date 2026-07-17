@@ -14,6 +14,10 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Callable, Iterable, List
 
+# Import workspace utilities for standardized output management
+# workspace_utils.py is copied to this skill's scripts/ directory by scaffold_skill.py
+from workspace_utils import get_skill_output_dir, create_task_dir
+
 
 # ─── Patterns ────────────────────────────────────────────────────────────────
 
@@ -455,6 +459,7 @@ Examples:
     parser.add_argument("--fix", action="store_true", help="Apply fixes")
     parser.add_argument("--in-place", action="store_true", help="Write fixes to files (requires --fix)")
     parser.add_argument("--quiet", "-q", action="store_true", help="Suppress text output (JSON still prints)")
+    parser.add_argument("--task-type", default="lint", help="Task type for output subfolder (lint, audit, fix)")
     return parser.parse_args()
 
 
@@ -483,7 +488,12 @@ def main() -> int:
             return 1
 
     if args.json:
-        print(json.dumps([r.to_dict() for r in all_results], indent=2))
+        # Write JSON output to task directory
+        task_dir = create_task_dir("content-writer", args.task_type)
+        output_path = task_dir / "lint_report.json"
+        with open(output_path, "w", encoding="utf-8") as f:
+            json.dump([r.to_dict() for r in all_results], f, indent=2)
+        print(f"JSON report saved to: {output_path}", file=sys.stderr)
 
     if not args.quiet and not args.json:
         for r in all_results:

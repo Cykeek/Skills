@@ -9,6 +9,16 @@ import json
 import sys
 from typing import Any, Optional
 from enum import Enum
+from pathlib import Path
+
+# Import workspace utilities for standardized output directory management
+try:
+    from workspace_utils import get_skill_output_dir, create_task_dir
+except ImportError:
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).parent.parent))
+    from workspace_utils import get_skill_output_dir, create_task_dir
 
 
 class OutputFormat(Enum):
@@ -20,21 +30,51 @@ class OutputFormat(Enum):
 class OutputManager:
     """Manages CLI output formatting."""
 
-    def __init__(self, format: OutputFormat = OutputFormat.JSON):
+    def __init__(
+        self,
+        format: OutputFormat = OutputFormat.JSON,
+        task_dir: Optional[str] = None,
+        skill_name: str = "designer-god",
+        task_type: str = "run"
+    ):
         self.format = format
+        self.skill_name = skill_name
+        self.task_type = task_type
+        self._task_dir = task_dir
+        self._output_count = 0
 
-    def output(self, data: Any) -> None:
+    @property
+    def task_dir(self) -> Optional[str]:
+        """Get or create task directory for JSON file output."""
+        if self._task_dir is None:
+            self._task_dir = str(create_task_dir(self.skill_name, self.task_type))
+        return self._task_dir
+
+    def output(self, data: Any, format: OutputFormat = None, write_file: bool = False) -> None:
         """Output data in the configured format."""
-        if self.format == OutputFormat.JSON:
-            self._output_json(data)
-        elif self.format == OutputFormat.TEXT:
+        fmt = format or self.format
+
+        if fmt == OutputFormat.JSON:
+            self._output_json(data, write_file)
+        elif fmt == OutputFormat.TEXT:
             self._output_text(data)
-        elif self.format == OutputFormat.TABLE:
+        elif fmt == OutputFormat.TABLE:
             self._output_table(data)
 
-    def _output_json(self, data: Any) -> None:
+    def _output_json(self, data: Any, write_file: bool = False) -> None:
         """Output as JSON."""
-        print(json.dumps(data, indent=2, ensure_ascii=False))
+        json_str = json.dumps(data, indent=2, ensure_ascii=False)
+        print(json_str)
+
+        # Also write to file in task_dir if requested
+        if write_file and self.task_dir:
+            self._output_count += 1
+            output_file = Path(self.task_dir) / f"output_{self._output_count:03d}.json"
+            try:
+                with open(output_file, "w", encoding="utf-8") as f:
+                    f.write(json_str)
+            except OSError:
+                pass  # Silently ignore file write errors
 
     def _output_text(self, data: Any, indent: int = 0) -> None:
         """Output as formatted text."""

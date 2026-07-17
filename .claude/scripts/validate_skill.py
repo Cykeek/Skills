@@ -37,6 +37,7 @@ class SkillValidator:
         self._check_cross_references()
         self._check_scripts()
         self._check_references()
+        self._check_output_management()
 
         return {
             "valid": len(self.errors) == 0,
@@ -267,6 +268,36 @@ class SkillValidator:
         for ref in listed_refs:
             if ref not in actual_refs:
                 self.warnings.append(f"Listed reference file missing: {ref}")
+
+    def _check_output_management(self):
+        """Validate skill uses standardized workspace output management."""
+        scripts_dir = self.skill_path / "scripts"
+        if not scripts_dir.exists():
+            return
+
+        # Check for output management patterns in scripts
+        has_output_management = False
+        has_workspace_utils = False
+
+        for script in scripts_dir.glob("*.py"):
+            if script.name == "__init__.py":
+                continue
+            try:
+                content = script.read_text(encoding='utf-8')
+                # Check for workspace_utils import or get_skill_output_dir/create_task_dir usage
+                if "workspace_utils" in content or "get_skill_output_dir" in content or "create_task_dir" in content:
+                    has_workspace_utils = True
+                # Check for any output directory management
+                if "output" in content.lower() and ("mkdir" in content or "Path(" in content or "write" in content):
+                    has_output_management = True
+            except Exception:
+                pass
+
+        if not has_workspace_utils:
+            self.warnings.append(f"Skill scripts should import workspace_utils for standardized output management (get_skill_output_dir, create_task_dir)")
+
+        if has_output_management and not has_workspace_utils:
+            self.warnings.append(f"Skill writes output files but doesn't use workspace_utils - outputs may go to .claude/ folder")
 
 
 def main():

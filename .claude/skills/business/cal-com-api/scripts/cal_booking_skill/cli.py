@@ -14,9 +14,18 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-from .api_client import CalComClient, AuthMethod, OutputFormat, OutputManager
-from .validation import validate_request, validate_response
-from .output_manager import OutputManager as OM
+# Use absolute imports for running as script
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent))
+
+from api_client import CalComClient, AuthMethod, OutputFormat, OutputManager
+from validation import validate_request, validate_response
+from output_manager import OutputManager as OM
+
+# Import workspace utilities for standardized output management
+# workspace_utils.py is copied to this skill's scripts/ directory by scaffold_skill.py
+from workspace_utils import get_skill_output_dir, create_task_dir
 
 
 class CLI:
@@ -25,6 +34,8 @@ class CLI:
     def __init__(self, client: CalComClient):
         self.client = client
         self.output_manager = client.output_manager
+        self.task_dir = None
+        self.task_type = "run"
 
     def create_parser(self) -> argparse.ArgumentParser:
         """Create argument parser with all commands."""
@@ -72,6 +83,11 @@ class CLI:
             "-v", "--verbose",
             action="store_true",
             help="Verbose output",
+        )
+        parser.add_argument(
+            "--task-type",
+            default="run",
+            help="Task type for output subfolder (run, booking, event-type, schedule, availability, webhook, auth)",
         )
 
         subparsers = parser.add_subparsers(dest="command", help="Available commands")
@@ -286,6 +302,14 @@ class CLI:
 
         output_format = OutputFormat(parsed.output)
         self.client.set_output_format(output_format)
+
+        # Store task type for output directory
+        self.task_type = getattr(parsed, "task_type", "run")
+
+        # Create task directory for JSON output
+        if output_format == OutputFormat.JSON:
+            self.task_dir = create_task_dir("cal-com-api", self.task_type)
+            self.client.set_task_dir(self.task_dir)
 
         return asyncio.run(self.run_async(parsed))
 
@@ -607,8 +631,8 @@ def main():
     # Show help if requested - do this BEFORE creating client
     if known_args.help:
         # Create full parser and show help
-        from .api_client import CalComClient, AuthMethod, OutputFormat, OutputManager
-        from .validation import validate_request, validate_response
+        from api_client import CalComClient, AuthMethod, OutputFormat, OutputManager
+        from validation import validate_request, validate_response
         # Create a temporary client to get the full parser with all subcommands
         # Use dummy auth since we just need the parser
         temp_client = CalComClient(api_key="dummy_for_help")
@@ -618,8 +642,8 @@ def main():
         return 0
 
     # Create client with auth from args (only if not showing help)
-    from .api_client import CalComClient, AuthMethod, OutputFormat, OutputManager
-    from .validation import validate_request, validate_response
+    from api_client import CalComClient, AuthMethod, OutputFormat, OutputManager
+    from validation import validate_request, validate_response
 
     auth_method = AuthMethod.API_KEY
     if known_args.auth_method == "oauth2_pkce":

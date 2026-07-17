@@ -1,0 +1,4 @@
+{
+  "error": "name '__version__' is not defined",
+  "type": "NameError"
+}

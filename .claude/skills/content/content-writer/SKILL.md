@@ -354,36 +354,64 @@ These files live in `references/`. Read them when the topic is relevant to the u
 
 ---
 
-## Short-Circuit Options
+## 10. Output Management (Workspace Standard)
 
-| Scenario | Action |
-|---|---|
-| Simple proofread or typo fix | Skip outline; edit and output directly |
-| Quick headline/CTA ideas | Present 3-5 variations directly with brief rationale |
-| Structural critique only | Use the Editing Checklist to highlight top 3 issues |
+**Every skill MUST write outputs to the workspace `outputs/<skill-name>/` directory**, not inside `.claude/`.
+
+This is handled automatically by the scaffold-generated script template using `workspace_utils`:
+
+```python
+# In your skill's CLI entry point (scripts/<skill-name>.py):
+from workspace_utils import get_skill_output_dir, create_task_dir
+
+# Get skill's master output directory (creates if needed)
+output_dir = get_skill_output_dir("content-writer")
+
+# Create a timestamped subfolder for this specific invocation
+task_dir = create_task_dir("content-writer", "brief")  # or "lint", "audit", "generate", etc.
+
+# Write files to task_dir/
+(task_dir / "brief.json").write_text(json.dumps(data))
+```
+
+**Output structure:**
+```
+<workspace-root>/
+├── outputs/
+│   ├── content-writer/           # Skill master directory
+│   │   ├── brief_20260717_143022/    # Per-invocation task dir
+│   │   │   ├── brief.json
+│   │   │   └── ...
+│   │   ├── lint_20260717_143105/
+│   │   │   ├── lint_report.json
+│   │   │   └── ...
+│   │   └── generate_20260717_143200/
+│   │       └── ...
+│   └── other-skill/              # Other skills get their own folders
+```
+
+**Environment variable:** `CLAUDE_WORKSPACE` can override workspace root (useful for CI/CD).
 
 ---
 
-## Related Skills
+## 11. Scripts Index
 
-| Skill | When to Use | When NOT to Use |
+| Script | Purpose | Input | Output |
+|---|---|---|---|
+| `scripts/generate_brief.py` | Enforces 4 clarifying questions before content generation; saves brief to outputs/ | `--template`, `--from-file`, interactive prompts | JSON brief to `outputs/content-writer/brief_<timestamp>/` |
+| `scripts/lint_content.py` | Lints markdown for AI tells, formal phrasing, banned punctuation | File/directory paths, `--fix`, `--json` | JSON report to `outputs/content-writer/lint_<timestamp>/` |
+
+---
+
+## 12. Assets Index
+
+| Asset | Purpose | Format |
 |---|---|---|
-| `skills/design/designer-god` | Content involves landing page visual layouts, dashboard data density, or grid symmetry | General copywriting, blogging, SEO text, or emails |
-| `skills/engineering/wix-support` | Custom content specifically for Wix sites (Wix Blog, CMS, or Stores) | General non-Wix content marketing or copywriting |
-| `skills/business/cal-com-api` | Writing scheduling confirmations and notifications for Cal.com | General copywriting or marketing content |
+| `assets/template.md` | Template for content deliverables | Markdown template |
 
 ---
 
-## Quality Loop
-
-1. **Verify Context**: Ensure you know the audience, goal, format, and tone before drafting.
-2. **Refine Structure**: Present outlines for long or high-stakes content to align early.
-3. **Audit Prose**: Character-scan to guarantee zero em-dashes and no robotic tells.
-4. **Grid Parity Check**: Ensure body copy words across cards in a grid vary by no more than 15 words.
-
----
-
-## 10. Writing & Communication Style (for your own responses)
+## 12. Writing & Communication Style (for your responses)
 
 - **Be direct and structured:** Use sections, tables, and short paragraphs for your own responses to the user.
 - **Default to prose first:** If a short paragraph can do the job cleanly, use the paragraph. Save bullets for steps, comparisons, options, or grouped facts.

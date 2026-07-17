@@ -85,7 +85,7 @@ def latex_to_plain_text(latex: str) -> str:
         body = latex
 
     # Remove comments
-    text = re.sub(r'%.*', '', body)
+    text = re.sub(r'(?<!\\)%.*', '', body)
     # Strip line break spacing commands, e.g. \\[3pt] (must be exactly 2 or more backslashes)
     text = re.sub(r'\\{2,}(?:\[[^]]*\])?', ' ', text)
     # Strip well-known macros but keep their text contents

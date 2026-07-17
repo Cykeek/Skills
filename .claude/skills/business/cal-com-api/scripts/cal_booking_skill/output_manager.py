@@ -42,6 +42,7 @@ class OutputManager:
     - Streaming for large datasets
     - Consistent structure for agent consumption
     - Color support for terminal output
+    - File output for JSON mode to workspace outputs directory
     """
 
     def __init__(
@@ -50,6 +51,7 @@ class OutputManager:
         stream: TextIO = None,
         color: bool = True,
         agent_mode: bool = False,
+        task_dir: Path = None,
     ):
         """
         Initialize output manager.
@@ -59,11 +61,13 @@ class OutputManager:
             stream: Output stream (default: stdout)
             color: Enable colored output
             agent_mode: Whether running in agent mode (structured output)
+            task_dir: Task directory for JSON file output (created by workspace_utils)
         """
         self.format = format
         self.stream = stream or sys.stdout
         self.color = color and sys.stdout.isatty()
         self.agent_mode = agent_mode
+        self.task_dir = task_dir
 
         # Colors for terminal output
         self.colors = {
@@ -76,6 +80,9 @@ class OutputManager:
             "magenta": "\033[95m",
             "cyan": "\033[96m",
         } if self.color else {k: "" for k in ["reset", "bold", "red", "green", "yellow", "blue", "magenta", "cyan"]}
+
+        # Track output count for unique filenames
+        self._output_count = 0
 
     def output(
         self,
@@ -124,6 +131,16 @@ class OutputManager:
         json.dump(data, stream, default=str, indent=2)
         stream.write("\n")
         stream.flush()
+
+        # Also write to file in task_dir if available
+        if self.task_dir and not self.agent_mode:
+            self._output_count += 1
+            output_file = self.task_dir / f"output_{self._output_count:03d}.json"
+            try:
+                with open(output_file, "w", encoding="utf-8") as f:
+                    json.dump(data, f, default=str, indent=2)
+            except OSError:
+                pass  # Silently ignore file write errors
 
     def _output_yaml(self, data: Any, stream: TextIO) -> None:
         """Output as YAML."""
