@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Design Brief Request",
+  "type": "object",
+  "required": ["problem", "user", "scope"],
+  "properties": {
+    "problem": { "type": "string", "description": "Problem statement" },
+    "user": { "type": "string", "description": "Target user description" },
+    "constraints": { "type": "array", "items": { "type": "string" }, "default": [] },
+    "scope": { "type": "string", "description": "Scope/appetite (e.g., 2-week sprint)" }
+  }
+}

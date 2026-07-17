@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Velo Check Response",
+  "type": "object",
+  "properties": {
+    "element_id": {"type": "string"},
+    "code_provided": {"type": "boolean"},
+    "error_reported": {"type": "string"},
+    "issues_found": {"type": "array", "items": {"type": "string"}},
+    "suggestions": {"type": "array", "items": {"type": "string"}},
+    "reference_file": {"type": "string"},
+    "template": {"type": "string"}
+  },
+  "required": ["element_id", "code_provided", "error_reported", "issues_found", "suggestions", "reference_file", "template"],
+  "additionalProperties": false
+}

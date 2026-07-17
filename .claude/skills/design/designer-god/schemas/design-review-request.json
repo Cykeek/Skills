@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Design Review Request",
+  "type": "object",
+  "required": ["design", "context", "goals"],
+  "properties": {
+    "design": {
+      "type": "string",
+      "description": "Design name/description"
+    },
+    "context": {
+      "type": "string",
+      "description": "Context of the design"
+    },
+    "goals": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Design goals"
+    }
+  }
+}

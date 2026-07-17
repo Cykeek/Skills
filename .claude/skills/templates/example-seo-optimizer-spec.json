@@ -1,0 +1,84 @@
+{
+  "domain": "content",
+  "name": "seo-optimizer",
+  "description": "Use when content needs search optimization. Example: 'Optimize this blog post for SEO targeting engineering managers'. Delivers keyword research, on-page SEO, content depth analysis, and technical SEO recommendations.",
+  "version": "1.0.0",
+  "author": "Claude Code",
+  "triggers": ["SEO audit", "Keyword research", "Optimize for search", "Content gap analysis", "Technical SEO"],
+  "tags": ["seo", "content", "marketing", "organic-traffic"],
+  "anti_patterns": [
+    "Keyword stuffing - hurts readability and triggers penalties",
+    "Ignoring search intent - content must match user goal",
+    "Thin content - Google favors comprehensive coverage",
+    "Duplicate content - cannibalizes rankings",
+    "Neglecting technical SEO - crawlability is prerequisite"
+  ],
+  "short_circuits": [
+    "Full audit: Keyword research → Content analysis → Technical check → Recommendations",
+    "Quick win: On-page optimization for existing content",
+    "Targeted: Single keyword optimization for new content"
+  ],
+  "quality_loop": [
+    "Primary keyword identified with search volume/difficulty",
+    "Search intent matched (informational/transactional/navigational)",
+    "Content covers topic comprehensively (TF-IDF, entities)",
+    "On-page elements optimized (title, headers, meta, schema)",
+    "Technical issues checked (indexing, speed, mobile)",
+    "Competitive gaps identified and prioritized",
+    "Confidence tag appended to each recommendation"
+  ],
+  "related_skills": [
+    {
+      "skill": "content/content-writer",
+      "when": "Creating new SEO-optimized content from scratch",
+      "when_not": "Auditing existing content performance"
+    },
+    {
+      "skill": "content/content-strategist",
+      "when": "Building topic clusters and editorial calendar from SEO insights",
+      "when_not": "Tactical page-level optimization"
+    },
+    {
+      "skill": "content/content-repurposing-engine",
+      "when": "Repurposing high-performing SEO content to other formats",
+      "when_not": "Original SEO research and optimization"
+    },
+    {
+      "skill": "content/content-analyst",
+      "when": "Measuring SEO performance and attribution post-optimization",
+      "when_not": "Pre-optimization research and planning"
+    },
+    {
+      "skill": "engineering/zero-hallucination-coder",
+      "when": "Implementing technical SEO fixes (schema, sitemaps, robots)",
+      "when_not": "Content and keyword strategy"
+    }
+  ],
+  "references": [
+    {
+      "file": "keyword-research-playbook.md",
+      "purpose": "Systematic keyword discovery, clustering, and prioritization methodology",
+      "sections": "Seed keywords, competitor gaps, long-tail expansion, intent classification, prioritization matrix"
+    },
+    {
+      "file": "on-page-seo-framework.md",
+      "purpose": "Complete on-page optimization checklist and implementation guide",
+      "sections": "Title tags, headers, meta descriptions, schema markup, internal linking, content structure"
+    },
+    {
+      "file": "technical-seo-checklist.md",
+      "purpose": "Crawlability, indexability, and performance audit procedures",
+      "sections": "Robots.txt, sitemaps, canonicalization, Core Web Vitals, mobile usability, structured data"
+    },
+    {
+      "file": "content-depth-analysis.md",
+      "purpose": "Measuring and improving topical comprehensiveness",
+      "sections": "TF-IDF analysis, entity coverage, subtopic modeling, competitor content gaps"
+    },
+    {
+      "file": "seo-reporting-template.md",
+      "purpose": "Standardized SEO audit and recommendation report format",
+      "sections": "Executive summary, priority matrix, quick wins, strategic initiatives, measurement plan"
+    }
+  ]
+}

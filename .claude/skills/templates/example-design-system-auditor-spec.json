@@ -1,0 +1,89 @@
+{
+  "domain": "design",
+  "name": "design-system-auditor",
+  "description": "Use when auditing design system compliance across products. Example: 'Audit our React components against the design system'. Delivers compliance report with violations, migration path, and effort estimates.",
+  "version": "1.0.0",
+  "author": "Claude Code",
+  "tags": ["design-system", "audit", "compliance", "components", "accessibility"],
+  "triggers": [
+    "Audit design system",
+    "Check component compliance",
+    "Design system migration",
+    "Accessibility audit"
+  ],
+  "anti_patterns": [
+    "Visual-only audits - misses behavioral and accessibility compliance",
+    "Sampling instead of full inventory - misses edge cases",
+    "No migration effort estimates - blockers for engineering",
+    "Ignoring design token drift - compounds over time",
+    "One-time audit without monitoring - compliance decays"
+  ],
+  "short_circuits": [
+    "Full Loop: Complete inventory → token audit → component audit → accessibility → migration plan → monitoring setup",
+    "Abbreviated: Focus on changed components since last audit + critical accessibility paths",
+    "Direct: Single component deep-dive for urgent compliance question"
+  ],
+  "quality_loop": [
+    "Component inventory complete (100% coverage)",
+    "Design tokens validated against source of truth",
+    "Component variants tested (states, sizes, themes)",
+    "Accessibility: WCAG 2.1 AA verified",
+    "Migration effort estimated per violation",
+    "Report includes: violations, severity, effort, priority",
+    "Confidence tag on each finding"
+  ],
+  "related_skills": [
+    {
+      "skill": "design/ui-ux-designer",
+      "when": "Designing new components that must comply with system",
+      "when_not": "Auditing existing compliance"
+    },
+    {
+      "skill": "design/product-designer",
+      "when": "Strategic design system evolution decisions",
+      "when_not": "Tactical compliance checking"
+    },
+    {
+      "skill": "engineering/zero-hallucination-coder",
+      "when": "Implementing audit fixes in component library code",
+      "when_not": "Design-time audit analysis"
+    },
+    {
+      "skill": "engineering/agent-harness",
+      "when": "Automating continuous compliance monitoring",
+      "when_not": "Point-in-time manual audit"
+    },
+    {
+      "skill": "content/technical-writer",
+      "when": "Documenting audit findings and migration guides",
+      "when_not": "Performing the audit analysis"
+    }
+  ],
+  "references": [
+    {
+      "file": "design-token-audit.md",
+      "purpose": "Methodology for auditing design tokens (colors, spacing, typography, motion)",
+      "sections": "Token inventory, drift detection, semantic validation, alias checking"
+    },
+    {
+      "file": "component-compliance.md",
+      "purpose": "Component-level compliance criteria and testing procedures",
+      "sections": "API compliance, variant coverage, state completeness, prop validation"
+    },
+    {
+      "file": "accessibility-audit.md",
+      "purpose": "WCAG 2.1 AA audit checklist for design system components",
+      "sections": "Contrast, focus, keyboard, ARIA, motion, zoom, screen readers"
+    },
+    {
+      "file": "migration-planning.md",
+      "purpose": "Framework for planning design system migrations",
+      "sections": "Effort estimation, prioritization, breaking changes, rollout strategy"
+    },
+    {
+      "file": "monitoring-setup.md",
+      "purpose": "Continuous compliance monitoring infrastructure",
+      "sections": "CI integration, visual regression, token drift alerts, dashboards"
+    }
+  ]
+}

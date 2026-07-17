@@ -1,0 +1,75 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://ai-workflows.example.com/schemas/content-brief.json",
+  "title": "Content Brief",
+  "description": "Complete content brief with all 4 clarifying questions answered plus inferred angle",
+  "type": "object",
+  "required": ["audience", "goal", "format", "length", "tone", "angle"],
+  "properties": {
+    "audience": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 500,
+      "description": "Who is reading this? Role, knowledge level, pain points, existing knowledge"
+    },
+    "goal": {
+      "type": "string",
+      "enum": ["educate", "persuade", "inform", "entertain", "convert", "nurture", "reassure", "warn"],
+      "description": "Primary goal of the content piece"
+    },
+    "format": {
+      "type": "string",
+      "enum": ["blog", "landing-page", "email", "social", "case-study", "whitepaper", "press-release", "video-script", "podcast-outline", "technical-doc", "faq", "comparison-page"],
+      "description": "Content format/type"
+    },
+    "length": {
+      "type": "string",
+      "pattern": "^\\d+[,-]?\\d*\\s*-\\s*\\d+[,-]?\\d*\\s*(words?|characters?|chars?|minutes?|seconds?|pages?)$|^\\d+[,-]?\\d*\\s*(words?|characters?|chars?|minutes?|seconds?|pages?)$",
+      "description": "Expected length (e.g., '1200-1800 words', '280 characters', '60-90 seconds')"
+    },
+    "tone": {
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 200,
+      "description": "Desired reader feeling and voice characteristics (e.g., 'confident, practical, slightly conversational')"
+    },
+    "angle": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 500,
+      "description": "The one thing this piece must leave the reader with - the core insight/argument"
+    },
+    "assumptions": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Assumptions made when inferring missing fields from templates or defaults",
+      "default": []
+    },
+    "template_used": {
+      "type": "string",
+      "enum": ["blog", "landing-page", "email", "social", "case-study", "whitepaper", "press-release", "video-script"],
+      "description": "Template used to pre-fill the brief (if any)"
+    },
+    "source_file": {
+      "type": "string",
+      "description": "Path to source file if brief was reverse-engineered from existing content"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp when brief was created"
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "keywords": { "type": "array", "items": { "type": "string" } },
+        "target_seo_keywords": { "type": "array", "items": { "type": "string" } },
+        "brand_voice": { "type": "string" },
+        "cta": { "type": "string" },
+        "distribution_channels": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}

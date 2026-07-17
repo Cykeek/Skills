@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Booking Response",
+  "description": "Response payload for a booking from Cal.com API v2",
+  "type": "object",
+  "version": "2.1.0",
+  "required": ["status", "data"],
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": ["success", "error"]
+    },
+    "data": {
+      "type": "object",
+      "required": ["id", "uid", "title", "startTime", "endTime", "status", "attendees", "organizer"],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "Numeric booking ID"
+        },
+        "uid": {
+          "type": "string",
+          "description": "Unique booking identifier (used for webhooks)"
+        },
+        "title": {
+          "type": "string",
+          "description": "Booking title"
+        },
+        "description": {
+          "type": "string",
+          "description": "Booking description"
+        },
+        "startTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "UTC start time"
+        },
+        "endTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "UTC end time"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["PENDING", "ACCEPTED", "CANCELLED", "REJECTED"],
+          "description": "Booking status"
+        },
+        "attendees": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "name", "email", "timeZone"],
+            "properties": {
+              "id": { "type": "integer" },
+              "name": { "type": "string" },
+              "email": { "type": "string", "format": "email" },
+              "timeZone": { "type": "string" },
+              "phoneNumber": { "type": ["string", "null"] },
+              "language": { "type": ["string", "null"] },
+              "metadata": { "type": "object" }
+            }
+          }
+        },
+        "organizer": {
+          "type": "object",
+          "required": ["id", "name", "email", "timeZone"],
+          "properties": {
+            "id": { "type": "integer" },
+            "name": { "type": "string" },
+            "email": { "type": "string", "format": "email" },
+            "timeZone": { "type": "string" }
+          }
+        },
+        "eventType": {
+          "type": "object",
+          "properties": {
+            "id": { "type": "integer" },
+            "title": { "type": "string" },
+            "slug": { "type": "string" },
+            "lengthInMinutes": { "type": "integer" }
+          }
+        },
+        "location": {
+          "type": ["string", "null"],
+          "description": "Meeting location URL or description"
+        },
+        "metadata": {
+          "type": "object"
+        },
+        "cancelReason": {
+          "type": ["string", "null"]
+        },
+        "rescheduledFromUid": {
+          "type": ["string", "null"]
+        },
+        "rescheduledToUid": {
+          "type": ["string", "null"]
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

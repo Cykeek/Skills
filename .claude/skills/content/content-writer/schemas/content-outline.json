@@ -1,0 +1,126 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://ai-workflows.example.com/schemas/content-outline.json",
+  "title": "Content Outline",
+  "description": "Structured outline for a content piece, generated from a validated brief",
+  "type": "object",
+  "required": ["brief_id", "working_title", "hook", "sections", "cta", "estimated_word_count"],
+  "properties": {
+    "brief_id": {
+      "type": "string",
+      "description": "Reference to the content brief this outline derives from"
+    },
+    "working_title": {
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 120,
+      "description": "Working title for the piece"
+    },
+    "hook": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 300,
+      "description": "Opening hook angle - how we grab attention in first sentence"
+    },
+    "hook_type": {
+      "type": "string",
+      "enum": ["question", "bold-claim", "story", "statistic", "contrarian", "pain-point", "curiosity-gap", "direct-benefit"],
+      "description": "Type of hook being used"
+    },
+    "sections": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 20,
+      "items": {
+        "type": "object",
+        "required": ["heading", "key_argument", "estimated_words"],
+        "properties": {
+          "heading": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 80
+          },
+          "level": {
+            "type": "integer",
+            "enum": [1, 2, 3, 4],
+            "default": 2
+          },
+          "key_argument": {
+            "type": "string",
+            "minLength": 10,
+            "maxLength": 200,
+            "description": "The one key point/insight this section must deliver"
+          },
+          "estimated_words": {
+            "type": "integer",
+            "minimum": 50,
+            "maximum": 2000
+          },
+          "subsections": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["heading", "key_argument"],
+              "properties": {
+                "heading": { "type": "string" },
+                "key_argument": { "type": "string" }
+              }
+            }
+          },
+          "evidence_needed": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Types of evidence needed: statistic, case study, quote, example, analogy"
+          }
+        }
+      }
+    },
+    "cta": {
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 200,
+      "description": "Call to action or final takeaway for the reader"
+    },
+    "cta_type": {
+      "type": "string",
+      "enum": ["read-next", "subscribe", "download", "sign-up", "contact", "buy", "share", "comment", "reflect"],
+      "description": "Type of CTA based on content goal"
+    },
+    "estimated_word_count": {
+      "type": "integer",
+      "minimum": 100,
+      "maximum": 10000
+    },
+    "structure_pattern": {
+      "type": "string",
+      "enum": ["problem-solution", "before-after-bridge", "attention-interest-desire-action", "feature-advantage-benefit", "storybrand", "picture-promise-prove-push", "star-story-solution", "comparison", "listicle", "how-to", "case-study", "thought-leadership"],
+      "description": "Structural pattern from content-frameworks.md"
+    },
+    "persuasion_framework": {
+      "type": "string",
+      "enum": ["PAS", "BAB", "AIDA", "FAB", "StoryBrand", "4Ps", "4U", "SSA", "none"],
+      "default": "none",
+      "description": "Persuasion framework applied (if any)"
+    },
+    "seo_elements": {
+      "type": "object",
+      "properties": {
+        "primary_keyword": { "type": "string" },
+        "secondary_keywords": { "type": "array", "items": { "type": "string" } },
+        "meta_title": { "type": "string", "maxLength": 60 },
+        "meta_description": { "type": "string", "maxLength": 155 },
+        "target_h1": { "type": "string" }
+      }
+    },
+    "approved": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether user has approved this outline for drafting"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": false
+}

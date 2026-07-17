@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Checklist",
+  "type": "object",
+  "required": ["name", "items"],
+  "properties": {
+    "name": { "type": "string" },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["category", "item", "required"],
+        "properties": {
+          "category": { "type": "string" },
+          "item": { "type": "string" },
+          "required": { "type": "boolean" }
+        }
+      }
+    }
+  }
+}

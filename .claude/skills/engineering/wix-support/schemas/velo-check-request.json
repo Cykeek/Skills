@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Velo Check Request",
+  "type": "object",
+  "properties": {
+    "element_id": {
+      "type": "string",
+      "pattern": "^#?[a-zA-Z][a-zA-Z0-9_-]*$",
+      "description": "Wix element ID (with or without # prefix)"
+    },
+    "code": {
+      "type": "string",
+      "description": "Velo code to validate"
+    },
+    "error": {
+      "type": "string",
+      "description": "Error message from console (optional)"
+    }
+  },
+  "required": ["element_id"],
+  "additionalProperties": false
+}

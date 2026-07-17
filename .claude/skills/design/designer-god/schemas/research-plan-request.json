@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Research Plan Request",
+  "type": "object",
+  "required": ["decision", "goal"],
+  "properties": {
+    "decision": { "type": "string", "description": "Decision this research supports" },
+    "goal": { "type": "string", "description": "Research goal" },
+    "constraints": { "type": "array", "items": { "type": "string" }, "default": [] }
+  }
+}

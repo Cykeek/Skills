@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Schedule Configuration",
+  "description": "Request payload for creating/updating a schedule via Cal.com API v2",
+  "type": "object",
+  "version": "2.1.0",
+  "required": ["name", "timeZone", "isDefault"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255,
+      "description": "Schedule name (e.g., 'Business Hours', 'Evening Availability')"
+    },
+    "timeZone": {
+      "type": "string",
+      "pattern": "^[A-Za-z_]+/[A-Za-z_]+$",
+      "description": "IANA timezone for this schedule (e.g., America/Los_Angeles)"
+    },
+    "isDefault": {
+      "type": "boolean",
+      "description": "Whether this is the default schedule for the user"
+    },
+    "availability": {
+      "type": "array",
+      "description": "Weekly recurring availability windows",
+      "items": {
+        "type": "object",
+        "required": ["days", "startTime", "endTime"],
+        "properties": {
+          "days": {
+            "type": "array",
+            "items": { "type": "integer", "minimum": 0, "maximum": 6 },
+            "minItems": 1,
+            "maxItems": 7,
+            "description": "Days of week (0=Sunday, 1=Monday, ..., 6=Saturday)"
+          },
+          "startTime": {
+            "type": "string",
+            "pattern": "^([01]?[0-9]|2[0-3]):[0-5][0-9]$",
+            "description": "Start time in 24-hour format (HH:mm)"
+          },
+          "endTime": {
+            "type": "string",
+            "pattern": "^([01]?[0-9]|2[0-3]):[0-5][0-9]$",
+            "description": "End time in 24-hour format (HH:mm)"
+          }
+        }
+      }
+    },
+    "dateOverrides": {
+      "type": "array",
+      "description": "Date-specific availability overrides (holidays, special hours)",
+      "items": {
+        "type": "object",
+        "required": ["date"],
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date",
+            "description": "Date in YYYY-MM-DD format"
+          },
+          "availability": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["startTime", "endTime"],
+              "properties": {
+                "startTime": { "type": "string", "pattern": "^([01]?[0-9]|2[0-3]):[0-5][0-9]$" },
+                "endTime": { "type": "string", "pattern": "^([01]?[0-9]|2[0-3]):[0-5][0-9]$" }
+              }
+            },
+            "description": "Empty array = closed on this date"
+          }
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

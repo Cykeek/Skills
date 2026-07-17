@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CMS Debug Request",
+  "type": "object",
+  "properties": {
+    "collection": {
+      "type": "string",
+      "minLength": 1,
+      "description": "CMS collection name"
+    },
+    "page_slug": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Page slug/URL path"
+    }
+  },
+  "required": ["collection", "page_slug"],
+  "additionalProperties": false
+}

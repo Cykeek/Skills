@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Wix Editor Comparison",
+  "type": "object",
+  "properties": {
+    "editors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {"type": "string"},
+          "description": {"type": "string"},
+          "indicators": {"type": "array", "items": {"type": "string"}},
+          "key_features": {"type": "array", "items": {"type": "string"}},
+          "mobile_editing": {"type": "string"},
+          "status": {"type": "string"}
+        },
+        "required": ["name", "description", "indicators", "key_features", "mobile_editing", "status"]
+      }
+    }
+  },
+  "required": ["editors"]
+}

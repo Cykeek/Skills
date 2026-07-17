@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Availability Query",
+  "description": "Request parameters for checking availability/slots",
+  "type": "object",
+  "version": "2.1.0",
+  "required": ["startTime", "endTime", "timeZone"],
+  "properties": {
+    "startTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "UTC start of query window"
+    },
+    "endTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "UTC end of query window"
+    },
+    "timeZone": {
+      "type": "string",
+      "pattern": "^[A-Za-z_]+/[A-Za-z_]+$",
+      "description": "IANA timezone for attendee (e.g., America/Los_Angeles)"
+    },
+    "eventTypeId": {
+      "type": "integer",
+      "description": "Event type ID (alternative to slug lookup)"
+    },
+    "username": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9-]+$",
+      "description": "Username for event type slug lookup"
+    },
+    "eventTypeSlug": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$",
+      "description": "Event type slug"
+    },
+    "teamSlug": {
+      "type": "string",
+      "description": "Team slug for team event types"
+    },
+    "organizationSlug": {
+      "type": "string",
+      "description": "Organization slug for org event types"
+    }
+  },
+  "oneOf": [
+    { "required": ["eventTypeId"] },
+    { "required": ["eventTypeSlug", "username"] },
+    { "required": ["eventTypeSlug", "teamSlug"] }
+  ],
+  "additionalProperties": false
+}

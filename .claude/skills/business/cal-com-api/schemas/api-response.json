@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "API Response Envelope",
+  "description": "Standard response envelope for all Cal.com API v2 endpoints",
+  "type": "object",
+  "version": "2.1.0",
+  "required": ["status", "data"],
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": ["success", "error"],
+      "description": "Response status"
+    },
+    "data": {
+      "type": ["object", "array", "null"],
+      "description": "Response data (varies by endpoint)"
+    }
+  },
+  "additionalProperties": false
+}

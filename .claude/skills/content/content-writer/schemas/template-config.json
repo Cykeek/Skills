@@ -1,0 +1,83 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://ai-workflows.example.com/schemas/template-config.json",
+  "title": "Template Configuration",
+  "description": "Configuration for content format templates with pre-filled brief defaults",
+  "type": "object",
+  "required": ["name", "format", "goal", "defaults"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "enum": ["blog", "landing-page", "email", "social", "case-study", "whitepaper", "press-release", "video-script", "podcast-outline", "technical-doc", "faq", "comparison-page"],
+      "description": "Template identifier"
+    },
+    "format": {
+      "type": "string",
+      "description": "Content format this template produces"
+    },
+    "goal": {
+      "type": "string",
+      "enum": ["educate", "persuade", "inform", "entertain", "convert", "nurture", "reassure", "warn"],
+      "description": "Primary goal this template serves"
+    },
+    "description": {
+      "type": "string",
+      "description": "Human-readable description of when to use this template"
+    },
+    "defaults": {
+      "type": "object",
+      "required": ["audience", "length", "tone", "angle_template"],
+      "properties": {
+        "audience": { "type": "string" },
+        "length": { "type": "string" },
+        "tone": { "type": "string" },
+        "angle_template": { "type": "string" }
+      }
+    },
+    "structure_pattern": {
+      "type": "string",
+      "enum": ["problem-solution", "before-after-bridge", "attention-interest-desire-action", "feature-advantage-benefit", "storybrand", "picture-promise-prove-push", "star-story-solution", "comparison", "listicle", "how-to", "case-study", "thought-leadership"]
+    },
+    "required_sections": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Section headings that must appear in this format"
+    },
+    "recommended_frameworks": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["PAS", "BAB", "AIDA", "FAB", "StoryBrand", "4Ps", "4U", "SSA"] }
+    },
+    "word_count_range": {
+      "type": "object",
+      "properties": {
+        "min": { "type": "integer" },
+        "max": { "type": "integer" }
+      }
+    },
+    "seo_requirements": {
+      "type": "object",
+      "properties": {
+        "meta_title_max": { "type": "integer", "default": 60 },
+        "meta_desc_max": { "type": "integer", "default": 155 },
+        "primary_keyword_required": { "type": "boolean", "default": true },
+        "h1_keyword_required": { "type": "boolean", "default": true },
+        "heading_keyword_density": { "type": "number", "default": 0.3 }
+      }
+    },
+    "conversion_elements": {
+      "type": "object",
+      "properties": {
+        "cta_required": { "type": "boolean", "default": true },
+        "cta_verb_tier": { "type": "string", "enum": ["low", "medium", "high"], "default": "medium" },
+        "trust_signals_required": { "type": "integer", "default": 1 },
+        "social_proof_types": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "dei_checklist": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Format-specific DEI checks from dei-writing.md"
+    }
+  },
+  "additionalProperties": false
+}

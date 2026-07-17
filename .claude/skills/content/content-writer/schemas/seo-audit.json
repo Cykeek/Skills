@@ -1,0 +1,90 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://ai-workflows.example.com/schemas/seo-audit.json",
+  "title": "SEO Audit Result",
+  "description": "Structured output from SEO audit of content",
+  "type": "object",
+  "required": ["url", "target_keyword", "search_intent", "scores", "issues", "recommendations"],
+  "properties": {
+    "url": { "type": "string", "format": "uri" },
+    "target_keyword": { "type": "string" },
+    "search_intent": { "type": "string", "enum": ["informational", "commercial", "transactional", "navigational"] },
+    "scores": {
+      "type": "object",
+      "required": ["overall", "on_page", "content_depth", "technical", "eeat"],
+      "properties": {
+        "overall": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "on_page": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "content_depth": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "technical": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "eeat": { "type": "integer", "minimum": 0, "maximum": 100 }
+      }
+    },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["severity", "category", "message", "location"],
+        "properties": {
+          "severity": { "type": "string", "enum": ["critical", "high", "medium", "low"] },
+          "category": { "type": "string", "enum": ["title", "headings", "meta", "content", "keywords", "links", "schema", "technical"] },
+          "message": { "type": "string" },
+          "location": { "type": "string" },
+          "fix_suggestion": { "type": "string" }
+        }
+      }
+    },
+    "recommendations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["priority", "action", "impact", "effort"],
+        "properties": {
+          "priority": { "type": "integer", "minimum": 1, "maximum": 5 },
+          "action": { "type": "string" },
+          "impact": { "type": "string", "enum": ["high", "medium", "low"] },
+          "effort": { "type": "string", "enum": ["high", "medium", "low"] },
+          "details": { "type": "string" }
+        }
+      }
+    },
+    "on_page_analysis": {
+      "type": "object",
+      "properties": {
+        "title_tag": { "type": "object", "properties": { "present": { "type": "boolean" }, "length": { "type": "integer" }, "has_keyword": { "type": "boolean" }, "keyword_position": { "type": "integer" } } },
+        "h1": { "type": "object", "properties": { "present": { "type": "boolean" }, "count": { "type": "integer" }, "has_keyword": { "type": "boolean" } } },
+        "h2_h3_keywords": { "type": "object", "properties": { "total_headings": { "type": "integer" }, "headings_with_keyword": { "type": "integer" } } },
+        "meta_description": { "type": "object", "properties": { "present": { "type": "boolean" }, "length": { "type": "integer" }, "has_keyword": { "type": "boolean" }, "has_cta": { "type": "boolean" } } },
+        "url_structure": { "type": "object", "properties": { "has_keyword": { "type": "boolean" }, "length": { "type": "integer" }, "clean": { "type": "boolean" } } },
+        "keyword_usage": { "type": "object", "properties": { "primary_count": { "type": "integer" }, "secondary_count": { "type": "integer" }, "density_pct": { "type": "number" }, "first_100_words": { "type": "boolean" } } },
+        "content_length": { "type": "object", "properties": { "word_count": { "type": "integer" }, "target_range": { "type": "string" }, "meets_target": { "type": "boolean" } } },
+        "internal_links": { "type": "object", "properties": { "count": { "type": "integer" }, "relevant_anchor_text": { "type": "integer" } } },
+        "external_links": { "type": "object", "properties": { "count": { "type": "integer" }, "authoritative_sources": { "type": "integer" } } },
+        "images": { "type": "object", "properties": { "total": { "type": "integer" }, "with_alt_text": { "type": "integer" }, "alt_has_keyword": { "type": "integer" } } },
+        "schema_markup": { "type": "object", "properties": { "present": { "type": "boolean" }, "types": { "type": "array", "items": { "type": "string" } } } }
+      }
+    },
+    "eeat_signals": {
+      "type": "object",
+      "properties": {
+        "experience": { "type": "object", "properties": { "first_person_examples": { "type": "integer" }, "case_studies": { "type": "integer" }, "personal_anecdotes": { "type": "integer" } } },
+        "expertise": { "type": "object", "properties": { "author_bio": { "type": "boolean" }, "credentials_cited": { "type": "integer" }, "technical_depth": { "type": "string", "enum": ["high", "medium", "low"] } } },
+        "authoritativeness": { "type": "object", "properties": { "expert_quotes": { "type": "integer" }, "data_citations": { "type": "integer" }, "external_references": { "type": "integer" }, "brand_mentions": { "type": "integer" } } },
+        "trustworthiness": { "type": "object", "properties": { "transparent_sourcing": { "type": "boolean" }, "disclosure_present": { "type": "boolean" }, "contact_info": { "type": "boolean" }, "privacy_policy_link": { "type": "boolean" } } }
+      }
+    },
+    "competitor_gap": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "competitor_url": { "type": "string", "format": "uri" },
+          "missing_topics": { "type": "array", "items": { "type": "string" } },
+          "content_gaps": { "type": "array", "items": { "type": "string" } },
+          "word_count_diff": { "type": "integer" }
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

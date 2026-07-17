@@ -1,0 +1,89 @@
+{
+  "domain": "content",
+  "name": "case-study-builder",
+  "description": "Use when creating customer case studies from interview transcripts. Example: 'Build a case study from my customer interview notes'. Delivers structured case study with challenge/solution/results format.",
+  "version": "1.0.0",
+  "author": "Claude Code",
+  "tags": ["case-study", "customer-success", "storytelling", "b2b", "marketing"],
+  "triggers": [
+    "Write case study",
+    "Customer success story",
+    "Case study from interview",
+    "Case study template"
+  ],
+  "anti_patterns": [
+    "Generic templates without customer voice - reads like marketing fluff",
+    "Missing metrics - no proof of value delivered",
+    "Only highlighting positives - loses credibility",
+    "Skipping the challenge context - solution seems trivial",
+    "No customer approval process - legal/relationship risk"
+  ],
+  "short_circuits": [
+    "Full Loop: Interview → draft → review → metrics verification → customer approval → publish",
+    "Abbreviated: Draft from existing materials + light interview → internal review → publish",
+    "Direct: Quick internal case study for sales enablement (no external publish)"
+  ],
+  "quality_loop": [
+    "Challenge clearly articulated with business impact",
+    "Solution describes approach, not just product features",
+    "Results quantified with specific metrics (%, $, time)",
+    "Customer quotes included and attributed",
+    "Customer approved final version",
+    "SEO keywords naturally integrated",
+    "Confidence tag on final deliverable"
+  ],
+  "related_skills": [
+    {
+      "skill": "content/content-writer",
+      "when": "General content writing needed beyond case studies",
+      "when_not": "Specialized case study structure required"
+    },
+    {
+      "skill": "content/conversion-copywriter",
+      "when": "Case study needs strong conversion-focused CTAs",
+      "when_not": "Pure informational/educational case study"
+    },
+    {
+      "skill": "content/content-repurposing-engine",
+      "when": "Breaking case study into social posts, blog, video scripts",
+      "when_not": "Single-format case study delivery"
+    },
+    {
+      "skill": "business/customer-success",
+      "when": "Identifying referenceable customers for case studies",
+      "when_not": "Writing the case study itself"
+    },
+    {
+      "skill": "design/product-designer",
+      "when": "Case study needs visual design, layout, data visualization",
+      "when_not": "Text-only case study delivery"
+    }
+  ],
+  "references": [
+    {
+      "file": "case-study-framework.md",
+      "purpose": "Proven case study structure: Challenge → Solution → Results → Future",
+      "sections": "Framework, templates, example structures"
+    },
+    {
+      "file": "interview-guide.md",
+      "purpose": "Questions to extract compelling customer stories",
+      "sections": "Discovery questions, metric extraction, quote elicitation"
+    },
+    {
+      "file": "metrics-framework.md",
+      "purpose": "Standardized metrics categories for B2B case studies",
+      "sections": "Revenue, efficiency, adoption, satisfaction, retention"
+    },
+    {
+      "file": "approval-process.md",
+      "purpose": "Customer review and approval workflow",
+      "sections": "Legal review, quote approval, brand guidelines, timeline"
+    },
+    {
+      "file": "storytelling-techniques.md",
+      "purpose": "Narrative techniques for compelling business stories",
+      "sections": "Hero's journey, data storytelling, emotional hooks"
+    }
+  ]
+}

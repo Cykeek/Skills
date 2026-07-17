@@ -1,0 +1,178 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://ai-workflows.example.com/schemas/lint-rules.json",
+  "title": "Lint Rules Configuration",
+  "description": "Configuration for content linting rules",
+  "type": "object",
+  "properties": {
+    "banned_openers": {
+      "type": "object",
+      "properties": {
+        "enabled": { "type": "boolean", "default": true },
+        "patterns": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": [
+            "in today's",
+            "in this article",
+            "in this post",
+            "in this blog",
+            "as we all know",
+            "it is important to understand",
+            "it is important to note",
+            "the \\w+ landscape is evolving",
+            "landscape is evolving",
+            "in recent years"
+          ]
+        },
+        "severity": { "type": "string", "enum": ["warning", "alert"], "default": "warning" }
+      }
+    },
+    "robotic_tells": {
+      "type": "object",
+      "properties": {
+        "enabled": { "type": "boolean", "default": true },
+        "patterns": {
+          "type": "object",
+          "properties": {
+            "in_order_to": { "type": "boolean", "default": true },
+            "moreover": { "type": "boolean", "default": true },
+            "furthermore": { "type": "boolean", "default": true },
+            "utilize": { "type": "boolean", "default": true },
+            "leverage": { "type": "boolean", "default": true },
+            "facilitate": { "type": "boolean", "default": true }
+          }
+        },
+        "severity": { "type": "string", "enum": ["warning", "alert"], "default": "warning" }
+      }
+    },
+    "formal_phrases": {
+      "type": "object",
+      "properties": {
+        "enabled": { "type": "boolean", "default": true },
+        "contractions_target_pct": {
+          "type": "integer",
+          "minimum": 50,
+          "maximum": 90,
+          "default": 75,
+          "description": "Target contraction usage percentage"
+        },
+        "patterns": {
+          "type": "object",
+          "properties": {
+            "do_not": { "type": "boolean", "default": true },
+            "will_not": { "type": "boolean", "default": true },
+            "cannot": { "type": "boolean", "default": true },
+            "it_is": { "type": "boolean", "default": true }
+          }
+        },
+        "severity": { "type": "string", "enum": ["warning", "alert"], "default": "alert" }
+      }
+    },
+    "em_dash": {
+      "type": "object",
+      "properties": {
+        "enabled": { "type": "boolean", "default": true },
+        "ban_in_prose": { "type": "boolean", "default": true },
+        "allow_in_code_blocks": { "type": "boolean", "default": true },
+        "allow_in_quotes": { "type": "boolean", "default": true },
+        "allow_in_references": { "type": "boolean", "default": true },
+        "severity": { "type": "string", "enum": ["warning", "alert"], "default": "warning" }
+      }
+    },
+    "formal_density": {
+      "type": "object",
+      "properties": {
+        "enabled": { "type": "boolean", "default": true },
+        "threshold_pct": {
+          "type": "number",
+          "minimum": 0.1,
+          "maximum": 5.0,
+          "default": 0.5,
+          "description": "Maximum formal phrase density percentage"
+        },
+        "severity": { "type": "string", "enum": ["warning", "alert"], "default": "warning" }
+      }
+    },
+    "hedging_density": {
+      "type": "object",
+      "properties": {
+        "enabled": { "type": "boolean", "default": true },
+        "max_per_paragraph": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5,
+          "default": 2
+        },
+        "hedge_words": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": ["might", "possibly", "perhaps", "could", "may", "seems", "appears", "suggests", "indicates", "likely", "probably"]
+        },
+        "severity": { "type": "string", "enum": ["warning", "alert"], "default": "warning" }
+      }
+    },
+    "sentence_variety": {
+      "type": "object",
+      "properties": {
+        "enabled": { "type": "boolean", "default": true },
+        "min_length_variance": {
+          "type": "number",
+          "default": 0.3,
+          "description": "Minimum coefficient of variation for sentence lengths"
+        },
+        "max_same_starter_pct": {
+          "type": "number",
+          "default": 0.4,
+          "description": "Maximum percentage of sentences starting with same word"
+        },
+        "severity": { "type": "string", "enum": ["warning", "alert"], "default": "warning" }
+      }
+    },
+    "voice_drift": {
+      "type": "object",
+      "properties": {
+        "enabled": { "type": "boolean", "default": true },
+        "check_points": {
+          "type": "integer",
+          "default": 3,
+          "description": "Number of non-adjacent paragraphs to sample"
+        },
+        "triggers": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": ["it's worth noting that", "utilize", "leverage", "facilitate", "one must", "it is important to"]
+        },
+        "severity": { "type": "string", "enum": ["warning", "alert"], "default": "warning" }
+      }
+    },
+    "grid_parity": {
+      "type": "object",
+      "properties": {
+        "enabled": { "type": "boolean", "default": true },
+        "max_word_diff": {
+          "type": "integer",
+          "default": 15,
+          "description": "Max word count difference between cards in same grid"
+        },
+        "max_heading_word_diff": {
+          "type": "integer",
+          "default": 3
+        },
+        "severity": { "type": "string", "enum": ["warning", "alert"], "default": "warning" }
+      }
+    },
+    "exclusions": {
+      "type": "object",
+      "properties": {
+        "headings": { "type": "boolean", "default": true },
+        "markdown_tables": { "type": "boolean", "default": true },
+        "code_blocks": { "type": "boolean", "default": true },
+        "blockquotes": { "type": "boolean", "default": true },
+        "anti_pattern_sections": { "type": "boolean", "default": true },
+        "checklist_sections": { "type": "boolean", "default": true }
+      }
+    }
+  },
+  "additionalProperties": false
+}

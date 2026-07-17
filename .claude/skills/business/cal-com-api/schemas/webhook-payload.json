@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Webhook Payload",
+  "description": "Standard webhook payload envelope from Cal.com API v2",
+  "type": "object",
+  "version": "2.1.0",
+  "required": ["triggerEvent", "createdAt", "payload"],
+  "properties": {
+    "triggerEvent": {
+      "type": "string",
+      "enum": [
+        "BOOKING_CREATED",
+        "BOOKING_CANCELLED",
+        "BOOKING_RESCHEDULED",
+        "BOOKING_REJECTED",
+        "BOOKING_PAID",
+        "MEETING_STARTED",
+        "MEETING_ENDED",
+        "FORM_SUBMITTED"
+      ],
+      "description": "Type of event that triggered this webhook"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when webhook was created"
+    },
+    "payload": {
+      "type": "object",
+      "description": "Event-specific payload data"
+    }
+  },
+  "additionalProperties": false
+}

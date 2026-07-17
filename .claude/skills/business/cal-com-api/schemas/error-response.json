@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "API Error Response",
+  "description": "Error response format for Cal.com API v2",
+  "type": "object",
+  "version": "2.1.0",
+  "allOf": [
+    { "$ref": "api-response.json" },
+    {
+      "properties": {
+        "status": { "const": "error" },
+        "data": {
+          "type": "object",
+          "required": ["message", "code"],
+          "properties": {
+            "message": {
+              "type": "string",
+              "description": "Human-readable error message"
+            },
+            "code": {
+              "type": "string",
+              "enum": [
+                "validation_error",
+                "invalid_json",
+                "missing_required_field",
+                "unauthorized",
+                "invalid_token",
+                "token_expired",
+                "invalid_api_key",
+                "insufficient_scope",
+                "team_access_denied",
+                "organization_access_denied",
+                "not_found",
+                "conflict",
+                "duplicate_webhook",
+                "slot_taken",
+                "unprocessable_entity",
+                "invalid_timezone",
+                "past_booking",
+                "booking_window_exceeded",
+                "minimum_notice_not_met",
+                "maximum_attendees_exceeded",
+                "recurring_booking_invalid",
+                "rate_limit_exceeded",
+                "internal_error",
+                "service_unavailable"
+              ]
+            },
+            "details": {
+              "type": ["object", "null"],
+              "description": "Additional error details (field errors, alternative slots, etc.)",
+              "additionalProperties": true
+            }
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Research Plan Response",
+  "type": "object",
+  "required": ["decision_this_supports", "research_goal", "constraints", "recommended_method", "method_rationale", "participants", "tasks", "metrics", "timeline", "reference_files"],
+  "properties": {
+    "decision_this_supports": { "type": "string" },
+    "research_goal": { "type": "string" },
+    "constraints": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "recommended_method": { "type": "string" },
+    "method_rationale": { "type": "string" },
+    "participants": { "type": "string" },
+    "tasks": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "metrics": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "timeline": { "type": "string" },
+    "reference_files": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

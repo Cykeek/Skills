@@ -1,0 +1,88 @@
+{
+  "domain": "engineering",
+  "name": "api-contract-tester",
+  "description": "Use when validating API requests/responses against OpenAPI specs. Example: 'Test my API contract against the OpenAPI spec'. Delivers automated contract validation with detailed mismatch reports.",
+  "version": "1.0.0",
+  "author": "Claude Code",
+  "tags": ["api", "testing", "openapi", "contract", "validation"],
+  "triggers": [
+    "Test API contract",
+    "Validate OpenAPI spec",
+    "Check API compliance",
+    "Contract testing"
+  ],
+  "anti_patterns": [
+    "Testing only happy paths - misses edge cases and error responses",
+    "Manual contract validation - error-prone and doesn't scale",
+    "Ignoring backward compatibility - breaks existing consumers",
+    "Testing against outdated specs - false confidence",
+    "No schema validation for request bodies - allows invalid data"
+  ],
+  "short_circuits": [
+    "Full Loop: Complete contract validation with all endpoints, schemas, and edge cases",
+    "Abbreviated: Validate only changed endpoints when spec updates",
+    "Direct: Quick schema check for single endpoint during development"
+  ],
+  "quality_loop": [
+    "All endpoints validated against spec",
+    "Request/response schemas match exactly",
+    "Error responses follow RFC 7807",
+    "Backward compatibility verified",
+    "Performance within SLA thresholds",
+    "Confidence tag appended to results"
+  ],
+  "related_skills": [
+    {
+      "skill": "engineering/wix-support",
+      "when": "Working with Wix Velo APIs that need contract validation",
+      "when_not": "Generic REST API testing outside Wix ecosystem"
+    },
+    {
+      "skill": "content/cal-com-api",
+      "when": "Validating Cal.com webhook payloads against spec",
+      "when_not": "General OpenAPI contract testing"
+    },
+    {
+      "skill": "engineering/agent-harness",
+      "when": "Integrating contract tests into automated agent workflows",
+      "when_not": "Standalone contract testing without agent orchestration"
+    },
+    {
+      "skill": "engineering/zero-hallucination-coder",
+      "when": "Generating contract test code from specifications",
+      "when_not": "Running existing contract tests"
+    },
+    {
+      "skill": "business/strategy-analyst",
+      "when": "Assessing API contract risk for business decisions",
+      "when_not": "Technical contract validation implementation"
+    }
+  ],
+  "references": [
+    {
+      "file": "openapi-spec.md",
+      "purpose": "OpenAPI 3.1 specification reference and best practices",
+      "sections": "Structure, components, security, servers, examples"
+    },
+    {
+      "file": "contract-testing-patterns.md",
+      "purpose": "Consumer-driven vs provider-driven contract testing patterns",
+      "sections": "Pact, Spring Cloud Contract, custom approaches"
+    },
+    {
+      "file": "schema-validation.md",
+      "purpose": "JSON Schema validation techniques and tools",
+      "sections": "Draft 2020-12, regex patterns, format validation"
+    },
+    {
+      "file": "backward-compatibility.md",
+      "purpose": "Rules for maintaining API backward compatibility",
+      "sections": "Breaking vs non-breaking changes, versioning strategies"
+    },
+    {
+      "file": "error-handling-rfc7807.md",
+      "purpose": "RFC 7807 Problem Details for HTTP APIs",
+      "sections": "Standard error format, extensions, localization"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://ai-workflows.example.com/schemas/validation-result.json",
+  "title": "Validation Result",
+  "description": "Result of a validation gate check",
+  "type": "object",
+  "required": ["gate", "passed", "issues", "timestamp"],
+  "properties": {
+    "gate": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 6,
+      "description": "Validation gate number (1-6)"
+    },
+    "gate_name": {
+      "type": "string",
+      "enum": ["brief-validation", "lint-validation", "structure-validation", "seo-conversion-validation", "dei-accessibility-validation", "output-envelope-validation"]
+    },
+    "passed": { "type": "boolean" },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["code", "message", "severity"],
+        "properties": {
+          "code": { "type": "string" },
+          "message": { "type": "string" },
+          "severity": { "type": "string", "enum": ["error", "warning", "info"] },
+          "field": { "type": "string" },
+          "line": { "type": "integer" },
+          "column": { "type": "integer" },
+          "suggestion": { "type": "string" },
+          "auto_fixable": { "type": "boolean", "default": false }
+        }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "properties": {
+        "formal_density_pct": { "type": "number" },
+        "robotic_tell_count": { "type": "integer" },
+        "em_dash_count": { "type": "integer" },
+        "banned_opener_count": { "type": "integer" },
+        "readability_score": { "type": "number" },
+        "word_count": { "type": "integer" },
+        "sentence_count": { "type": "integer" },
+        "avg_sentence_length": { "type": "number" },
+        "contraction_pct": { "type": "number" },
+        "hedging_density": { "type": "number" }
+      }
+    },
+    "timestamp": { "type": "string", "format": "date-time" },
+    "execution_time_ms": { "type": "integer", "minimum": 0 }
+  },
+  "additionalProperties": false
+}

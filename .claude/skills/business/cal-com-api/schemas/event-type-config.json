@@ -1,0 +1,213 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Event Type Configuration",
+  "description": "Request payload for creating/updating an event type via Cal.com API v2",
+  "type": "object",
+  "version": "2.1.0",
+  "required": ["title", "slug", "lengthInMinutes"],
+  "properties": {
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255,
+      "description": "Display name of the event type"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$",
+      "minLength": 1,
+      "maxLength": 100,
+      "description": "URL-friendly identifier (unique per user/team)"
+    },
+    "lengthInMinutes": {
+      "type": "integer",
+      "enum": [5, 10, 15, 20, 30, 45, 60, 90, 120, 180, 240, 360, 480, 720, 1440],
+      "description": "Duration in minutes"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 5000,
+      "description": "Event type description shown to attendees"
+    },
+    "hidden": {
+      "type": "boolean",
+      "default": false,
+      "description": "Hide from public booking page"
+    },
+    "position": {
+      "type": "integer",
+      "default": 0,
+      "description": "Display order on booking page"
+    },
+    "schedulingType": {
+      "type": "string",
+      "enum": ["PERSONAL", "ROUND_ROBIN", "COLLECTIVE", "MANAGED"],
+      "default": "PERSONAL",
+      "description": "How hosts are assigned for team event types"
+    },
+    "eventName": {
+      "type": ["string", "null"],
+      "description": "Custom event name format (template)"
+    },
+    "eventColor": {
+      "type": ["string", "null"],
+      "pattern": "^#[0-9A-Fa-f]{6}$",
+      "description": "Hex color for calendar display"
+    },
+    "customInputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["key", "label", "type"],
+        "properties": {
+          "key": { "type": "string" },
+          "label": { "type": "string" },
+          "type": { "type": "string", "enum": ["text", "textarea", "select", "checkbox", "radio", "date"] },
+          "required": { "type": "boolean" },
+          "options": { "type": "array", "items": { "type": "string" } },
+          "placeholder": { "type": "string" }
+        }
+      }
+    },
+    "successRedirectUrl": {
+      "type": ["string", "null"],
+      "format": "uri",
+      "description": "Redirect after successful booking"
+    },
+    "disableGuests": {
+      "type": "boolean",
+      "default": false,
+      "description": "Prevent attendees from adding guests"
+    },
+    "hideCalendarNotes": {
+      "type": "boolean",
+      "default": false,
+      "description": "Hide calendar notes field"
+    },
+    "requiresConfirmation": {
+      "type": "boolean",
+      "default": false,
+      "description": "Require host approval before confirming"
+    },
+    "recurringEvent": {
+      "type": ["object", "null"],
+      "properties": {
+        "frequency": { "type": "string", "enum": ["DAILY", "WEEKLY", "MONTHLY"] },
+        "interval": { "type": "integer", "minimum": 1 },
+        "count": { "type": "integer", "minimum": 1 },
+        "until": { "type": "string", "format": "date" }
+      }
+    },
+    "price": {
+      "type": "integer",
+      "minimum": 0,
+      "default": 0,
+      "description": "Price in cents (0 = free)"
+    },
+    "currency": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}$",
+      "default": "USD",
+      "description": "ISO 4217 currency code"
+    },
+    "seatsPerTimeSlot": {
+      "type": "integer",
+      "minimum": 1,
+      "default": 1,
+      "description": "Number of seats per time slot (for group events)"
+    },
+    "seatDisplayName": {
+      "type": "string",
+      "default": "Seat",
+      "description": "Display name for seats"
+    },
+    "bookingFields": {
+      "type": "object",
+      "description": "Configuration for default booking fields",
+      "properties": {
+        "name": { "type": "object", "properties": { "required": { "type": "boolean" } } },
+        "email": { "type": "object", "properties": { "required": { "type": "boolean" } } },
+        "phone": { "type": "object", "properties": { "required": { "type": "boolean" } } },
+        "notes": { "type": "object", "properties": { "required": { "type": "boolean" } } }
+      }
+    },
+    "locations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["type"],
+        "properties": {
+          "type": { "type": "string", "enum": ["googleMeet", "zoom", "teams", "custom", "phone", "inPerson"] },
+          "location": { "type": "string" },
+          "credentialId": { "type": "integer" }
+        }
+      }
+    },
+    "scheduleId": {
+      "type": ["integer", "null"],
+      "description": "Specific schedule to use (null = default)"
+    },
+    "periodType": {
+      "type": "string",
+      "enum": ["RANGE", "DAYS", "MONTHS"],
+      "default": "RANGE",
+      "description": "How far in advance bookings can be made"
+    },
+    "periodStartDate": {
+      "type": ["string", "null"],
+      "format": "date",
+      "description": "Start of booking window"
+    },
+    "periodEndDate": {
+      "type": ["string", "null"],
+      "format": "date",
+      "description": "End of booking window"
+    },
+    "periodDays": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 365,
+      "default": 30,
+      "description": "Days ahead bookings allowed (when periodType=DAYS)"
+    },
+    "periodCountCalendarDays": {
+      "type": "boolean",
+      "default": false,
+      "description": "Count calendar days vs business days"
+    },
+    "slotInterval": {
+      "type": ["integer", "null"],
+      "enum": [5, 10, 15, 20, 30, 60],
+      "description": "Override default slot interval"
+    },
+    "minimumBookingNotice": {
+      "type": "integer",
+      "minimum": 0,
+      "default": 0,
+      "description": "Minimum minutes notice required before booking"
+    },
+    "beforeEventBuffer": {
+      "type": "integer",
+      "minimum": 0,
+      "default": 0,
+      "description": "Buffer minutes before event"
+    },
+    "afterEventBuffer": {
+      "type": "integer",
+      "minimum": 0,
+      "default": 0,
+      "description": "Buffer minutes after event"
+    },
+    "timezone": {
+      "type": "string",
+      "pattern": "^[A-Za-z_]+/[A-Za-z_]+$",
+      "description": "IANA timezone for this event type (overrides user default)"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Custom metadata",
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}

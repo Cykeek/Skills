@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Webhook Booking Payload",
+  "description": "Detailed payload for booking-related webhook events",
+  "type": "object",
+  "version": "2.1.0",
+  "allOf": [
+    { "$ref": "webhook-payload.json" },
+    {
+      "properties": {
+        "triggerEvent": {
+          "enum": [
+            "BOOKING_CREATED",
+            "BOOKING_CANCELLED",
+            "BOOKING_RESCHEDULED",
+            "BOOKING_REJECTED",
+            "BOOKING_PAID",
+            "MEETING_STARTED",
+            "MEETING_ENDED"
+          ]
+        },
+        "payload": {
+          "type": "object",
+          "required": ["uid", "id", "title", "startTime", "endTime", "status", "attendees", "organizer"],
+          "properties": {
+            "uid": { "type": "string" },
+            "id": { "type": "integer" },
+            "title": { "type": "string" },
+            "description": { "type": "string" },
+            "startTime": { "type": "string", "format": "date-time" },
+            "endTime": { "type": "string", "format": "date-time" },
+            "status": { "type": "string", "enum": ["PENDING", "ACCEPTED", "CANCELLED", "REJECTED"] },
+            "attendees": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["id", "name", "email", "timeZone"],
+                "properties": {
+                  "id": { "type": "integer" },
+                  "name": { "type": "string" },
+                  "email": { "type": "string", "format": "email" },
+                  "timeZone": { "type": "string" },
+                  "phoneNumber": { "type": ["string", "null"] },
+                  "language": { "type": ["string", "null"] },
+                  "metadata": { "type": "object" }
+                }
+              }
+            },
+            "organizer": {
+              "type": "object",
+              "required": ["id", "name", "email", "timeZone"],
+              "properties": {
+                "id": { "type": "integer" },
+                "name": { "type": "string" },
+                "email": { "type": "string", "format": "email" },
+                "timeZone": { "type": "string" }
+              }
+            },
+            "eventType": {
+              "type": "object",
+              "properties": {
+                "id": { "type": "integer" },
+                "title": { "type": "string" },
+                "slug": { "type": "string" },
+                "lengthInMinutes": { "type": "integer" }
+              }
+            },
+            "location": { "type": ["string", "null"] },
+            "metadata": { "type": "object" },
+            "cancelReason": { "type": ["string", "null"] },
+            "cancelledBy": { "type": ["string", "null"], "enum": ["ATTENDEE", "HOST"] },
+            "rescheduledFromUid": { "type": ["string", "null"] },
+            "rescheduledToUid": { "type": ["string", "null"] },
+            "rejectReason": { "type": ["string", "null"] },
+            "payment": {
+              "type": ["object", "null"],
+              "properties": {
+                "amount": { "type": "integer" },
+                "currency": { "type": "string" },
+                "provider": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

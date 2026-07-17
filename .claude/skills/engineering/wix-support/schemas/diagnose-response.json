@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Diagnose Response",
+  "type": "object",
+  "properties": {
+    "editor": {"type": "string", "enum": ["classic", "studio", "editorx"]},
+    "issue": {"type": "string"},
+    "diagnosis": {"type": "string"},
+    "steps": {"type": "array", "items": {"type": "string"}},
+    "reference_file": {"type": "string"}
+  },
+  "required": ["editor", "issue", "diagnosis", "steps", "reference_file"],
+  "additionalProperties": false
+}

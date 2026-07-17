@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Team Configuration",
+  "description": "Request payload for creating a team via Cal.com API v2",
+  "type": "object",
+  "version": "2.1.0",
+  "required": ["name"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255,
+      "description": "Team display name"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$",
+      "minLength": 1,
+      "maxLength": 100,
+      "description": "URL-friendly team identifier (auto-generated if omitted)"
+    },
+    "logo": {
+      "type": ["string", "null"],
+      "format": "uri",
+      "description": "Team logo URL"
+    },
+    "brandColor": {
+      "type": ["string", "null"],
+      "pattern": "^#[0-9A-Fa-f]{6}$",
+      "description": "Primary brand color (hex)"
+    },
+    "darkBrandColor": {
+      "type": ["string", "null"],
+      "pattern": "^#[0-9A-Fa-f]{6}$",
+      "description": "Dark mode brand color (hex)"
+    },
+    "timezone": {
+      "type": "string",
+      "pattern": "^[A-Za-z_]+/[A-Za-z_]+$",
+      "description": "Default timezone for team (IANA format)"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Custom metadata for the team",
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}

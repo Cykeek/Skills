@@ -1,0 +1,83 @@
+{
+  "domain": "productivity",
+  "name": "task-manager",
+  "description": "Use when work feels overwhelming or disorganized. Example: 'Help me prioritize my tasks for this week'. Delivers a prioritized task list with scheduling, context tags, and review cadence.",
+  "version": "1.0.0",
+  "author": "Claude Code",
+  "triggers": ["Manage tasks", "Prioritize work", "Weekly review", "Task capture", "Time blocking"],
+  "tags": ["productivity", "gtd", "task-management", "prioritization"],
+  "anti_patterns": [
+    "Inbox overflow - capturing without processing creates anxiety",
+    "Priority inflation - everything 'urgent' means nothing is",
+    "Context switching - mixing deep work with admin kills flow",
+    "No review cycle - stale tasks accumulate and mislead",
+    "Tool obsession - perfect system > consistent usage"
+  ],
+  "short_circuits": [
+    "Full GTD: Capture → Clarify → Organize → Reflect → Engage",
+    "Daily triage: Inbox zero + top 3 priorities",
+    "Crisis mode: Only urgent/important, defer rest"
+  ],
+  "quality_loop": [
+    "All inputs captured to trusted inbox",
+    "Each item clarified: actionable? project? reference? trash?",
+    "Next actions organized by context (@computer, @phone, @errands)",
+    "Projects have defined outcomes and next actions",
+    "Weekly review completed (clean up, update, plan)",
+    "Confidence tags on prioritization decisions"
+  ],
+  "related_skills": [
+    {
+      "skill": "productivity/weekly-review",
+      "when": "Structured reflection and planning cadence",
+      "when_not": "Daily task execution and capture"
+    },
+    {
+      "skill": "productivity/focus-engine",
+      "when": "Protecting deep work blocks for high-priority tasks",
+      "when_not": "Task capture and organization"
+    },
+    {
+      "skill": "productivity/project-planner",
+      "when": "Breaking down complex multi-step initiatives",
+      "when_not": "Managing discrete daily tasks"
+    },
+    {
+      "skill": "productivity/decision-journal",
+      "when": "Tracking prioritization decisions for calibration",
+      "when_not": "Routine task management"
+    },
+    {
+      "skill": "engineering/agent-harness",
+      "when": "Automating task capture from email/Slack/calendar",
+      "when_not": "Manual task management workflow"
+    }
+  ],
+  "references": [
+    {
+      "file": "gtd-fundamentals.md",
+      "purpose": "Getting Things Done methodology adapted for knowledge work",
+      "sections": "Five stages, horizons of focus, weekly review, context lists"
+    },
+    {
+      "file": "prioritization-frameworks.md",
+      "purpose": "Eisenhower, RICE, WSJF, and MoSCoW comparison with use cases",
+      "sections": "Framework selection, scoring templates, team alignment"
+    },
+    {
+      "file": "task-capture-workflows.md",
+      "purpose": "Frictionless capture from email, Slack, browser, voice, meeting notes",
+      "sections": "Quick capture tools, parsing rules, inbox processing routines"
+    },
+    {
+      "file": "time-blocking-guide.md",
+      "purpose": "Calendar-based execution strategy for priority work",
+      "sections": "Block types, buffer management, energy matching, interruption handling"
+    },
+    {
+      "file": "weekly-review-checklist.md",
+      "purpose": "Complete weekly review procedure with templates",
+      "sections": "Inbox zero, project review, calendar review, next week planning, metrics"
+    }
+  ]
+}

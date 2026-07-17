@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Problem Framing Request",
+  "type": "object",
+  "required": ["user", "context", "progress"],
+  "properties": {
+    "user": { "type": "string", "description": "Target user description" },
+    "context": { "type": "string", "description": "User context/situation" },
+    "progress": { "type": "string", "description": "Desired progress/job to be done" },
+    "evidence": { "type": "array", "items": { "type": "string" }, "default": [] },
+    "assumptions": { "type": "array", "items": { "type": "string" }, "default": [] }
+  }
+}

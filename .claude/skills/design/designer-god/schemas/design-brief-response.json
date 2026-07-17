@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Design Brief Response",
+  "type": "object",
+  "required": ["problem", "user", "constraints", "scope", "brief", "reference_files"],
+  "properties": {
+    "problem": { "type": "string" },
+    "user": { "type": "string" },
+    "constraints": { "type": "array", "items": { "type": "string" } },
+    "scope": { "type": "string" },
+    "brief": {
+      "type": "object",
+      "required": ["project_name", "problem_statement", "target_user", "non_goals", "assumptions", "appetite", "success_criteria", "risks", "next_steps"],
+      "properties": {
+        "project_name": { "type": "string" },
+        "problem_statement": { "type": "string" },
+        "target_user": { "type": "string" },
+        "non_goals": { "type": "array", "items": { "type": "string" } },
+        "assumptions": { "type": "array", "items": { "type": "string" } },
+        "appetite": { "type": "string" },
+        "success_criteria": { "type": "array", "items": { "type": "string" } },
+        "risks": { "type": "array", "items": { "type": "string" } },
+        "next_steps": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "reference_files": { "type": "array", "items": { "type": "string" } }
+  }
+}

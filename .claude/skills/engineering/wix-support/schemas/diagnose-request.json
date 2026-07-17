@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Diagnose Request",
+  "type": "object",
+  "properties": {
+    "editor": {
+      "type": "string",
+      "enum": ["classic", "studio", "editorx"],
+      "description": "Wix editor type"
+    },
+    "issue": {
+      "type": "string",
+      "minLength": 3,
+      "description": "Description of the issue"
+    }
+  },
+  "required": ["editor", "issue"],
+  "additionalProperties": false
+}

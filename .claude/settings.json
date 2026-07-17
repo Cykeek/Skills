@@ -1,0 +1,42 @@
+{
+  "env": {
+    "CLAUDE_SKILLS_ROOT": ".claude/skills"
+  },
+  "permissions": {
+    "allow": [
+      "Bash(python .claude/scripts/*)",
+      "Bash(git *)",
+      "Bash(gh *)",
+      "Read(.claude/skills/**)",
+      "Write(.claude/skills/**)",
+      "Edit(.claude/skills/**)",
+      "Glob(.claude/skills/**)",
+      "Grep(.claude/skills/**)"
+    ],
+    "deny": [
+      "Bash(rm -rf *)",
+      "Bash(curl *)",
+      "Bash(wget *)"
+    ]
+  },
+  "model": "claude-sonnet-5",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python .claude/hooks/validate_skill_structure.py",
+            "timeout": 10000
+          }
+        ]
+      }
+    ]
+  },
+  "enabledPlugins": {
+    "superpowers@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": true,
+    "figma@claude-plugins-official": true
+  }
+}

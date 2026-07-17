@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Problem Framing Response",
+  "type": "object",
+  "required": ["decision_to_make", "user_and_context", "job_story", "what_we_know", "riskiest_assumptions", "smallest_viable_next_step", "success_signal", "reference_files"],
+  "properties": {
+    "decision_to_make": { "type": "string" },
+    "user_and_context": { "type": "string" },
+    "job_story": { "type": "string" },
+    "what_we_know": { "type": "array", "items": { "type": "string" } },
+    "riskiest_assumptions": { "type": "array", "items": { "type": "string" } },
+    "smallest_viable_next_step": { "type": "string" },
+    "success_signal": { "type": "string" },
+    "reference_files": { "type": "array", "items": { "type": "string" } }
+  }
+}
