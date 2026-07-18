@@ -1,0 +1,44 @@
+{
+  "env": {
+    "CLAUDE_SKILLS_ROOT": ".agents/skills",
+    "AGENTS_SKILLS_ROOT": ".agents/skills",
+    "ZCODE_SKILLS_ROOT": ".agents/skills"
+  },
+  "permissions": {
+    "allow": [
+      "Bash(python .agents/scripts/*)",
+      "Bash(git *)",
+      "Bash(gh *)",
+      "Read(.agents/skills/**)",
+      "Write(.agents/skills/**)",
+      "Edit(.agents/skills/**)",
+      "Glob(.agents/skills/**)",
+      "Grep(.agents/skills/**)"
+    ],
+    "deny": [
+      "Bash(rm -rf *)",
+      "Bash(curl *)",
+      "Bash(wget *)"
+    ]
+  },
+  "model": "claude-sonnet-5",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python .agents/hooks/validate_skill_structure.py",
+            "timeout": 10000
+          }
+        ]
+      }
+    ]
+  },
+  "enabledPlugins": {
+    "superpowers@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": true,
+    "figma@claude-plugins-official": true
+  }
+}

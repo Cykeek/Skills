@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pdflatex *)",
+      "WebSearch",
+      "Bash(dir *)",
+      "Bash(pdftotext -layout \"C:\\\\Users\\\\Cykeek\\\\Downloads\\\\resume.pdf\" -)",
+      "Bash(python3 -c ' *)",
+      "Bash(python *)",
+      "Bash(where pdftotext *)",
+      "Bash(pip install *)",
+      "Bash(pip show *)",
+      "Bash(resume-doctor *)",
+      "Bash(resume-doctor-analyze *)",
+      "Bash(mv \"D:/AI-Workflows/.agents/skills/resume-doctor/resume\" \"D:/AI-Workflows/resume-workspace/\")",
+      "Bash(mv \"D:/AI-Workflows/.agents/skills/resume-doctor/test_data\" \"D:/AI-Workflows/resume-workspace/\")",
+      "Bash(mv \"D:/AI-Workflows/.agents/skills/resume-doctor/output\" \"D:/AI-Workflows/resume-workspace/\")",
+      "Bash(where pdflatex *)",
+      "WebFetch(domain:www.1947.io)",
+      "mcp__plugin_figma_figma__get_design_context",
+      "Workflow(deep-research)",
+      "WebFetch(domain:www.litmus.com)",
+      "WebFetch(domain:www.w3.org)",
+      "Bash(pdftotext *)"
+    ]
+  },
+  "skillOverrides": {},
+  "enabledPlugins": {}
+}
